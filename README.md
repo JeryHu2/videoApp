@@ -3,6 +3,8 @@
 
 本地执行脚本：
 
+npm i
+
 npm run dev
 
 构建脚本:
