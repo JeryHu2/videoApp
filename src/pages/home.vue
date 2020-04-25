@@ -102,19 +102,21 @@ export default {
 }
 .header .tablist .rightbtns ul li i {
   display: inline-block;
-  width: 50px;
-  height: 50px;
-  background: url(/static/home/logo_man.png) no-repeat center;
+  width: 30px;
+  height: 30px;
   vertical-align: middle;
 }
 .header .tablist .rightbtns ul li i.user_logo {
   background: url(/static/home/logo_man.png) no-repeat center;
+  background-size: 100% 100%;
 }
 .header .tablist .rightbtns ul li i.eye_logo {
   background: url(/static/home/logo_view.png) no-repeat center;
+  background-size: 100% 100%;
 }
 .header .tablist .rightbtns ul li i.star_logo {
   background: url(/static/home/logo_star.png) no-repeat center;
+  background-size: 100% 100%;
 }
 .header .tablist .tabs {
   width: 100%;
