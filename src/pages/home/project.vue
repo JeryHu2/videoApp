@@ -1,11 +1,6 @@
 <template>
   <div class="cards">
-    <Card
-      @openDetails="openDetails"
-      v-for="item in videoData"
-      :key="item.id"
-      :project="item"
-    ></Card>
+    <Card @openDetails="openDetails" v-for="item in videoData" :key="item.id" :project="item"></Card>
   </div>
 </template>
 <script>
@@ -63,5 +58,6 @@ export default {
   float: left;
   width: 30%;
   margin: 20px 0 0px 20px;
+  height: 300px;
 }
 </style>

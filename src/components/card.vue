@@ -57,6 +57,7 @@ export default {
 .el-card {
   border: 5px solid #000;
   border-radius: 40px;
+  height: 100%;
 }
 .el-card:hover {
   border: 5px solid yellow;

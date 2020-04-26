@@ -2,39 +2,47 @@
   <div style="overflow:hidden">
     <div class="home">
       <div class="header">
-        <div class="logo"></div>
+        <div class="logo" @click="trigTo('home')"></div>
         <div class="tablist">
           <div class="rightbtns">
             <ul>
-              <li>
+              <router-link :to="{name: 'user'}" tag="li" @click.native="trigTo('user')">
                 <i class="user_logo"></i>
-                <label @click="trigTo('user')">个人中心</label>
-              </li>
-              <li>
+                <label>个人中心</label>
+              </router-link>
+              <router-link :to="{name: 'review'}" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
-                <label @click="trigTo('review')">浏览历史</label>
-              </li>
-              <li>
+                <label>浏览历史</label>
+              </router-link>
+              <router-link :to="{name: 'collection'}" tag="li" @click.native="trigTo('collection')">
                 <i class="star_logo"></i>
-                <label @click="trigTo('collection')">收藏记录</label>
-              </li>
+                <label>收藏记录</label>
+              </router-link>
             </ul>
           </div>
-          <div class="tabs">
+          <div class="tabs" v-show="isHome">
             <Tabs></Tabs>
+          </div>
+          <div class="title" v-show="!isHome">
+            <span class="line">——</span>
+            {{routerName}}
+            <span class="line">——</span>
           </div>
         </div>
       </div>
-      <div class="content">
+      <div class="content" v-show="isHome">
         <div class="swiper">
           <List></List>
         </div>
         <div class="list">
           <Project></Project>
-          <div class="pig_icon"></div>
         </div>
       </div>
+      <div class="route_content" v-show="!isHome">
+        <router-view></router-view>
+      </div>
     </div>
+    <div class="pig_icon" @mousedown="move"></div>
   </div>
 </template>
 <script>
@@ -44,11 +52,56 @@ import Project from "./home/project";
 
 export default {
   data() {
-    return {};
+    return {
+      isHome: true,
+      routerName: "",
+      positionX: 0,
+      positionY: 0
+    };
   },
   methods: {
-    trigTo(route) {
-      this.$router.push({ path: `/${route}` });
+    trigTo(path) {
+      if (path == "home") {
+        this.isHome = true;
+      } else {
+        this.isHome = false;
+      }
+      switch (path) {
+        case "user":
+          this.routerName = "个人中心";
+          break;
+        case "review":
+          this.routerName = "浏览历史";
+          break;
+        case "collection":
+          this.routerName = "收藏记录";
+          break;
+      }
+    },
+    move(e) {
+      let odiv = e.target; //获取目标元素
+
+      //算出鼠标相对元素的位置
+      let disX = e.clientX - odiv.offsetLeft;
+      let disY = e.clientY - odiv.offsetTop;
+      document.onmousemove = e => {
+        //鼠标按下并移动的事件
+        //用鼠标的位置减去鼠标相对元素的位置，得到元素的位置
+        let left = e.clientX - disX;
+        let top = e.clientY - disY;
+
+        //绑定元素位置到positionX和positionY上面
+        this.positionX = top;
+        this.positionY = left;
+
+        //移动当前元素
+        odiv.style.left = left + "px";
+        odiv.style.top = top + "px";
+      };
+      document.onmouseup = e => {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      };
     }
   },
   components: {
@@ -75,6 +128,7 @@ export default {
   width: 400px;
   height: 100%;
   float: left;
+  cursor: pointer;
   background: url(/static/home/logo.png) no-repeat 40px 0;
   background-size: contain;
 }
@@ -118,15 +172,36 @@ export default {
   background: url(/static/home/logo_star.png) no-repeat center;
   background-size: 100% 100%;
 }
-.header .tablist .tabs {
+.header .tablist .tabs,
+.header .tablist .title {
   width: 100%;
   height: 140px;
   line-height: 140px;
+}
+.header .tablist .title {
+  font-size: 40px;
+  font-weight: 500;
+  font-family: "微软雅黑";
+  color: darkblue;
+  margin-left: -190px;
+}
+.header .tablist .title .line {
+  font-size: 25px;
+  font-weight: 600;
+  color: rgb(94, 186, 223);
+  padding: 0 10px;
 }
 .content {
   width: 100%;
   height: calc(100% - 200px);
   position: relative;
+}
+.route_content {
+  width: calc(100% - 100px);
+  height: calc(100% - 250px);
+  float: left;
+  margin: 50px;
+  overflow: hidden;
 }
 .content .swiper {
   width: 400px;
@@ -146,5 +221,6 @@ export default {
   bottom: -40px;
   right: -40px;
   z-index: 99;
+  cursor: grab;
 }
 </style>

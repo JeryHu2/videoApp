@@ -1,10 +1,6 @@
 <template>
   <ul class="swip_list">
-    <li
-      v-for="item in listData"
-      :key="item.id"
-      :class="{ active: item.active }"
-    >
+    <li v-for="item in listData" :key="item.id" :class="{ active: item.active }">
       <el-button>{{ item.name }}</el-button>
     </li>
   </ul>
@@ -69,6 +65,7 @@ ul.swip_list li {
 .el-button:hover,
 ul.swip_list li.active button {
   background: url(/static/home/menu_left_on.png) no-repeat 0 0;
+  background-size: cover;
   color: yellow;
 }
 </style>

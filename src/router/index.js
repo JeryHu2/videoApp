@@ -15,22 +15,23 @@ export default new Router({
     routes: [{
             path: '/',
             name: 'home',
-            component: home
-        },
-        {
-            path: '/user',
-            name: 'user',
-            component: user
-        },
-        {
-            path: '/review',
-            name: 'review',
-            component: review
-        },
-        {
-            path: '/collection',
-            name: 'collection',
-            component: collection
+            component: home,
+            children: [{
+                    path: '/user',
+                    name: 'user',
+                    component: user
+                },
+                {
+                    path: '/review',
+                    name: 'review',
+                    component: review
+                },
+                {
+                    path: '/collection',
+                    name: 'collection',
+                    component: collection
+                }
+            ]
         },
         {
             path: '/details',
