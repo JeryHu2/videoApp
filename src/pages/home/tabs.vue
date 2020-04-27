@@ -42,7 +42,7 @@ export default {
 .tabCalss >>> .el-tabs__header,
 .tabCalss >>> .el-tabs__nav,
 .tabCalss >>> .el-tabs__item {
-  border: 0;
+  border: 0 !important;
 }
 .tabCalss >>> .el-tabs__item {
   font-family: "微软雅黑";
@@ -59,10 +59,12 @@ export default {
 .tabCalss >>> .el-tabs__nav-scroll {
   margin: 0 60px;
 }
-.tabCalss >>> .el-tabs__item.is-active {
-  background: url(/static/home/nav.png) no-repeat 0 0;
-  background-size: cover;
+.tabCalss >>> .el-tabs__item {
   padding: 0px !important;
+}
+.tabCalss >>> .el-tabs__item.is-active {
+  background: url(../../static/image/home/nav.png) no-repeat 0 0;
+  background-size: cover;
 }
 .tabCalss >>> .el-tabs__nav-next,
 .tabCalss >>> .el-tabs__nav-prev {

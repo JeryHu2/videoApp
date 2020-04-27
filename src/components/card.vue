@@ -2,7 +2,7 @@
   <div class="videoPro" @click="openDetails">
     <el-card>
       <img :src="project.img" class="image" />
-      <div class="bottom clearfix">
+      <div class="card_bottom clearfix">
         <el-button type="text" class="button">{{ project.label }}</el-button>
       </div>
     </el-card>
@@ -25,19 +25,23 @@ export default {
 .videoPro {
   cursor: pointer;
 }
-.bottom {
+.card_bottom {
   height: 50px;
   line-height: 50px;
   background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  left: 0;
 }
 
-.button {
+.videoPro .button {
   padding: 0;
   color: #fff;
   font-size: 20px;
 }
 
-.image {
+.videoPro .image {
   width: 100%;
   display: block;
 }
@@ -51,17 +55,17 @@ export default {
 .clearfix:after {
   clear: both;
 }
-.el-card__body {
-  padding: 0px;
+.videoPro .el-card__body {
+  padding: 0px !important;
 }
-.el-card {
-  border: 5px solid #000;
-  border-radius: 40px;
+.videoPro .el-card {
+  border: 5px solid #000 !important;
+  border-radius: 40px !important;
   height: 100%;
+  position: relative;
 }
-.el-card:hover {
-  border: 5px solid yellow;
-  box-shadow: 0px 2px 30px yellow;
-  border-radius: 40px;
+.videoPro .el-card:hover {
+  border: 5px solid yellow !important;
+  box-shadow: 0px 2px 30px yellow !important;
 }
 </style>

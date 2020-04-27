@@ -1,6 +1,11 @@
 <template>
   <div class="cards">
-    <Card @openDetails="openDetails" v-for="item in videoData" :key="item.id" :project="item"></Card>
+    <Card
+      @openDetails="openDetails"
+      v-for="item in videoData"
+      :key="item.id"
+      :project="item"
+    ></Card>
   </div>
 </template>
 <script>
@@ -15,33 +20,33 @@ export default {
     this.videoData = [
       {
         id: "ran_1",
-        label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        label: "福娃系列 全集",
+        img: "./static/image/details/111.jpg"
       },
       {
         id: "ran_2",
-        label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        label: "小猪 全集",
+        img: "./static/image/details/222.jpg"
       },
       {
         id: "ran_3",
-        label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        label: "福娃系列 全集",
+        img: "./static/image/details/111.jpg"
       },
       {
         id: "ran_4",
-        label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        label: "小猪 全集",
+        img: "./static/image/details/222.jpg"
       },
       {
         id: "ran_5",
-        label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        label: "福娃 全集",
+        img: "./static/image/details/111.jpg"
       },
       {
         id: "ran_6",
-        label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        label: "小猪 全集",
+        img: "./static/image/details/222.jpg"
       }
     ];
   },

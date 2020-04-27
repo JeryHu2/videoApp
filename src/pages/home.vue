@@ -6,15 +6,27 @@
         <div class="tablist">
           <div class="rightbtns">
             <ul>
-              <router-link :to="{name: 'user'}" tag="li" @click.native="trigTo('user')">
+              <router-link
+                :to="{ name: 'user' }"
+                tag="li"
+                @click.native="trigTo('user')"
+              >
                 <i class="user_logo"></i>
                 <label>个人中心</label>
               </router-link>
-              <router-link :to="{name: 'review'}" tag="li" @click.native="trigTo('review')">
+              <router-link
+                :to="{ name: 'review' }"
+                tag="li"
+                @click.native="trigTo('review')"
+              >
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
               </router-link>
-              <router-link :to="{name: 'collection'}" tag="li" @click.native="trigTo('collection')">
+              <router-link
+                :to="{ name: 'collection' }"
+                tag="li"
+                @click.native="trigTo('collection')"
+              >
                 <i class="star_logo"></i>
                 <label>收藏记录</label>
               </router-link>
@@ -25,7 +37,7 @@
           </div>
           <div class="title" v-show="!isHome">
             <span class="line">——</span>
-            {{routerName}}
+            {{ routerName }}
             <span class="line">——</span>
           </div>
         </div>
@@ -42,7 +54,7 @@
         <router-view></router-view>
       </div>
     </div>
-    <div class="pig_icon" @mousedown="move"></div>
+    <div class="pig_icon" @mousedown="move" v-show="isHome"></div>
   </div>
 </template>
 <script>
@@ -115,7 +127,7 @@ export default {
 .home {
   width: 100%;
   height: 100vh;
-  background: url(/static/home/home_back.jpg) no-repeat 0 0;
+  background: url(../static/image/home/home_back.jpg) no-repeat 0 0;
   background-size: 100% 100%;
   padding: 30px;
   font-family: "微软雅黑";
@@ -129,7 +141,7 @@ export default {
   height: 100%;
   float: left;
   cursor: pointer;
-  background: url(/static/home/logo.png) no-repeat 40px 0;
+  background: url(../static/image/home/logo.png) no-repeat 40px 0;
   background-size: contain;
 }
 .header .tablist {
@@ -161,15 +173,15 @@ export default {
   vertical-align: middle;
 }
 .header .tablist .rightbtns ul li i.user_logo {
-  background: url(/static/home/logo_man.png) no-repeat center;
+  background: url(../static/image/home/logo_man.png) no-repeat center;
   background-size: 100% 100%;
 }
 .header .tablist .rightbtns ul li i.eye_logo {
-  background: url(/static/home/logo_view.png) no-repeat center;
+  background: url(../static/image/home/logo_view.png) no-repeat center;
   background-size: 100% 100%;
 }
 .header .tablist .rightbtns ul li i.star_logo {
-  background: url(/static/home/logo_star.png) no-repeat center;
+  background: url(../static/image/home/logo_star.png) no-repeat center;
   background-size: 100% 100%;
 }
 .header .tablist .tabs,
@@ -216,7 +228,7 @@ export default {
 .pig_icon {
   width: 200px;
   height: 200px;
-  background: url(/static/home/logo_pig.png) no-repeat 0 0;
+  background: url(../static/image/home/logo_pig.png) no-repeat 0 0;
   position: absolute;
   bottom: -40px;
   right: -40px;

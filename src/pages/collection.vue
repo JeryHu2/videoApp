@@ -1,6 +1,11 @@
 <template>
   <div class="overrow">
-    <Card @openDetails="openDetails" v-for="item in videoData" :key="item.id" :project="item"></Card>
+    <Card
+      @openDetails="openDetails"
+      v-for="item in videoData"
+      :key="item.id"
+      :project="item"
+    ></Card>
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -31,62 +36,62 @@ export default {
       {
         id: "ran_1",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_2",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_3",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_4",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_5",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_6",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_7",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_8",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_9",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_10",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_11",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       },
       {
         id: "ran_12",
         label: "熊猫笔记 全集",
-        img: "/static/details/back.jpg"
+        img: "./static/image/user/333.jpg"
       }
     ];
   },
@@ -125,7 +130,7 @@ export default {
   margin: 50px auto;
   width: 100%;
 }
-.overrow >>> .videoPro .bottom {
-  display: none;
+.overrow >>> .videoPro .card_bottom {
+  display: none !important;
 }
 </style>
