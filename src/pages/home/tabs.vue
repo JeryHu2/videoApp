@@ -1,17 +1,11 @@
 <template>
-  <el-tabs
-    v-model="activeName"
-    type="card"
-    @tab-click="handleClick"
-    class="tabCalss"
-  >
+  <el-tabs v-model="activeName" type="card" @tab-click="handleClick" class="tabCalss">
     <el-tab-pane
       v-for="item in tabList"
       :key="item.key"
       :label="item.name"
       :name="item.key"
-      >{{ item.name }}}</el-tab-pane
-    >
+    >{{ item.name }}}</el-tab-pane>
   </el-tabs>
 </template>
 <script>
@@ -60,7 +54,7 @@ export default {
   margin: 0 60px;
 }
 .tabCalss >>> .el-tabs__item.is-active {
-  background: url(/static/home/nav.png) no-repeat 0 0;
+  background: url(../../static/home/nav.png) no-repeat 0 0;
   background-size: cover;
   padding: 0px !important;
 }

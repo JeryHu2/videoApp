@@ -56,6 +56,7 @@ exports.cssLoaders = function(options) {
         if (options.extract) {
             return ExtractTextPlugin.extract({
                 use: loaders,
+                publicPath: '../../', // 加上这一条就好了
                 fallback: 'vue-style-loader'
             })
         } else {
