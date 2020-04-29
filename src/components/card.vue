@@ -2,7 +2,7 @@
   <div class="videoPro" @click="openDetails">
     <el-card>
       <img :src="project.img" class="image" />
-      <div class="card_bottom clearfix">
+      <div class="card_bottom clearfix" v-show="project.label !=''">
         <el-button type="text" class="button">{{ project.label }}</el-button>
       </div>
     </el-card>

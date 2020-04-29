@@ -1,15 +1,17 @@
 <template>
-  <ul class="swip_list">
+  <ul class="swip_list" ref="listObj">
     <li
       v-for="item in listData"
       :key="item.id"
       :class="{ active: item.active }"
+      @click="showProjects(item)"
     >
       <el-button>{{ item.name }}</el-button>
     </li>
   </ul>
 </template>
 <script>
+import eventBus from "@/utils/eventBus";
 export default {
   data() {
     return {
@@ -46,6 +48,15 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    showProjects(obj) {
+      this.listData.map(o => {
+        o.active = false;
+      });
+      obj.active = true;
+      eventBus.$emit("changeList", obj.id);
+    }
   }
 };
 </script>

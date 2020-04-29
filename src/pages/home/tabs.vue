@@ -1,17 +1,11 @@
 <template>
-  <el-tabs
-    v-model="activeName"
-    type="card"
-    @tab-click="handleClick"
-    class="tabCalss"
-  >
+  <el-tabs v-model="activeName" type="card" @tab-click="handleClick" class="tabCalss">
     <el-tab-pane
       v-for="item in tabList"
       :key="item.key"
       :label="item.name"
       :name="item.key"
-      >{{ item.name }}}</el-tab-pane
-    >
+    >{{ item.name }}}</el-tab-pane>
   </el-tabs>
 </template>
 <script>
@@ -34,7 +28,9 @@ export default {
     ];
   },
   methods: {
-    handleClick(tab, event) {}
+    handleClick(tab, event) {
+      this.$store.commit("changeTabs", tab.name);
+    }
   }
 };
 </script>

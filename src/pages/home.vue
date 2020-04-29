@@ -6,19 +6,11 @@
         <div class="tablist">
           <div class="rightbtns">
             <ul>
-              <router-link
-                :to="{ name: 'user' }"
-                tag="li"
-                @click.native="trigTo('user')"
-              >
+              <router-link :to="{ name: 'user' }" tag="li" @click.native="trigTo('user')">
                 <i class="user_logo"></i>
                 <label>个人中心</label>
               </router-link>
-              <router-link
-                :to="{ name: 'review' }"
-                tag="li"
-                @click.native="trigTo('review')"
-              >
+              <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
               </router-link>
@@ -53,8 +45,8 @@
       <div class="route_content" v-show="!isHome">
         <router-view></router-view>
       </div>
+      <div class="pig_icon" @mousedown="move" v-show="isHome"></div>
     </div>
-    <div class="pig_icon" @mousedown="move" v-show="isHome"></div>
   </div>
 </template>
 <script>
@@ -131,6 +123,7 @@ export default {
   background-size: 100% 100%;
   padding: 30px;
   font-family: "微软雅黑";
+  position: relative;
 }
 .header {
   width: 100%;
@@ -206,7 +199,6 @@ export default {
 .content {
   width: 100%;
   height: calc(100% - 200px);
-  position: relative;
 }
 .route_content {
   width: calc(100% - 100px);
@@ -226,12 +218,13 @@ export default {
   float: right;
 }
 .pig_icon {
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: 140px;
   background: url(../static/image/home/logo_pig.png) no-repeat 0 0;
+  background-size: contain;
   position: absolute;
-  bottom: -40px;
-  right: -40px;
+  bottom: 0;
+  right: 0 !important;
   z-index: 99;
   cursor: grab;
 }
