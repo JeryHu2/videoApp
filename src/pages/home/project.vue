@@ -1,6 +1,12 @@
 <template>
   <div class="cards">
-    <Card @openDetails="openDetails" v-for="item in showVideoData" :key="item.id" :project="item"></Card>
+    <Card
+      @openDetails="openDetails"
+      v-for="item in showVideoData"
+      :key="item.id"
+      :project="item"
+      :class="{'twoPercent':item.length<3,'onePercent':item.length>3}"
+    ></Card>
   </div>
 </template>
 <script>
@@ -18,7 +24,10 @@ export default {
     tabName(newValue) {
       if (newValue) {
         this.tabObj = newValue;
-        let index = 6 - this.tabIndex;
+        let index =
+          this.tabIndex > 0
+            ? 6 - this.tabIndex
+            : this.videoData[this.$store.state.showTabName].length;
         this.showVideoData = this.videoData[newValue].slice(0, index);
       }
     }
@@ -29,31 +38,67 @@ export default {
         {
           id: "ran_1",
           label: "福娃系列 全集",
+          length: 4,
           img: "./static/image/details/111.jpg"
         },
         {
           id: "ran_2",
           label: "小猪 全集",
+          length: 2,
           img: "./static/image/details/222.jpg"
         },
         {
           id: "ran_3",
           label: "福娃系列 全集",
+          length: 2,
           img: "./static/image/details/111.jpg"
         },
         {
           id: "ran_4",
           label: "小猪 全集",
+          length: 2,
           img: "./static/image/details/222.jpg"
         },
         {
           id: "ran_5",
           label: "福娃 全集",
+          length: 3,
           img: "./static/image/details/111.jpg"
         },
         {
           id: "ran_6",
           label: "小猪 全集",
+          length: 3,
+          img: "./static/image/details/222.jpg"
+        },
+        {
+          id: "ran_7",
+          label: "小猪 全集",
+          length: 3,
+          img: "./static/image/details/222.jpg"
+        },
+        {
+          id: "ran_8",
+          label: "小猪 全集",
+          length: 2,
+          img: "./static/image/details/222.jpg"
+        },
+        {
+          id: "ran_11",
+          label: "小猪 全集",
+          length: 4,
+          img: "./static/image/details/222.jpg"
+        },
+        {
+          id: "ran_9",
+          label: "小猪 全集",
+          length: 2,
+          img: "./static/image/details/222.jpg"
+        },
+        {
+          id: "ran_10",
+          label: "小猪 全集",
+          length: 2,
           img: "./static/image/details/222.jpg"
         }
       ],
@@ -85,6 +130,26 @@ export default {
         },
         {
           id: "ran_6",
+          label: "小猪 全集",
+          img: "./static/image/details/111.jpg"
+        },
+        {
+          id: "ran_7",
+          label: "福娃系列 全集",
+          img: "./static/image/details/111.jpg"
+        },
+        {
+          id: "ran_8",
+          label: "小猪 全集",
+          img: "./static/image/details/111.jpg"
+        },
+        {
+          id: "ran_9",
+          label: "福娃 全集",
+          img: "./static/image/details/111.jpg"
+        },
+        {
+          id: "ran_10",
           label: "小猪 全集",
           img: "./static/image/details/111.jpg"
         }
@@ -232,7 +297,10 @@ export default {
       let that = this;
       eventBus.$on("changeList", data => {
         that.tabIndex = data;
-        let index = 6 - data;
+        let index =
+          data > 0
+            ? 6 - data
+            : that.videoData[that.$store.state.showTabName].length - 1;
         that.showVideoData = that.videoData[
           that.$store.state.showTabName
         ].slice(0, index);
@@ -250,5 +318,11 @@ export default {
   width: 30%;
   margin: 20px 0 0px 20px;
   height: 300px;
+}
+.cards .onePercent.videoPro {
+  width: 36%;
+}
+.cards .twoPercent.videoPro {
+  width: 17.5%;
 }
 </style>

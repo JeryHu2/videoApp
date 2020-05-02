@@ -1,8 +1,8 @@
 <template>
   <div style="overflow:hidden">
     <div class="home">
-      <div class="header">
-        <div class="logo" @click="trigTo('home')"></div>
+      <div class="header" :class="{'user':ispurchaseFee}">
+        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee"></div>
         <div class="tablist">
           <div class="rightbtns">
             <ul>
@@ -27,7 +27,7 @@
           <div class="tabs" v-show="isHome">
             <Tabs></Tabs>
           </div>
-          <div class="title" v-show="!isHome">
+          <div class="title" v-show="!isHome && !ispurchaseFee">
             <span class="line">——</span>
             {{ routerName }}
             <span class="line">——</span>
@@ -42,7 +42,7 @@
           <Project></Project>
         </div>
       </div>
-      <div class="route_content" v-show="!isHome">
+      <div class="route_content" v-show="!isHome" :class="{'fee':ispurchaseFee}">
         <router-view></router-view>
       </div>
       <div class="pig_icon" @mousedown="move" v-show="isHome"></div>
@@ -58,10 +58,20 @@ export default {
   data() {
     return {
       isHome: true,
+      ispurchaseFee: false,
       routerName: "",
       positionX: 0,
       positionY: 0
     };
+  },
+  created() {
+    if (this.$route.query.code == "fail") {
+      this.ispurchaseFee = false;
+      this.isHome = false;
+      this.routerName = "个人中心";
+    } else {
+      this.isHome = true;
+    }
   },
   methods: {
     trigTo(path) {
@@ -70,8 +80,14 @@ export default {
       } else {
         this.isHome = false;
       }
+      if (path == "fee") {
+        this.ispurchaseFee = true;
+      } else {
+        this.ispurchaseFee = false;
+      }
       switch (path) {
         case "user":
+          this.$children[6].purchaseFee = false;
           this.routerName = "个人中心";
           break;
         case "review":
@@ -121,7 +137,7 @@ export default {
   height: 100vh;
   background: url(../static/image/home/home_back.jpg) no-repeat 0 0;
   background-size: 100% 100%;
-  padding: 30px;
+  padding: 30px 50px;
   font-family: "微软雅黑";
   position: relative;
 }
@@ -129,12 +145,16 @@ export default {
   width: 100%;
   height: 200px;
 }
+.header.user {
+  height: 45px;
+}
 .header .logo {
-  width: 400px;
+  width: 200px;
   height: 100%;
+  margin: 20px 0 0 50px;
   float: left;
   cursor: pointer;
-  background: url(../static/image/home/logo.png) no-repeat 40px 0;
+  background: url(../static/image/home/logo.png) no-repeat 0 0;
   background-size: contain;
 }
 .header .tablist {
@@ -184,7 +204,7 @@ export default {
   line-height: 140px;
 }
 .header .tablist .title {
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 500;
   font-family: "微软雅黑";
   color: darkblue;
@@ -198,14 +218,18 @@ export default {
 }
 .content {
   width: 100%;
-  height: calc(100% - 200px);
+  float: left;
+  height: calc(100% - 240px);
 }
 .route_content {
   width: calc(100% - 100px);
   height: calc(100% - 250px);
   float: left;
-  margin: 50px;
+  margin: 0 50px;
   overflow: hidden;
+}
+.route_content.fee {
+  height: calc(100% - 100px);
 }
 .content .swiper {
   width: 400px;
@@ -216,6 +240,7 @@ export default {
   width: calc(100% - 400px);
   height: 100%;
   float: right;
+  overflow: auto;
 }
 .pig_icon {
   width: 140px;
