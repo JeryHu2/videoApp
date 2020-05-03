@@ -34,7 +34,12 @@
           </div>
         </div>
       </div>
-      <div class="content" v-show="isHome">
+      <div class="content home_tab" v-show="isHomeTab && isHome">
+        <div class="list">
+          <Project></Project>
+        </div>
+      </div>
+      <div class="content other_tab" v-show="!isHomeTab && isHome">
         <div class="swiper">
           <List></List>
         </div>
@@ -58,6 +63,7 @@ export default {
   data() {
     return {
       isHome: true,
+      isHomeTab: true,
       ispurchaseFee: false,
       routerName: "",
       positionX: 0,
@@ -77,8 +83,10 @@ export default {
     trigTo(path) {
       if (path == "home") {
         this.isHome = true;
+        this.isHomeTab = true;
       } else {
         this.isHome = false;
+        this.isHomeTab = false;
       }
       if (path == "fee") {
         this.ispurchaseFee = true;
@@ -122,6 +130,13 @@ export default {
         document.onmousemove = null;
         document.onmouseup = null;
       };
+    },
+    changeHomeContent(tabName) {
+      if (tabName == "home") {
+        this.isHomeTab = true;
+      } else {
+        this.isHomeTab = false;
+      }
     }
   },
   components: {
@@ -241,6 +256,15 @@ export default {
   height: 100%;
   float: right;
   overflow: auto;
+}
+.content.home_tab .list {
+  width: 100%;
+}
+.content.home_tab >>> .videoPro {
+  height: 400px !important;
+}
+.content.other_tab .list {
+  width: calc(100% - 400px);
 }
 .pig_icon {
   width: 140px;

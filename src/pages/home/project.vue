@@ -5,7 +5,7 @@
       v-for="item in showVideoData"
       :key="item.id"
       :project="item"
-      :class="{'twoPercent':item.length<3,'onePercent':item.length>3}"
+      :class="{'twoPercent':item.length<3,'onePercent':item.length>3,'ishome':tabName == 'home'}"
     ></Card>
   </div>
 </template>
@@ -318,6 +318,9 @@ export default {
   width: 30%;
   margin: 20px 0 0px 20px;
   height: 300px;
+}
+.cards .videoPro.ishome {
+  height: 400px;
 }
 .cards .onePercent.videoPro {
   width: 36%;

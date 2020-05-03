@@ -30,6 +30,7 @@ export default {
   methods: {
     handleClick(tab, event) {
       this.$store.commit("changeTabs", tab.name);
+      this.$parent.changeHomeContent(tab.name);
     }
   }
 };
