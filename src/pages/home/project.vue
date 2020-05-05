@@ -5,285 +5,42 @@
       v-for="item in showVideoData"
       :key="item.id"
       :project="item"
-      :class="{'twoPercent':item.length<3,'onePercent':item.length>3,'ishome':tabName == 'home'}"
+      :class="{
+        twoPercent: item.length < 3,
+        onePercent: item.length > 3,
+        ishome: tabName == 'home'
+      }"
     ></Card>
   </div>
 </template>
 <script>
 import Card from "../../components/card";
 import eventBus from "@/utils/eventBus";
+import url from "@/api/videoApi.js";
+import Qs from "qs";
+import { Loading } from "element-ui";
+
 export default {
   data() {
     return {
-      videoData: [],
-      showVideoData: [],
-      tabIndex: 0
+      videoData: {},
+      listData: [],
+      showVideoData: []
     };
   },
   watch: {
     tabName(newValue) {
       if (newValue) {
         this.tabObj = newValue;
-        let index =
-          this.tabIndex > 0
-            ? 6 - this.tabIndex
-            : this.videoData[this.$store.state.showTabName].length;
-        this.showVideoData = this.videoData[newValue].slice(0, index);
+        let params = {
+          menuId: newValue
+        };
+        this.showVideoData = [];
+        this.getMenuList(params);
       }
     }
   },
-  created() {
-    this.videoData = {
-      home: [
-        {
-          id: "ran_1",
-          label: "福娃系列 全集",
-          length: 4,
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_2",
-          label: "小猪 全集",
-          length: 2,
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_3",
-          label: "福娃系列 全集",
-          length: 2,
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_4",
-          label: "小猪 全集",
-          length: 2,
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_5",
-          label: "福娃 全集",
-          length: 3,
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_6",
-          label: "小猪 全集",
-          length: 3,
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_7",
-          label: "小猪 全集",
-          length: 3,
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_8",
-          label: "小猪 全集",
-          length: 2,
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_11",
-          label: "小猪 全集",
-          length: 4,
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_9",
-          label: "小猪 全集",
-          length: 2,
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_10",
-          label: "小猪 全集",
-          length: 2,
-          img: "./static/image/details/222.jpg"
-        }
-      ],
-      child: [
-        {
-          id: "ran_1",
-          label: "福娃系列2222 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_2",
-          label: "小猪 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_3",
-          label: "福娃系列 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_4",
-          label: "小猪 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_5",
-          label: "福娃 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_6",
-          label: "小猪 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_7",
-          label: "福娃系列 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_8",
-          label: "小猪 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_9",
-          label: "福娃 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_10",
-          label: "小猪 全集",
-          img: "./static/image/details/111.jpg"
-        }
-      ],
-      exercise: [
-        {
-          id: "ran_1",
-          label: "福娃系列3333 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_2",
-          label: "小猪 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_3",
-          label: "福娃系列 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_4",
-          label: "小猪 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_5",
-          label: "福娃 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_6",
-          label: "小猪 全集",
-          img: "./static/image/details/222.jpg"
-        }
-      ],
-      home2: [
-        {
-          id: "ran_1",
-          label: "福娃系列4444 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_2",
-          label: "小猪 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_3",
-          label: "福娃系列 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_4",
-          label: "小猪 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_5",
-          label: "福娃 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_6",
-          label: "小猪 全集",
-          img: "./static/image/details/222.jpg"
-        }
-      ],
-      home3: [
-        {
-          id: "ran_1",
-          label: "福娃系列5555 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_2",
-          label: "小猪 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_3",
-          label: "福娃系列 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_4",
-          label: "小猪 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_5",
-          label: "福娃 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_6",
-          label: "小猪 全集",
-          img: "./static/image/details/111.jpg"
-        }
-      ],
-      home4: [
-        {
-          id: "ran_1",
-          label: "福娃系列6666 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_2",
-          label: "小猪 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_3",
-          label: "福娃系列 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_4",
-          label: "小猪 全集",
-          img: "./static/image/details/222.jpg"
-        },
-        {
-          id: "ran_5",
-          label: "福娃 全集",
-          img: "./static/image/details/111.jpg"
-        },
-        {
-          id: "ran_6",
-          label: "小猪 全集",
-          img: "./static/image/details/222.jpg"
-        }
-      ]
-    };
-    this.showVideoData = this.videoData.home;
+  mounted() {
     this.showListProj();
   },
   computed: {
@@ -296,15 +53,91 @@ export default {
     showListProj() {
       let that = this;
       eventBus.$on("changeList", data => {
-        that.tabIndex = data;
-        let index =
-          data > 0
-            ? 6 - data
-            : that.videoData[that.$store.state.showTabName].length - 1;
-        that.showVideoData = that.videoData[
-          that.$store.state.showTabName
-        ].slice(0, index);
+        let tempData = JSON.parse(JSON.stringify(that.videoData));
+        that.showVideoData = [];
+        if (that.videoData[that.$store.state.showTabName]) {
+          that.showVideoData = tempData[that.$store.state.showTabName].slice(
+            data[0],
+            data[1]
+          );
+        }
       });
+    },
+    getMenuList(params) {
+      let loadingInstance = Loading.service({
+        text: "请稍等",
+        background: "rgba(0, 0, 0, 0.7)",
+        target: document.querySelector(".loadingtext")
+      });
+      this.videoData = {};
+      this.listData = [];
+      let num = 0;
+      let menuId = "M000";
+
+      if (params.menuId) {
+        menuId = Qs.stringify(params);
+      } else {
+        menuId = Qs.stringify(this.tabName);
+      }
+      this.$axios
+        .post(url.getDramaAndVideo, menuId)
+        .then(res => {
+          if (res.data.code == "200" && res.data.data.length > 0) {
+            this.videoData[this.tabName] = [];
+            res.data.data.map(item => {
+              if (this.$store.state.showTabName == "M000") {
+                if (item.widgets.length > 3) {
+                  item.widgets.map((o, i) => {
+                    this.videoData[this.tabName].push({
+                      id: o.id,
+                      name: o.name,
+                      img: o.pathPic1,
+                      length: i == 0 ? 4 : 2,
+                      showTitle: item.showTitle
+                    });
+                  });
+                } else {
+                  item.widgets.map((o, i) => {
+                    this.videoData[this.tabName].push({
+                      id: o.id,
+                      name: o.name,
+                      img: o.pathPic1,
+                      showTitle: item.showTitle
+                    });
+                  });
+                }
+              } else {
+                if (item.widgets.length > 0) {
+                  item.widgets.map((o, i) => {
+                    this.videoData[this.tabName].push({
+                      id: o.id,
+                      name: o.name,
+                      img: o.pathPic1,
+                      showTitle: item.showTitle
+                    });
+                  });
+                  num += item.widgets.length;
+                  this.listData.push({
+                    id: item.id,
+                    name: item.name,
+                    length: [
+                      num - item.widgets.length,
+                      item.widgets.length - 1 + num
+                    ],
+                    active: false
+                  });
+                }
+              }
+            });
+            this.$store.commit("changeListData", this.listData);
+            this.showVideoData = this.videoData[this.tabName];
+            loadingInstance.close();
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          loadingInstance.close();
+        });
     }
   },
   components: {

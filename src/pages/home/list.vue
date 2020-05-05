@@ -14,48 +14,29 @@
 import eventBus from "@/utils/eventBus";
 export default {
   data() {
-    return {
-      listData: [
-        {
-          id: 0,
-          name: "自信与勇敢",
-          active: true
-        },
-        {
-          id: 1,
-          name: "习惯与坚持",
-          active: false
-        },
-        {
-          id: 2,
-          name: "情绪与控制",
-          active: false
-        },
-        {
-          id: 3,
-          name: "责任与诚信",
-          active: false
-        },
-        {
-          id: 4,
-          name: "勤奋与机智",
-          active: false
-        },
-        {
-          id: 5,
-          name: "创意活动",
-          active: false
-        }
-      ]
-    };
+    return {};
+  },
+  watch: {
+    listData(newValue) {
+      if (newValue) {
+        this.showProjects(newValue[0]);
+      }
+    }
+  },
+  computed: {
+    listData() {
+      return this.$store.state.lisData;
+    }
   },
   methods: {
     showProjects(obj) {
       this.listData.map(o => {
         o.active = false;
       });
-      obj.active = true;
-      eventBus.$emit("changeList", obj.id);
+      if (obj) {
+        obj.active = true;
+        eventBus.$emit("changeList", obj.length);
+      }
     }
   }
 };

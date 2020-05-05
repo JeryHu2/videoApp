@@ -9,7 +9,7 @@ function resolve(dir) {
 }
 
 const createLintingRule = () => ({})
-
+let webpack = require('webpack')
 module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
@@ -26,7 +26,8 @@ module.exports = {
         extensions: ['.js', '.vue', '.json'],
         alias: {
             vue$: 'vue/dist/vue.esm.js',
-            '@': resolve('src')
+            '@': resolve('src'),
+            jquery: 'jquery'
         }
     },
     module: {
@@ -83,5 +84,11 @@ module.exports = {
         net: 'empty',
         tls: 'empty',
         child_process: 'empty'
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery'
+        })
+    ]
 }

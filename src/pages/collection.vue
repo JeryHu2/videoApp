@@ -1,6 +1,11 @@
 <template>
   <div class="overrow">
-    <Card @openDetails="openDetails" v-for="item in showVideoData" :key="item.id" :project="item"></Card>
+    <Card
+      @openDetails="openDetails"
+      v-for="item in showVideoData"
+      :key="item.id"
+      :project="item"
+    ></Card>
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -14,6 +19,9 @@
 </template>
 <script>
 import Card from "../components/card";
+import url from "@/api/videoApi.js";
+import Qs from "qs";
+import { Loading } from "element-ui";
 
 export default {
   data() {
@@ -26,166 +34,6 @@ export default {
       },
       showVideoData: []
     };
-  },
-  created() {
-    this.videoData = [
-      {
-        id: "ran_1",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_2",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_3",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_4",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_5",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_6",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_7",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_8",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_9",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_10",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_11",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_12",
-        label: "小猪佩奇 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_13",
-        label: "小猪佩奇",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_14",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_15",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_16",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_17",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_18",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_19",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_20",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_121",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_122",
-        label: "小猪佩奇 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_123",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_124",
-        label: "小猪佩奇 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_125",
-        label: "小猪佩奇 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_126",
-        label: "小猪佩奇 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_127",
-        label: "小猪佩奇 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_128",
-        label: "小猪佩奇 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_129",
-        label: "熊猫笔记 全集",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_1230",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      },
-      {
-        id: "ran_1221",
-        label: "",
-        img: "./static/image/user/333.jpg"
-      }
-    ];
-    this.paginationData.total = this.videoData.length;
   },
   mounted() {
     this.showList();
@@ -202,10 +50,44 @@ export default {
     },
     showList() {
       this.showVideoData = [];
-      let startIndex = (this.paginationData.currentPage - 1) * 12;
-      let endIndex = startIndex + 12;
-      let tempData = JSON.parse(JSON.stringify(this.videoData));
-      this.showVideoData = tempData.slice(startIndex, endIndex);
+      this.getMenuList();
+    },
+    getMenuList(params) {
+      let loadingInstance = Loading.service({
+        text: "请稍等",
+        background: "rgba(0, 0, 0, 0.7)",
+        target: document.querySelector(".loadingtext")
+      });
+      this.videoData = {};
+      this.listData = [];
+      let num = 0;
+      let userId = "yagnxiuyuan";
+
+      if (params) {
+        userId = Qs.stringify(params);
+      } else {
+        userId = Qs.stringify({ userId: userId });
+      }
+      this.$axios
+        .post(url.getCollect, userId)
+        .then(res => {
+          if (res.data.code == "200" && res.data.data.length > 0) {
+            res.data.data.map(o => {
+              this.showVideoData.push({
+                name: o.name,
+                id: o.id,
+                img: o.pathPic1,
+                showTitle: o.showTitle
+              });
+            });
+            this.paginationData.total = res.data.data.total_count;
+            loadingInstance.close();
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          loadingInstance.close();
+        });
     }
   },
   components: {

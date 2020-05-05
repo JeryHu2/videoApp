@@ -1,16 +1,24 @@
 <template>
   <div style="overflow:hidden">
     <div class="home">
-      <div class="header" :class="{'user':ispurchaseFee}">
+      <div class="header" :class="{ user: ispurchaseFee }">
         <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee"></div>
         <div class="tablist">
           <div class="rightbtns">
             <ul>
-              <router-link :to="{ name: 'user' }" tag="li" @click.native="trigTo('user')">
+              <router-link
+                :to="{ name: 'user' }"
+                tag="li"
+                @click.native="trigTo('user')"
+              >
                 <i class="user_logo"></i>
                 <label>个人中心</label>
               </router-link>
-              <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
+              <router-link
+                :to="{ name: 'review' }"
+                tag="li"
+                @click.native="trigTo('review')"
+              >
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
               </router-link>
@@ -47,7 +55,11 @@
           <Project></Project>
         </div>
       </div>
-      <div class="route_content" v-show="!isHome" :class="{'fee':ispurchaseFee}">
+      <div
+        class="route_content"
+        v-show="!isHome"
+        :class="{ fee: ispurchaseFee }"
+      >
         <router-view></router-view>
       </div>
       <div class="pig_icon" @mousedown="move" v-show="isHome"></div>
@@ -83,10 +95,10 @@ export default {
     trigTo(path) {
       if (path == "home") {
         this.isHome = true;
-        this.isHomeTab = true;
+        this.$children[3].handleClick({ name: "M000" });
       } else {
         this.isHome = false;
-        this.isHomeTab = false;
+        this.$children[3].handleClick({ name: "" });
       }
       if (path == "fee") {
         this.ispurchaseFee = true;
@@ -132,7 +144,7 @@ export default {
       };
     },
     changeHomeContent(tabName) {
-      if (tabName == "home") {
+      if (tabName == "M000") {
         this.isHomeTab = true;
       } else {
         this.isHomeTab = false;
