@@ -82,6 +82,7 @@ export default {
       this.$axios
         .post(url.getDramaAndVideo, menuId)
         .then(res => {
+          loadingInstance.close();
           if (res.data.code == "200" && res.data.data.length > 0) {
             this.videoData[this.tabName] = [];
             res.data.data.map(item => {
@@ -131,7 +132,6 @@ export default {
             });
             this.$store.commit("changeListData", this.listData);
             this.showVideoData = this.videoData[this.tabName];
-            loadingInstance.close();
           }
         })
         .catch(err => {
@@ -149,7 +149,7 @@ export default {
 .cards .videoPro {
   float: left;
   width: 30%;
-  margin: 20px 0 0px 20px;
+  margin: 40px 0 0 40px;
   height: 300px;
 }
 .cards .videoPro.ishome {

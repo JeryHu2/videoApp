@@ -43,7 +43,7 @@ export default {
 </script>
 <style scoped>
 ul.swip_list {
-  margin: 60px;
+  margin: 40px 50px;
 }
 ul.swip_list li {
   margin: 20px 0;
