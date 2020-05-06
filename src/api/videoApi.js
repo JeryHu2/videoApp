@@ -1,4 +1,4 @@
-const baseUrl = '/video'
+const baseUrl = 'http://124.115.206.190:8099'
 export default {
     getMenu: baseUrl + '/api/v1/tvapp/getMenu',
     getDramaAndVideo: baseUrl + '/api/v1/tvapp/getDramaAndVideo',

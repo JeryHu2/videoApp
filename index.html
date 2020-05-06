@@ -8,9 +8,48 @@
     <link rel="shortcut icon" href="./static/home/logo.png" />
     <link rel="stylesheet" href="./static/css/index.css">
     <title>videoapp</title>
+    <script type="text/javascript" src="./static/js/keyevent.util.js"></script>
+    <script type="text/javascript">
+        function init() {
+            initWindow(window);
+        };
+
+        function eventHandler(eventResult) {
+            switch (eventResult.code) {
+                //确定键拦截,case要与keyevent.util.js里面的case code一样
+                case "KEY_SELECT":
+                    //这里写要执行的方法
+                    break;
+                case "KEY_RIGHT": //右
+
+                    break;
+                case "KEY_LEFT": //左
+
+                    break;
+                case "KEY_DOWN": //下
+
+                    break;
+                case "KEY_UP": //上
+
+                    break;
+                case "KET_PRE": //上一页 
+
+                    break;
+                case "KET_NEXT": //下一页  
+
+                    break;
+                case "KET_BACK": //返回键 
+
+                    break;
+                case "KEY_QUIT": //退出
+
+                    break;
+            }
+        }
+    </script>
 </head>
 
-<body>
+<body onload="init()">
     <div id="app"></div>
 </body>
 <style>

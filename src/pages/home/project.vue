@@ -91,7 +91,7 @@ export default {
                     this.videoData[this.tabName].push({
                       id: o.id,
                       name: o.name,
-                      img: o.pathPic1,
+                      img: i == 0 ? o.pathPic1 : o.pathPic2,
                       length: i == 0 ? 4 : 2,
                       showTitle: item.showTitle
                     });
