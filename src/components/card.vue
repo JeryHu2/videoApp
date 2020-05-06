@@ -19,7 +19,7 @@ export default {
       this.$router.push({
         path: "/details",
         query: {
-          code: this.project.id
+          code: this.project.dramaId ? this.project.dramaId : this.project.id
         }
       });
     }

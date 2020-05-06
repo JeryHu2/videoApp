@@ -114,6 +114,7 @@ export default {
                       id: o.id,
                       name: o.name,
                       img: o.pathPic1,
+                      dramaId: o.dramaId,
                       showTitle: item.showTitle
                     });
                   });
