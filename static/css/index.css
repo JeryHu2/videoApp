@@ -3,6 +3,7 @@
 ::-webkit-scrollbar {
     width: 10px;
     height: 1px;
+    display: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -15,4 +16,10 @@
     -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     background: #EDEDED;
+}
+
+body .focus {
+    border: 0.026042rem solid yellow !important;
+    -webkit-box-shadow: 0 0.010417rem 0.15625rem yellow !important;
+    box-shadow: 0 0.010417rem 0.15625rem yellow !important;
 }
