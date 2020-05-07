@@ -1,13 +1,22 @@
 <template>
   <div class="details_body">
     <div class="dt_top">
-      <div class="img" :style="{ backgroundImage: 'url(' + imgSrc + ')' }"></div>
+      <div
+        class="img"
+        v-items
+        :style="{ backgroundImage: 'url(' + imgSrc + ')' }"
+      ></div>
       <div class="des">
-        <h1>{{actTitle}}</h1>
-        <p>{{description}}</p>
-        <button class="open btn"></button>
-        <button class="purchase btn" @click="trigTo"></button>
-        <button class="collect btn" @click="collectVideo" :class="{'active':isCollect}"></button>
+        <h1>{{ actTitle }}</h1>
+        <p>{{ description }}</p>
+        <button class="open btn" v-items></button>
+        <button class="purchase btn" @click="trigTo" v-items></button>
+        <button
+          class="collect btn"
+          @click="collectVideo"
+          v-items
+          :class="{ active: isCollect }"
+        ></button>
       </div>
     </div>
     <div class="dt_bottom">
@@ -15,14 +24,17 @@
         <el-tab-pane
           :label="item.groupName"
           :name="item.name"
-          v-for="(item,index) in listData"
+          v-for="(item, index) in listData"
           :key="index"
         >
           <div
             class="cards"
             v-for="obj in item.groupDetail"
             :key="obj.contentId"
-          >第一集 山林大战 {{obj.number}}</div>
+            v-items
+          >
+            第一集 山林大战 {{ obj.number }}
+          </div>
         </el-tab-pane>
       </el-tabs>
     </div>

@@ -7,7 +7,7 @@
       </div>
       <div class="deline"></div>
       <div class="right_sec">
-        <div @click="goToPurchase()" class="pur_button">立即订购</div>
+        <div @click="goToPurchase()" class="pur_button" v-items>立即订购</div>
         <p>快速订购通道已开启，去订购吧!</p>
       </div>
     </div>
@@ -21,14 +21,19 @@
     </div>
     <div class="purchase_detail" v-show="purchaseFee">
       <div class="fee_header">
-        <div class="logo" @click="trigTo()"></div>
+        <div class="logo" @click="trigTo()" v-items></div>
         <div class="tips">
           <h3>亲子园会员 订购服务</h3>
           <p>购买完成后可直接播放</p>
         </div>
       </div>
       <div class="fee_bottom">
-        <CardFee :card="item" v-for="item in feeList" :key="item.key"></CardFee>
+        <CardFee
+          :card="item"
+          v-for="item in feeList"
+          :key="item.key"
+          v-items
+        ></CardFee>
       </div>
     </div>
   </div>

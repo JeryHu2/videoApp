@@ -1,7 +1,10 @@
 <template>
-  <div class="videoPro" @click="openDetails">
+  <div class="videoPro" @click="openDetails" v-items>
     <el-card>
-      <div :style="{ backgroundImage: 'url(' + project.img + ')' }" class="image"></div>
+      <div
+        :style="{ backgroundImage: 'url(' + project.img + ')' }"
+        class="image"
+      ></div>
       <div class="card_bottom clearfix" v-show="project.showTitle != 'false'">
         <el-button type="text" class="button">{{ project.name }}</el-button>
       </div>
@@ -43,7 +46,8 @@ export default {
 .videoPro .button {
   padding: 0;
   color: #fff;
-  font-size: 20px;
+  font-size: 35px;
+  line-height: 50px;
 }
 .videoPro .el-card__body {
   height: 100%;
@@ -53,6 +57,7 @@ export default {
   width: 100%;
   background-size: 100% 100%;
   display: block;
+  background-repeat: no-repeat;
 }
 
 .clearfix:before,

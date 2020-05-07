@@ -5,6 +5,7 @@
       v-for="item in showVideoData"
       :key="item.id"
       :project="item"
+      v-items
       :class="{
         twoPercent: item.length < 3,
         onePercent: item.length > 3,
@@ -25,7 +26,8 @@ export default {
     return {
       videoData: {},
       listData: [],
-      showVideoData: []
+      showVideoData: [],
+      showNewVideo: false
     };
   },
   watch: {
@@ -53,6 +55,8 @@ export default {
     showListProj() {
       let that = this;
       eventBus.$on("changeList", data => {
+        // debugger;
+        that.$parent.$refs.videoList.scrollTop = 0;
         let tempData = JSON.parse(JSON.stringify(that.videoData));
         that.showVideoData = [];
         if (that.videoData[that.$store.state.showTabName]) {

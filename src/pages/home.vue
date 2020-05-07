@@ -2,7 +2,12 @@
   <div style="overflow:hidden">
     <div class="home">
       <div class="header" :class="{ user: ispurchaseFee }">
-        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee"></div>
+        <div
+          class="logo"
+          @click="trigTo('home')"
+          v-show="!ispurchaseFee"
+          v-items
+        ></div>
         <div class="tablist">
           <div class="rightbtns">
             <ul>
@@ -51,7 +56,7 @@
         <div class="swiper">
           <List></List>
         </div>
-        <div class="list">
+        <div class="list" ref="videoList">
           <Project></Project>
         </div>
       </div>
@@ -195,7 +200,7 @@ export default {
 .header .tablist .rightbtns ul {
   height: 60px;
   line-height: 60px;
-  font-size: 18px;
+  font-size: 28px;
   font-family: "微软雅黑";
   float: right;
 }
@@ -250,7 +255,7 @@ export default {
 }
 .route_content {
   width: calc(100% - 100px);
-  height: calc(100% - 250px);
+  height: calc(100% - 220px);
   float: left;
   margin: 0 50px;
   overflow: hidden;

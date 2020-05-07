@@ -3,6 +3,7 @@
     <li
       v-for="item in listData"
       :key="item.id"
+      v-items
       :class="{ active: item.active }"
       @click="showProjects(item)"
     >

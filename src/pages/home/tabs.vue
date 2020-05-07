@@ -6,6 +6,7 @@
     class="tabCalss"
   >
     <el-tab-pane
+      v-items
       v-for="item in tabList"
       :key="item.tabCode"
       :label="item.name"

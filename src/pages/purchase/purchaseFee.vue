@@ -1,7 +1,7 @@
 <template>
   <div class="purchase_detail">
     <div class="fee_header">
-      <div class="logo" @click="trigTo('home')"></div>
+      <div class="logo" @click="trigTo('home')" v-items></div>
       <div class="tips">
         <h3>亲子园会员 订购服务</h3>
         <p>购买完成后可直接播放</p>

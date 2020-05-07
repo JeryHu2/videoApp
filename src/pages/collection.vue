@@ -5,8 +5,10 @@
       v-for="item in showVideoData"
       :key="item.id"
       :project="item"
+      v-items
     ></Card>
     <el-pagination
+      v-items
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page.sync="paginationData.currentPage"
@@ -76,11 +78,11 @@ export default {
               this.showVideoData.push({
                 name: o.name,
                 id: o.id,
-                img: o.pathPic1,
+                img: o.pathPic2,
                 showTitle: o.showTitle
               });
             });
-            this.paginationData.total = res.data.data.total_count;
+            this.paginationData.total = res.data.total_count;
             loadingInstance.close();
           }
         })
@@ -106,10 +108,10 @@ export default {
 }
 .overrow .videoPro {
   cursor: pointer;
-  width: 12%;
+  width: 220px;
   float: left;
-  margin: 2% 0 0 4%;
-  height: 220px;
+  margin: 30px 0 0 45px;
+  height: 270px;
 }
 .el-pagination {
   float: left;

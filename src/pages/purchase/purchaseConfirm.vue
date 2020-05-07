@@ -4,28 +4,28 @@
       <div class="title"></div>
       <div class="fee">
         <span>产品资费：</span>
-        <span>{{product.fee}}</span>
+        <span>{{ product.fee }}</span>
       </div>
       <div>
         <span class="line">——</span>
         <span>订购说明</span>
         <span class="line">——</span>
       </div>
-      <div class="descrip">{{product.description}}</div>
+      <div class="descrip">{{ product.description }}</div>
       <div>
-        <div class="confirm btns" @click="confirmPurchase"></div>
-        <div class="cancel btns" @click="cancelPurchase"></div>
+        <div class="confirm btns" @click="confirmPurchase" v-items></div>
+        <div class="cancel btns" @click="cancelPurchase" v-items></div>
       </div>
     </div>
     <div class="comfirmed" v-if="showPurchasing">
       <div class="title"></div>
       <div class="fee">
         <span>本次消费：</span>
-        <span>{{product.fee}}</span>
+        <span>{{ product.fee }}</span>
       </div>
       <div class="phone">
         <label>支付号码：</label>
-        <label>{{payment.phone}}</label>
+        <label>{{ payment.phone }}</label>
       </div>
       <div class="paymentyz">
         <label for="code">支付验证：</label>
@@ -36,11 +36,15 @@
           type="number"
           :max="99999999"
         ></el-input>
-        <img src="../../static/image/purchase/pur_jy.png" alt="验证码" style="width:160px;" />
+        <img
+          src="../../static/image/purchase/pur_jy.png"
+          alt="验证码"
+          style="width:160px;"
+        />
       </div>
       <div>
-        <div class="confirm btns" @click="submit"></div>
-        <div class="cancel btns" @click="cancel"></div>
+        <div class="confirm btns" @click="submit" v-items></div>
+        <div class="cancel btns" @click="cancel" v-items></div>
       </div>
     </div>
   </div>

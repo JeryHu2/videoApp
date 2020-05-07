@@ -5,7 +5,13 @@
       <span class="title">{{ project.name }}</span>
       <span class="line">——</span>
     </div>
-    <div class="videoPro" @click="openDetails" v-for="item in project.list" :key="item.id">
+    <div
+      class="videoPro"
+      @click="openDetails"
+      v-for="item in project.list"
+      :key="item.id"
+      v-items
+    >
       <el-card>
         <img :src="item.img" class="image" />
       </el-card>
