@@ -18,6 +18,14 @@
     background: #EDEDED;
 }
 
+body .el-message {
+    font-size: 40px;
+}
+
+body .el-message p {
+    font-size: 30px !important;
+}
+
 body .focus {
     border: 0.026042rem solid yellow !important;
     -webkit-box-shadow: 0 0.010417rem 0.15625rem yellow !important;

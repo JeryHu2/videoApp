@@ -1,7 +1,7 @@
 <template>
   <div class="purchase_detail">
     <div class="fee_header">
-      <div class="logo" @click="trigTo('home')" v-items></div>
+      <div class="logo" v-items></div>
       <div class="tips">
         <h3>亲子园会员 订购服务</h3>
         <p>购买完成后可直接播放</p>
@@ -14,9 +14,6 @@
 export default {
   data() {
     return {};
-  },
-  methods: {
-    trigTo(path) {}
   }
 };
 </script>
@@ -37,7 +34,6 @@ export default {
   height: 100%;
   margin: 20px 0 0 50px;
   float: left;
-  cursor: pointer;
   background: url(../../static/image/home/logo.png) no-repeat 0 0;
   background-size: contain;
 }

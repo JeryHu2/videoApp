@@ -1,22 +1,13 @@
 <template>
   <div class="details_body">
     <div class="dt_top">
-      <div
-        class="img"
-        v-items
-        :style="{ backgroundImage: 'url(' + imgSrc + ')' }"
-      ></div>
+      <div class="img" v-items :style="{ backgroundImage: 'url(' + imgSrc + ')' }"></div>
       <div class="des">
         <h1>{{ actTitle }}</h1>
         <p>{{ description }}</p>
         <button class="open btn" v-items></button>
         <button class="purchase btn" @click="trigTo" v-items></button>
-        <button
-          class="collect btn"
-          @click="collectVideo"
-          v-items
-          :class="{ active: isCollect }"
-        ></button>
+        <button class="collect btn" @click="collectVideo" v-items :class="{ active: isCollect }"></button>
       </div>
     </div>
     <div class="dt_bottom">
@@ -29,12 +20,10 @@
         >
           <div
             class="cards"
-            v-for="obj in item.groupDetail"
-            :key="obj.contentId"
+            v-for="(obj,index) in item.groupDetail"
+            :key="index"
             v-items
-          >
-            第一集 山林大战 {{ obj.number }}
-          </div>
+          >第一集 山林大战 {{ obj.number }}</div>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -225,7 +214,7 @@ export default {
   font-size: 30px;
   text-align: center;
   background: rgba(255, 255, 255, 0.6);
-  color: #1342b8;
+  color: #409eff;
   float: left;
   cursor: pointer;
   margin: 20px 80px 20px 0;
@@ -233,16 +222,19 @@ export default {
 }
 .dt_bottom >>> .cards:hover {
   color: #fff;
-  background: #1342b8;
+  background: #409eff;
 }
 .dt_bottom >>> .el-tabs__item {
   font-size: 30px !important;
 }
 .dt_bottom >>> .el-tabs__item.is-active {
   color: #fff;
-  background: #1342b8;
+  background: #409eff;
 }
 .dt_bottom >>> .el-tabs__nav-wrap::after {
   display: none;
+}
+.dt_bottom >>> .el-tabs__item {
+  padding: 0 20px !important;
 }
 </style>

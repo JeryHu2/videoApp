@@ -21,19 +21,14 @@
     </div>
     <div class="purchase_detail" v-show="purchaseFee">
       <div class="fee_header">
-        <div class="logo" @click="trigTo()" v-items></div>
+        <div class="logo" v-items></div>
         <div class="tips">
           <h3>亲子园会员 订购服务</h3>
           <p>购买完成后可直接播放</p>
         </div>
       </div>
       <div class="fee_bottom">
-        <CardFee
-          :card="item"
-          v-for="item in feeList"
-          :key="item.key"
-          v-items
-        ></CardFee>
+        <CardFee :card="item" v-for="item in feeList" :key="item.key" v-items></CardFee>
       </div>
     </div>
   </div>
@@ -116,11 +111,6 @@ export default {
   },
   methods: {
     openDetails() {},
-    trigTo() {
-      this.$router.push({
-        path: "/"
-      });
-    },
     goToPurchase() {
       this.$parent.ispurchaseFee = true;
       this.purchaseFee = true;
@@ -216,7 +206,6 @@ export default {
   height: 100%;
   margin: 20px 0 0 50px;
   float: left;
-  cursor: pointer;
   background: url(../static/image/home/logo.png) no-repeat 0 0;
   background-size: contain;
 }

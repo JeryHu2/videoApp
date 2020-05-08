@@ -2,28 +2,15 @@
   <div style="overflow:hidden">
     <div class="home">
       <div class="header" :class="{ user: ispurchaseFee }">
-        <div
-          class="logo"
-          @click="trigTo('home')"
-          v-show="!ispurchaseFee"
-          v-items
-        ></div>
+        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee" v-items></div>
         <div class="tablist">
           <div class="rightbtns">
             <ul>
-              <router-link
-                :to="{ name: 'user' }"
-                tag="li"
-                @click.native="trigTo('user')"
-              >
+              <router-link :to="{ name: 'user' }" tag="li" @click.native="trigTo('user')">
                 <i class="user_logo"></i>
                 <label>个人中心</label>
               </router-link>
-              <router-link
-                :to="{ name: 'review' }"
-                tag="li"
-                @click.native="trigTo('review')"
-              >
+              <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
               </router-link>
@@ -60,11 +47,7 @@
           <Project></Project>
         </div>
       </div>
-      <div
-        class="route_content"
-        v-show="!isHome"
-        :class="{ fee: ispurchaseFee }"
-      >
+      <div class="route_content" v-show="!isHome" :class="{ fee: ispurchaseFee }">
         <router-view></router-view>
       </div>
       <div class="pig_icon" @mousedown="move" v-show="isHome"></div>
@@ -101,6 +84,7 @@ export default {
       if (path == "home") {
         this.isHome = true;
         this.$children[3].handleClick({ name: "M000" });
+        this.$router.push({ path: "/home" });
       } else {
         this.isHome = false;
         this.$children[3].handleClick({ name: "" });
@@ -267,6 +251,7 @@ export default {
   width: 400px;
   height: 100%;
   float: left;
+  overflow: auto;
 }
 .content .list {
   width: calc(100% - 400px);

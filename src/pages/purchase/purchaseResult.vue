@@ -3,9 +3,7 @@
     <div class="comfirming">
       <div class="title success" v-if="!isFail"></div>
       <div class="title fail" v-if="isFail"></div>
-      <div class="descrip" v-if="isFail">
-        抱歉，产品订购出现粗无，请拨打10010了解。
-      </div>
+      <div class="descrip" v-if="isFail">抱歉，产品订购出现粗无，请拨打10010了解。</div>
       <div v-if="!isFail">
         <div class="confirm btns" @click="confirmPurchase" v-items></div>
       </div>
@@ -29,7 +27,7 @@ export default {
   methods: {
     confirmPurchase() {
       this.$router.push({
-        path: "/"
+        path: "/home"
       });
     },
     cancelPurchase() {

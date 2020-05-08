@@ -55,8 +55,9 @@ export default {
     showListProj() {
       let that = this;
       eventBus.$on("changeList", data => {
-        // debugger;
-        that.$parent.$refs.videoList.scrollTop = 0;
+        if (that.$parent.$refs.videoList !== undefined) {
+          that.$parent.$refs.videoList.scrollTop = 0;
+        }
         let tempData = JSON.parse(JSON.stringify(that.videoData));
         that.showVideoData = [];
         if (that.videoData[that.$store.state.showTabName]) {

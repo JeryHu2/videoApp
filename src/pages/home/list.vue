@@ -50,14 +50,14 @@ ul.swip_list li {
   margin: 20px 0;
 }
 .el-button {
-  width: 200px;
-  height: 70px;
-  font-size: 25px;
+  width: 280px;
+  height: 100px;
+  font-size: 35px;
   font-weight: 600;
   color: #014bc0;
   font-family: 微软雅黑;
   background: rgba(255, 255, 255, 0.6);
-  border-radius: 20px;
+  border-radius: 35px;
 }
 .el-button:hover,
 ul.swip_list li.active button {
