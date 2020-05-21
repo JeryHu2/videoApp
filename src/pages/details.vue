@@ -5,7 +5,7 @@
       <div class="des">
         <h1>{{ actTitle }}</h1>
         <p>{{ description }}</p>
-        <button class="open btn" v-items></button>
+        <button class="open btn" v-items @click="open"></button>
         <button class="purchase btn" @click="trigTo" v-items></button>
         <button class="collect btn" @click="collectVideo" v-items :class="{ active: isCollect }"></button>
       </div>
@@ -22,8 +22,9 @@
             class="cards"
             v-for="(obj,index) in item.groupDetail"
             :key="index"
+            @click="open"
             v-items
-          >第一集 山林大战 {{ obj.number }}</div>
+          >第一集 山林大战1 {{ obj.number }}</div>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -127,6 +128,10 @@ export default {
           code: "fail"
         }
       });
+    },
+    open() {
+      window.location.href =
+        "http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://14.18.195.212:10007/#/home";
     }
   }
 };

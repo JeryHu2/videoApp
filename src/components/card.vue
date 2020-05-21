@@ -13,7 +13,7 @@
 </template>
 <script>
 export default {
-  props: ["project"],
+  props: ["project","userId"],
   data() {
     return {};
   },
@@ -25,6 +25,9 @@ export default {
           code: this.project.dramaId ? this.project.dramaId : this.project.id
         }
       });
+      // window.location.href  = `http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=GDIPTV0038&UserID=${this.userId}8&ReturnURL=http://14.18.195.212:10007/#/details?code=D0003&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest`
+      // window.location.href  = 'http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://14.18.195.212:10007/#/home'
+        
     }
   }
 };

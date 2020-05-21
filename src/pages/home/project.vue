@@ -5,6 +5,7 @@
       v-for="item in showVideoData"
       :key="item.id"
       :project="item"
+      :userId="userId"
       v-items
       :class="{
         twoPercent: item.length < 3,
@@ -30,6 +31,7 @@ export default {
       showNewVideo: false
     };
   },
+  props:['userId'],
   watch: {
     tabName(newValue) {
       if (newValue) {
