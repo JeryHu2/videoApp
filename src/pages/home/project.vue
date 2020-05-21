@@ -5,7 +5,12 @@
       v-for="item in showVideoData"
       :key="item.id"
       :project="item"
+      @left="left()"
+      @right="right()"
+      @up="up()"
+      @down="down()"
       v-items
+      class="pro_item"
       :class="{
         twoPercent: item.length < 3,
         onePercent: item.length > 3,
@@ -20,6 +25,7 @@ import eventBus from "@/utils/eventBus";
 import url from "@/api/videoApi.js";
 import Qs from "qs";
 import { Loading } from "element-ui";
+import { epgMethods } from "../../utils/epg";
 
 export default {
   data() {
@@ -44,6 +50,8 @@ export default {
   },
   mounted() {
     this.showListProj();
+    let el = document.getElementsByClassName("pro_item")[0];
+    this.$service.move(el);
   },
   computed: {
     tabName() {
@@ -144,7 +152,8 @@ export default {
           console.log(err);
           loadingInstance.close();
         });
-    }
+    },
+    ...epgMethods
   },
   components: {
     Card

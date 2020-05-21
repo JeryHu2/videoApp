@@ -22,6 +22,10 @@
             class="cards"
             v-for="(obj,index) in item.groupDetail"
             :key="index"
+            @left="left()"
+            @right="right()"
+            @up="up()"
+            @down="down()"
             v-items
           >第一集 山林大战 {{ obj.number }}</div>
         </el-tab-pane>
@@ -34,6 +38,7 @@ import eventBus from "@/utils/eventBus";
 import url from "@/api/videoApi.js";
 import Qs from "qs";
 import { Loading } from "element-ui";
+import { epgMethods } from "../utils/epg";
 
 export default {
   data() {
@@ -56,6 +61,8 @@ export default {
       this.dramaId = "D0001";
     }
     this.getMenuList();
+    let el = document.getElementsByClassName("cards")[0];
+    this.$service.move(el);
   },
   methods: {
     getMenuList(params) {
@@ -127,7 +134,8 @@ export default {
           code: "fail"
         }
       });
-    }
+    },
+    ...epgMethods
   }
 };
 </script>

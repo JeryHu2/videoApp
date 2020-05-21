@@ -8,6 +8,10 @@
     <div
       class="videoPro"
       @click="openDetails"
+      @left="left()"
+      @right="right()"
+      @up="up()"
+      @down="down()"
       v-for="item in project.list"
       :key="item.id"
       v-items
@@ -19,15 +23,21 @@
   </div>
 </template>
 <script>
+import { epgMethods } from "../utils/epg";
 export default {
   props: ["project"],
   data() {
     return {};
   },
+  mounted() {
+    let el = document.getElementsByClassName("videoPro")[0];
+    this.$service.move(el);
+  },
   methods: {
     openDetails() {
       this.$router.push({ path: "/details" });
-    }
+    },
+    ...epgMethods
   }
 };
 </script>

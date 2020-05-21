@@ -1,10 +1,15 @@
 <template>
   <div class="overrow">
     <Card
+      class="review_item"
       @openDetails="openDetails"
       v-for="item in showVideoData"
       :key="item.id"
       :project="item"
+      @left="left()"
+      @right="right()"
+      @up="up()"
+      @down="down()"
       v-items
     ></Card>
     <el-pagination
@@ -24,6 +29,7 @@ import Card from "../components/card";
 import url from "@/api/videoApi.js";
 import Qs from "qs";
 import { Loading } from "element-ui";
+import { epgMethods } from "../utils/epg";
 
 export default {
   data() {
@@ -39,6 +45,8 @@ export default {
   },
   mounted() {
     this.showList();
+    let el = document.getElementsByClassName("review_item")[0];
+    this.$service.move(el);
   },
   methods: {
     openDetails() {},
@@ -91,7 +99,8 @@ export default {
           console.log(err);
           loadingInstance.close();
         });
-    }
+    },
+    ...epgMethods
   },
   components: {
     Card

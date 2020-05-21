@@ -1,7 +1,12 @@
 <template>
   <ul class="swip_list" ref="listObj">
     <li
+      class="list_item"
       v-for="item in listData"
+      @left="left()"
+      @right="right()"
+      @up="up()"
+      @down="down()"
       :key="item.id"
       v-items
       :class="{ active: item.active }"
@@ -13,6 +18,7 @@
 </template>
 <script>
 import eventBus from "@/utils/eventBus";
+import { epgMethods } from "../../utils/epg";
 export default {
   data() {
     return {};
@@ -38,7 +44,8 @@ export default {
         obj.active = true;
         eventBus.$emit("changeList", obj.length);
       }
-    }
+    },
+    ...epgMethods
   }
 };
 </script>
