@@ -9,6 +9,7 @@
       @right="right()"
       @up="up()"
       @down="down()"
+      :userId="userId"
       v-items
       class="pro_item"
       :class="{
@@ -36,6 +37,7 @@ export default {
       showNewVideo: false
     };
   },
+  props: ["userId"],
   watch: {
     tabName(newValue) {
       if (newValue) {

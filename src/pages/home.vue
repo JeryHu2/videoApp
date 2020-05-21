@@ -9,6 +9,7 @@
               <router-link :to="{ name: 'user' }" tag="li" @click.native="trigTo('user')">
                 <i class="user_logo"></i>
                 <label>个人中心</label>
+                userId:{{userId}}
               </router-link>
               <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
@@ -44,7 +45,7 @@
           <List></List>
         </div>
         <div class="list" ref="videoList">
-          <Project></Project>
+          <Project :userId="userId"></Project>
         </div>
       </div>
       <div class="route_content" v-show="!isHome" :class="{ fee: ispurchaseFee }">
@@ -67,10 +68,15 @@ export default {
       ispurchaseFee: false,
       routerName: "",
       positionX: 0,
-      positionY: 0
+      positionY: 0,
+      userId:''
     };
   },
   created() {
+    let userId=Authentication.CTCGetConfig("UserID");//获取用户账号 075545452068
+    // let UserTokenRequest= http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=GDIPTV0038&UserID=075545452068&ReturnURL=http://14.18.195.212:10007/#/details?code=D0003&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest
+    this.userId = userId
+    console.log('userId',userId)
     if (this.$route.query.code == "fail") {
       this.ispurchaseFee = false;
       this.isHome = false;
