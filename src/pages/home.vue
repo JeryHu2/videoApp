@@ -89,7 +89,7 @@ export default {
       this.isHome = true;
     }
     this.DOMAIN1 = window.document.domain
-    this.DOMAIN = ${DOMAIN}
+    this.DOMAIN = `${DOMAIN}`
     // this.DOMAIN2 = DOMAIN
       // alert("domain2":DOMAIN2)
       // alert("domain1":DOMAIN1)
