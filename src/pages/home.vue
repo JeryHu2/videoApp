@@ -15,6 +15,8 @@
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
                 DOMAIN:{{DOMAIN}}
+                DOMAIN1:{{DOMAIN1}}
+                DOMAIN2:{{DOMAIN2}}
               </router-link>
               <router-link
                 :to="{ name: 'collection' }"
@@ -86,8 +88,12 @@ export default {
     } else {
       this.isHome = true;
     }
-    let DOMAIN = window.document.domain
-      this.DOMAIN = DOMAIN
+    this.DOMAIN1 = window.document.domain
+    this.DOMAIN = ${DOMAIN}
+    this.DOMAIN2 = DOMAIN
+      // alert("domain2":DOMAIN2)
+      // alert("domain1":DOMAIN1)
+      // alert("domain3":DOMAIN)
   },
   methods: {
     trigTo(path) {

@@ -143,8 +143,9 @@ export default {
       //   window.location.href =
       //     "http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://14.18.195.212:10007/#/home";
       //
-      let DOMAIN = window.document.domain;
-      this.DOMAIN = DOMAIN;
+      // let DOMAIN = window.document.domain;
+      // this.DOMAIN = DOMAIN;
+      // alert("domain1":DOMAIN,"domain2":${DOMAIN})
       window.location.href = `${DOMAIN}play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
     }
   }
