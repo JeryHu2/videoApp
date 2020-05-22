@@ -16,7 +16,7 @@
                 <label>浏览历史</label>
                 DOMAIN:{{DOMAIN}}
                 DOMAIN1:{{DOMAIN1}}
-                DOMAIN2:{{DOMAIN2}}
+                <!-- DOMAIN2:{{DOMAIN2}} -->
               </router-link>
               <router-link
                 :to="{ name: 'collection' }"
@@ -90,7 +90,7 @@ export default {
     }
     this.DOMAIN1 = window.document.domain
     this.DOMAIN = ${DOMAIN}
-    this.DOMAIN2 = DOMAIN
+    // this.DOMAIN2 = DOMAIN
       // alert("domain2":DOMAIN2)
       // alert("domain1":DOMAIN1)
       // alert("domain3":DOMAIN)
