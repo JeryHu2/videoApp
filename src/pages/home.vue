@@ -14,7 +14,7 @@
               <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
-                temp1:{{temp1}}
+                
                 <!-- DOMAIN2:{{DOMAIN2}} -->
               </router-link>
               <router-link
@@ -37,8 +37,9 @@
           </div>
         </div>
       </div>
-      temp:{{temp}}
-      temp2:{{temp2}}
+      temp:{{temp}},
+      temp1:{{temp1}},
+      temp2:{{temp2}},
       <div class="content home_tab" v-show="isHomeTab && isHome">
         <div class="list">
           <Project></Project>
@@ -89,13 +90,16 @@ export default {
     } else {
       this.isHome = true;
     }
-    this.temp1 = window.location
-    this.temp = `${domain}`
-
-    this.temp2 = window
+    
+    
       // alert("domain2":DOMAIN2)
       // alert("domain1":DOMAIN1)
       // alert("domain3":DOMAIN)
+  },
+  mounted(){
+    this.temp = `${domain}`
+    this.temp1 = window.location
+    this.temp2 = window
   },
   methods: {
     trigTo(path) {
