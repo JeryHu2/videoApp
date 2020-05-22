@@ -14,7 +14,7 @@
               <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
-                DOMAIN1:{{DOMAIN1}}
+                temp1:{{temp1}}
                 <!-- DOMAIN2:{{DOMAIN2}} -->
               </router-link>
               <router-link
@@ -37,8 +37,8 @@
           </div>
         </div>
       </div>
-      DOMAIN:{{DOMAIN}}
-      DOMAIN2:{{DOMAIN2}}
+      temp:{{temp}}
+      temp2:{{temp2}}
       <div class="content home_tab" v-show="isHomeTab && isHome">
         <div class="list">
           <Project></Project>
@@ -74,7 +74,7 @@ export default {
       positionX: 0,
       positionY: 0,
       userId:'',
-      DOMAIN:''
+      temp:''
     };
   },
   created() {
@@ -89,10 +89,10 @@ export default {
     } else {
       this.isHome = true;
     }
-    this.DOMAIN1 = window.document.domain
-    this.DOMAIN = this
+    this.temp1 = window.location
+    this.temp = `${domain}`
 
-    this.DOMAIN2 = window
+    this.temp2 = window
       // alert("domain2":DOMAIN2)
       // alert("domain1":DOMAIN1)
       // alert("domain3":DOMAIN)
