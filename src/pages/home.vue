@@ -38,6 +38,7 @@
         </div>
       </div>
       DOMAIN:{{DOMAIN}}
+      DOMAIN2:{{DOMAIN2}}
       <div class="content home_tab" v-show="isHomeTab && isHome">
         <div class="list">
           <Project></Project>
@@ -90,7 +91,8 @@ export default {
     }
     this.DOMAIN1 = window.document.domain
     this.DOMAIN = this
-    // this.DOMAIN2 = DOMAIN
+
+    this.DOMAIN2 = window
       // alert("domain2":DOMAIN2)
       // alert("domain1":DOMAIN1)
       // alert("domain3":DOMAIN)
