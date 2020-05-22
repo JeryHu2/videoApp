@@ -14,6 +14,7 @@
               <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
+                DOMAIN:{DOMAIN}
               </router-link>
               <router-link
                 :to="{ name: 'collection' }"
@@ -69,7 +70,8 @@ export default {
       routerName: "",
       positionX: 0,
       positionY: 0,
-      userId:''
+      userId:'',
+      DOMAIN:''
     };
   },
   created() {
@@ -84,6 +86,8 @@ export default {
     } else {
       this.isHome = true;
     }
+    let DOMAIN = swindow.document.domain
+      this.DOMAIN = DOMAIN
   },
   methods: {
     trigTo(path) {
