@@ -14,7 +14,7 @@
               <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
-                DOMAIN:{DOMAIN}
+                DOMAIN:{{DOMAIN}}
               </router-link>
               <router-link
                 :to="{ name: 'collection' }"
@@ -86,7 +86,7 @@ export default {
     } else {
       this.isHome = true;
     }
-    let DOMAIN = swindow.document.domain
+    let DOMAIN = window.document.domain
       this.DOMAIN = DOMAIN
   },
   methods: {
