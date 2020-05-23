@@ -2,28 +2,17 @@
   <div style="overflow:hidden">
     <div class="home">
       <div class="header" :class="{ user: ispurchaseFee }">
-        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee" v-items></div>tempimgSrc:
-        <iframe
-          :src="tempimgSrc"
-          width="500"
-          height="300"
-          id="iframe"
-          style="background: aliceblue;"
-        ></iframe>
-        ref:{{ref}}
+        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee" v-items></div>
         <div class="tablist">
           <div class="rightbtns">
             <ul>
               <router-link :to="{ name: 'user' }" tag="li" @click.native="trigTo('user')">
                 <i class="user_logo"></i>
                 <label>个人中心</label>
-                userId:{{userId}}
               </router-link>
               <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
-
-                <!-- DOMAIN2:{{DOMAIN2}} -->
               </router-link>
               <router-link
                 :to="{ name: 'collection' }"
@@ -45,9 +34,6 @@
           </div>
         </div>
       </div>
-      <!-- temp:{{temp}},
-      temp1:{{temp1}},
-      temp2:{{temp2}},-->
       <div class="content home_tab" v-show="isHomeTab && isHome">
         <div class="list">
           <Project :userId="userId" :EPGDomain="temp"></Project>
@@ -83,16 +69,12 @@ export default {
       positionX: 0,
       positionY: 0,
       userId: "",
-      temp: "",
-      tempimgSrc: "",
-      ref: ""
+      temp: ""
     };
   },
   created() {
     let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
-    // // let UserTokenRequest= http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=GDIPTV0038&UserID=075545452068&ReturnURL=http://14.18.195.212:10007/#/details?code=D0003&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest
     this.userId = userId;
-    console.log("userId", userId);
     if (this.$route.query.code == "fail") {
       this.ispurchaseFee = false;
       this.isHome = false;
@@ -103,17 +85,8 @@ export default {
 
     let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
     this.temp = EPGDomain.split("://")[1].split("/en/")[0];
-    this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
-    //  this.tempimgSrc = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
-    this.tempimgSrc = "wwww.baidu.com";
-    // alert("domain2":DOMAIN2)
-    // alert("domain1":DOMAIN1)
-    // alert("domain3":DOMAIN)
   },
   mounted() {
-    // this.temp = `${domain}`
-    // this.temp1 = window.location
-    // this.temp2 = window
     let tabName =
       this.$store.state.showTabName === ""
         ? "M000"

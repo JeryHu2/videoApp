@@ -2,7 +2,6 @@
   <div class="details_body">
     <div class="dt_top">
       <div class="img" v-items :style="{ backgroundImage: 'url(' + imgSrc + ')' }"></div>
-      <iframe :src="tempimgSrc"  width="500" height="300" id="iframe" style="background: aliceblue;" ></iframe>
       <div class="des">
         <h1>{{ actTitle }}</h1>
         <p>{{ description }}</p>
@@ -13,11 +12,6 @@
     </div>
     <div class="dt_bottom">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        <!-- EPGDomain2:{{dramaId.EPGDomain}}, -->
-        <!-- DOMAIN:{{DOMAIN}}, -->
-        ref:{{ref}},
-        tempimgSrc:{{tempimgSrc}}
-        <!-- temp:{{this.temp}} -->
         <el-tab-pane
           :label="item.groupName"
           :name="item.name"
@@ -32,7 +26,7 @@
             @right="right()"
             @up="up()"
             @down="down()"
-            @click="open"
+            @click="open(obj)"
             v-items
           >{{ obj.number }} {{obj.name}}</div>
         </el-tab-pane>
@@ -61,7 +55,7 @@ export default {
       dramaId: "",
       DOMAIN: "",
       temp: "",
-      tempimgSrc:''
+      tempimgSrc: ""
     };
   },
   mounted() {
@@ -70,14 +64,15 @@ export default {
     } else {
       this.dramaId = "D0001";
     }
+    if (this.$route.query.EPGDomain) {
+      this.temp = this.$route.query.EPGDomain;
+    } else {
+      let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
+      this.temp = EPGDomain.split("://")[1].split("/en/")[0];
+    }
     this.getMenuList();
     let el = document.getElementsByClassName("cards")[0];
     this.$service.move(el);
-    let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
-    this.temp = EPGDomain.split("://")[1].split("/en/")[0];
-    this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
-    //  this.tempimgSrc = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
-    this.tempimgSrc ='wwww.baidu.com'
   },
   methods: {
     getMenuList(params) {
@@ -117,7 +112,6 @@ export default {
             this.isCollect = res.data.data.isCollect == "1" ? true : false;
             this.imgSrc = res.data.data.pathPic1;
 
-           
             this.activeName = this.listData[0].name;
           }
         })
@@ -153,20 +147,16 @@ export default {
       });
     },
     ...epgMethods,
-    open() {
-      //   window.location.href =
-      //     "http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://14.18.195.212:10007/#/home";
-      //
-      // let DOMAIN = window.document.domain;
-      // this.DOMAIN = DOMAIN;
-      // alert("domain1":DOMAIN,"domain2":${DOMAIN})
-      let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
-      this.DOMAIN = EPGDomain;
-      this.temp = EPGDomain.split("://")[1].split("/en/")[0];
-      this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
-      // window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
-
-      window.location.href = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
+    open(item) {
+      let contentId = "";
+      let returnUrl = `${location.host}/#/home`;
+      if (item.contentId) {
+        contentId = item.contentId;
+      } else {
+        contentId = this.listData[0].groupDetail[0].contentId;
+      }
+      this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=${contentId}&authFlag=2&backUrl=${returnUrl}`;
+      window.location.href = this.ref;
     }
   }
 };
