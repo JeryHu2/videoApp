@@ -50,7 +50,7 @@
           <List></List>
         </div>
         <div class="list" ref="videoList">
-          <Project :userId="userId"></Project>
+          <Project :userId="userId" :EPGDomain='temp'></Project>
         </div>
       </div>
       <div class="route_content" v-show="!isHome" :class="{ fee: ispurchaseFee }">
@@ -91,15 +91,15 @@ export default {
       this.isHome = true;
     }
     
-    
+     this.temp=Authentication.CTCGetConfig("EPGDomain");//获取用户账号 075545452068
       // alert("domain2":DOMAIN2)
       // alert("domain1":DOMAIN1)
       // alert("domain3":DOMAIN)
   },
   mounted(){
-    this.temp = `${domain}`
-    this.temp1 = window.location
-    this.temp2 = window
+    // this.temp = `${domain}`
+    // this.temp1 = window.location
+    // this.temp2 = window
   },
   methods: {
     trigTo(path) {

@@ -146,7 +146,8 @@ export default {
       // let DOMAIN = window.document.domain;
       // this.DOMAIN = DOMAIN;
       // alert("domain1":DOMAIN,"domain2":${DOMAIN})
-      window.location.href = `${DOMAIN}play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+      let EPGDomain=Authentication.CTCGetConfig("EPGDomain");//获取用户账号 075545452068
+      window.location.href = `${EPGDomain}play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
     }
   }
 };

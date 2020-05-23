@@ -13,7 +13,7 @@
 </template>
 <script>
 export default {
-  props: ["project","userId"],
+  props: ["project","userId","EPGDomain"],
   data() {
     return {};
   },
@@ -22,7 +22,8 @@ export default {
       this.$router.push({
         path: "/details",
         query: {
-          code: this.project.dramaId ? this.project.dramaId : this.project.id
+          code: this.project.dramaId ? this.project.dramaId : this.project.id,
+          EPGDomain:this.EPGDomain
         }
       });
       // window.location.href  = `http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=GDIPTV0038&UserID=${this.userId}8&ReturnURL=http://14.18.195.212:10007/#/details?code=D0003&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest`
