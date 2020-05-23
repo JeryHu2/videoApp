@@ -10,6 +10,7 @@
       @up="up()"
       @down="down()"
       :userId="userId"
+      :EPGDomain="EPGDomain"
       v-items
       class="pro_item"
       :class="{
@@ -37,7 +38,7 @@ export default {
       showNewVideo: false
     };
   },
-  props: ["userId"],
+  props: ["userId","EPGDomain"],
   watch: {
     tabName(newValue) {
       if (newValue) {

@@ -1,5 +1,6 @@
 <template>
   <div class="videoPro" @click="openDetails" v-items>
+    EPGDomain:{{EPGDomain}}
     <el-card>
       <div
         :style="{ backgroundImage: 'url(' + project.img + ')' }"
@@ -19,11 +20,13 @@ export default {
   },
   methods: {
     openDetails() {
+     let EPGDomain =Authentication.CTCGetConfig("EPGDomain");//获取用户EPGDomain
+     
       this.$router.push({
         path: "/details",
         query: {
           code: this.project.dramaId ? this.project.dramaId : this.project.id,
-          EPGDomain:this.EPGDomain
+          EPGDomain:EPGDomain
         }
       });
       // window.location.href  = `http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=GDIPTV0038&UserID=${this.userId}8&ReturnURL=http://14.18.195.212:10007/#/details?code=D0003&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest`

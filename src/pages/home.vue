@@ -79,7 +79,7 @@ export default {
     };
   },
   created() {
-    let userId=Authentication.CTCGetConfig("UserID");//获取用户账号 075545452068
+    let userId=Authentication.CTCGetConfig("UserID");//获取用户账号 
     // let UserTokenRequest= http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=GDIPTV0038&UserID=075545452068&ReturnURL=http://14.18.195.212:10007/#/details?code=D0003&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest
     this.userId = userId
     console.log('userId',userId)
@@ -91,7 +91,7 @@ export default {
       this.isHome = true;
     }
     
-     this.temp=Authentication.CTCGetConfig("EPGDomain");//获取用户账号 075545452068
+     this.temp=Authentication.CTCGetConfig("EPGDomain");//获取用户EPGDomain
       // alert("domain2":DOMAIN2)
       // alert("domain1":DOMAIN1)
       // alert("domain3":DOMAIN)
