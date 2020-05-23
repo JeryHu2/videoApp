@@ -12,10 +12,10 @@
     </div>
     <div class="dt_bottom">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        EPGDomain2:{{dramaId.EPGDomain}},
-        DOMAIN:{{DOMAIN}},
+        <!-- EPGDomain2:{{dramaId.EPGDomain}}, -->
+        <!-- DOMAIN:{{DOMAIN}}, -->
         ref:{{ref}},
-        temp:{{this.temp}}
+        <!-- temp:{{this.temp}} -->
         <el-tab-pane
           :label="item.groupName"
           :name="item.name"
@@ -73,7 +73,7 @@ export default {
     let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
       this.DOMAIN = EPGDomain
         this.temp = EPGDomain.split('://')[1].split('/en/')[0]
-      this.ref =`http://${this.temp }/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
+      this.ref =`http://${this.temp }/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`
   },
   methods: {
     getMenuList(params) {
