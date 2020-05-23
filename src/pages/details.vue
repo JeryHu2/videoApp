@@ -160,7 +160,7 @@ export default {
       this.ref =`${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
       // window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
       
-      window.location.href = `${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+      window.location.href = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
       
 
     }
