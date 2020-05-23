@@ -157,10 +157,10 @@ export default {
       let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
       this.DOMAIN = EPGDomain
        this.temp = EPGDomain.split('://')[1].split('/en/')[0]
-      this.ref =`http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
+      this.ref =`http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`
       // window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
       
-      window.location.href = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+      window.location.href = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
       
 
     }
