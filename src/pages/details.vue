@@ -72,7 +72,8 @@ export default {
     this.$service.move(el);
     let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
       this.DOMAIN = EPGDomain
-      this.ref =`${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
+        this.temp = EPGDomain.split('://')[1].split('/en/')[0]
+      this.ref =`${this.temp }/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
   },
   methods: {
     getMenuList(params) {
