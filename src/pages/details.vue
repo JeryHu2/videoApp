@@ -58,7 +58,7 @@ export default {
       isCollect: false,
       dramaId: "",
       DOMAIN: "",
-      temp:''
+      temp: ""
     };
   },
   mounted() {
@@ -70,10 +70,10 @@ export default {
     this.getMenuList();
     let el = document.getElementsByClassName("cards")[0];
     this.$service.move(el);
-    let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
-      this.DOMAIN = EPGDomain
-        this.temp = EPGDomain.split('://')[1].split('/en/')[0]
-      this.ref =`http://${this.temp }/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`
+    let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
+    this.DOMAIN = EPGDomain;
+    this.temp = EPGDomain.split("://")[1].split("/en/")[0];
+    this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
   },
   methods: {
     getMenuList(params) {
@@ -111,7 +111,10 @@ export default {
             this.description = res.data.data.actor;
             this.actTitle = res.data.data.name;
             this.isCollect = res.data.data.isCollect == "1" ? true : false;
-            this.imgSrc = res.data.data.pathPic1;
+            // this.imgSrc = res.data.data.pathPic1;
+            let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
+            this.temp = EPGDomain.split("://")[1].split("/en/")[0];
+            this.imgSrc = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
             this.activeName = this.listData[0].name;
           }
         })
@@ -154,15 +157,13 @@ export default {
       // let DOMAIN = window.document.domain;
       // this.DOMAIN = DOMAIN;
       // alert("domain1":DOMAIN,"domain2":${DOMAIN})
-      let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
-      this.DOMAIN = EPGDomain
-       this.temp = EPGDomain.split('://')[1].split('/en/')[0]
-      this.ref =`http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`
+      let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
+      this.DOMAIN = EPGDomain;
+      this.temp = EPGDomain.split("://")[1].split("/en/")[0];
+      this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
       // window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
-      
-      window.location.href = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
-      
 
+      window.location.href = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
     }
   }
 };
