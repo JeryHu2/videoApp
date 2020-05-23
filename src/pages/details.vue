@@ -2,7 +2,7 @@
   <div class="details_body">
     <div class="dt_top">
       <div class="img" v-items :style="{ backgroundImage: 'url(' + imgSrc + ')' }"></div>
-      <iframe :src="tempimgSrc"  width="500" height="300" id="iframe" ></iframe>
+      <iframe :src="tempimgSrc"  width="500" height="300" id="iframe" style="background: aliceblue;" ></iframe>
       <div class="des">
         <h1>{{ actTitle }}</h1>
         <p>{{ description }}</p>
@@ -74,10 +74,10 @@ export default {
     let el = document.getElementsByClassName("cards")[0];
     this.$service.move(el);
     let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
-    this.DOMAIN = EPGDomain;
     this.temp = EPGDomain.split("://")[1].split("/en/")[0];
     this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
-     this.tempimgSrc = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
+    //  this.tempimgSrc = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
+    this.tempimgSrc ='wwww.baidu.com'
   },
   methods: {
     getMenuList(params) {

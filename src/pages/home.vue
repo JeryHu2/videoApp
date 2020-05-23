@@ -2,7 +2,15 @@
   <div style="overflow:hidden">
     <div class="home">
       <div class="header" :class="{ user: ispurchaseFee }">
-        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee" v-items></div>
+        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee" v-items></div>tempimgSrc:
+        <iframe
+          :src="tempimgSrc"
+          width="500"
+          height="300"
+          id="iframe"
+          style="background: aliceblue;"
+        ></iframe>
+        ref:{{ref}}
         <div class="tablist">
           <div class="rightbtns">
             <ul>
@@ -37,9 +45,9 @@
           </div>
         </div>
       </div>
-      temp:{{temp}},
+      <!-- temp:{{temp}},
       temp1:{{temp1}},
-      temp2:{{temp2}},
+      temp2:{{temp2}},-->
       <div class="content home_tab" v-show="isHomeTab && isHome">
         <div class="list">
           <Project :userId="userId" :EPGDomain="temp"></Project>
@@ -75,7 +83,9 @@ export default {
       positionX: 0,
       positionY: 0,
       userId: "",
-      temp: ""
+      temp: "",
+      tempimgSrc: "",
+      ref: ""
     };
   },
   created() {
@@ -91,7 +101,11 @@ export default {
       this.isHome = true;
     }
 
-    this.temp = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
+    let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
+    this.temp = EPGDomain.split("://")[1].split("/en/")[0];
+    this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
+    //  this.tempimgSrc = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
+    this.tempimgSrc = "wwww.baidu.com";
     // alert("domain2":DOMAIN2)
     // alert("domain1":DOMAIN1)
     // alert("domain3":DOMAIN)
