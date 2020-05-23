@@ -153,8 +153,12 @@ export default {
       // alert("domain1":DOMAIN,"domain2":${DOMAIN})
       let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
       this.DOMAIN = EPGDomain
-      this.ref =`${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
-      window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+      let temp = EPGDomain.split('://')[1].split('/en/')
+      this.ref =`${temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
+      // window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+      
+      window.location.href = `${temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+      
 
     }
   }
