@@ -12,9 +12,9 @@
     </div>
     <div class="dt_bottom">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        EPGDomain2:{{dramaId.EPGDomain}}
-        DOMAIN:{{DOMAIN}}
-        ref:{{ref}}
+        EPGDomain2:{{dramaId.EPGDomain}},
+        DOMAIN:{{DOMAIN}},
+        ref:{{ref}},
         <el-tab-pane
           :label="item.groupName"
           :name="item.name"
@@ -70,7 +70,7 @@ export default {
     this.$service.move(el);
     let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
       this.DOMAIN = EPGDomain
-      this.ref =`${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020033113563107472465&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
+      this.ref =`${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
   },
   methods: {
     getMenuList(params) {
@@ -153,8 +153,8 @@ export default {
       // alert("domain1":DOMAIN,"domain2":${DOMAIN})
       let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
       this.DOMAIN = EPGDomain
-      this.ref =`${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020033113563107472465&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
-      window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020033113563107472465&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+      this.ref =`${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
+      window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
 
     }
   }
