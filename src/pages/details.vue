@@ -2,7 +2,7 @@
   <div class="details_body">
     <div class="dt_top">
       <div class="img" v-items :style="{ backgroundImage: 'url(' + imgSrc + ')' }"></div>
-      <iframe :src="tempimgSrc"></iframe>
+      <iframe :src="tempimgSrc"  width="500" height="300" id="iframe" ></iframe>
       <div class="des">
         <h1>{{ actTitle }}</h1>
         <p>{{ description }}</p>
