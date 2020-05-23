@@ -42,7 +42,7 @@
       temp2:{{temp2}},
       <div class="content home_tab" v-show="isHomeTab && isHome">
         <div class="list">
-          <Project></Project>
+          <Project :userId="userId" :EPGDomain='temp'></Project>
         </div>
       </div>
       <div class="content other_tab" v-show="!isHomeTab && isHome">

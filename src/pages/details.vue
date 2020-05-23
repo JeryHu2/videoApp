@@ -12,7 +12,9 @@
     </div>
     <div class="dt_bottom">
       <el-tabs v-model="activeName" @tab-click="handleClick">
+        EPGDomain2:{{dramaId.EPGDomain}}
         DOMAIN:{{DOMAIN}}
+        ref:{{ref}}
         <el-tab-pane
           :label="item.groupName"
           :name="item.name"
@@ -29,7 +31,7 @@
             @down="down()"
             @click="open"
             v-items
-          >第一集 山林大战1 {{ obj.number }}</div>
+          >{{ obj.number }} {{obj.name}}</div>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -66,6 +68,9 @@ export default {
     this.getMenuList();
     let el = document.getElementsByClassName("cards")[0];
     this.$service.move(el);
+    let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
+      this.DOMAIN = EPGDomain
+      this.ref =`${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020033113563107472465&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
   },
   methods: {
     getMenuList(params) {
@@ -79,7 +84,7 @@ export default {
       let num = 0;
       let temParams = {
         dramaId: this.dramaId,
-        userId: "yagnxiuyuan"
+        userId: this.$route.query.userId.
       };
 
       if (params) {
@@ -146,8 +151,11 @@ export default {
       // let DOMAIN = window.document.domain;
       // this.DOMAIN = DOMAIN;
       // alert("domain1":DOMAIN,"domain2":${DOMAIN})
-      let EPGDomain=Authentication.CTCGetConfig("EPGDomain");//获取用户账号 075545452068
-      window.location.href = `${EPGDomain}play/vod_play.jsp?foreignId=99100000012020033113563107472465&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+      let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
+      this.DOMAIN = EPGDomain
+      this.ref =`${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020033113563107472465&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
+      window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020033113563107472465&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+
     }
   }
 };
