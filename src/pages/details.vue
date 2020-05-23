@@ -2,6 +2,7 @@
   <div class="details_body">
     <div class="dt_top">
       <div class="img" v-items :style="{ backgroundImage: 'url(' + imgSrc + ')' }"></div>
+      <iframe :src="tempimgSrc"></iframe>
       <div class="des">
         <h1>{{ actTitle }}</h1>
         <p>{{ description }}</p>
@@ -15,6 +16,7 @@
         <!-- EPGDomain2:{{dramaId.EPGDomain}}, -->
         <!-- DOMAIN:{{DOMAIN}}, -->
         ref:{{ref}},
+        tempimgSrc:{{tempimgSrc}}
         <!-- temp:{{this.temp}} -->
         <el-tab-pane
           :label="item.groupName"
@@ -58,7 +60,8 @@ export default {
       isCollect: false,
       dramaId: "",
       DOMAIN: "",
-      temp: ""
+      temp: "",
+      tempimgSrc:''
     };
   },
   mounted() {
@@ -74,6 +77,7 @@ export default {
     this.DOMAIN = EPGDomain;
     this.temp = EPGDomain.split("://")[1].split("/en/")[0];
     this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
+     this.tempimgSrc = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
   },
   methods: {
     getMenuList(params) {
@@ -111,10 +115,9 @@ export default {
             this.description = res.data.data.actor;
             this.actTitle = res.data.data.name;
             this.isCollect = res.data.data.isCollect == "1" ? true : false;
-            // this.imgSrc = res.data.data.pathPic1;
-            let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
-            this.temp = EPGDomain.split("://")[1].split("/en/")[0];
-            this.imgSrc = `http://${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=2&backUrl=http://14.18.195.212:10007/#/home`;
+            this.imgSrc = res.data.data.pathPic1;
+
+           
             this.activeName = this.listData[0].name;
           }
         })
