@@ -15,6 +15,7 @@
         EPGDomain2:{{dramaId.EPGDomain}},
         DOMAIN:{{DOMAIN}},
         ref:{{ref}},
+        temp:{{this.temp}}
         <el-tab-pane
           :label="item.groupName"
           :name="item.name"
@@ -56,7 +57,8 @@ export default {
       imgSrc: "",
       isCollect: false,
       dramaId: "",
-      DOMAIN: ""
+      DOMAIN: "",
+      temp:''
     };
   },
   mounted() {
@@ -153,11 +155,11 @@ export default {
       // alert("domain1":DOMAIN,"domain2":${DOMAIN})
       let EPGDomain=Authentication.CTCGetConfig("EPGDomain");
       this.DOMAIN = EPGDomain
-      let temp = EPGDomain.split('://')[1].split('/en/')
-      this.ref =`${temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
+       this.temp = EPGDomain.split('://')[1].split('/en/')[0]
+      this.ref =`${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`
       // window.location.href = `${EPGDomain}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
       
-      window.location.href = `${temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
+      window.location.href = `${this.temp}/en/play/vod_play.jsp?foreignId=99100000012020032616152207399851&authFlag=1&backUrl=http://14.18.195.212:10007/#/home`;
       
 
     }
