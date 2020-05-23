@@ -84,7 +84,7 @@ export default {
       let num = 0;
       let temParams = {
         dramaId: this.dramaId,
-        userId: this.$route.query.userId.
+        userId: this.$route.query.userId
       };
 
       if (params) {
