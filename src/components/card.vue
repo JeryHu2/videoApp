@@ -3,10 +3,7 @@
     EPGDomain:{{EPGDomain}}
     EPGDomain3:{{EPGDomain3}}
     <el-card>
-      <div
-        :style="{ backgroundImage: 'url(' + project.img + ')' }"
-        class="image"
-      ></div>
+      <div :style="{ backgroundImage: 'url(' + project.img + ')' }" class="image"></div>
       <div class="card_bottom clearfix" v-show="project.showTitle != 'false'">
         <el-button type="text" class="button">{{ project.name }}</el-button>
       </div>
@@ -15,28 +12,28 @@
 </template>
 <script>
 export default {
-  props: ["project","userId","EPGDomain"],
+  props: ["project", "userId", "EPGDomain"],
   data() {
     return {};
   },
-  mounted(){
-     this.EPGDomain3=Authentication.CTCGetConfig("EPGDomain");//获取用户EPGDomain
+  mounted() {
+    this.EPGDomain3 = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
   },
   methods: {
     openDetails() {
-     let EPGDomain =Authentication.CTCGetConfig("EPGDomain");//获取用户EPGDomain
-     
+      let EPGDomain = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
+      this.$store.commit("changeOldTabs", "");
+
       this.$router.push({
         path: "/details",
         query: {
           code: this.project.dramaId ? this.project.dramaId : this.project.id,
-          EPGDomain:EPGDomain,
-          userId:this.userId
+          EPGDomain: EPGDomain,
+          userId: this.userId
         }
       });
       // window.location.href  = `http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=GDIPTV0038&UserID=${this.userId}8&ReturnURL=http://14.18.195.212:10007/#/details?code=D0003&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest`
       // window.location.href  = 'http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://125.88.70.16:8082/EPG/jsp/defaultsmchd/en/play/vod_play.jsp?foreignId=02000006000000012014112699000369&authFlag=1&backUrl=http://14.18.195.212:10007/#/home'
-        
     }
   }
 };

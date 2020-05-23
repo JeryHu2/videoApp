@@ -14,7 +14,7 @@
               <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
-                
+
                 <!-- DOMAIN2:{{DOMAIN2}} -->
               </router-link>
               <router-link
@@ -42,7 +42,7 @@
       temp2:{{temp2}},
       <div class="content home_tab" v-show="isHomeTab && isHome">
         <div class="list">
-          <Project :userId="userId" :EPGDomain='temp'></Project>
+          <Project :userId="userId" :EPGDomain="temp"></Project>
         </div>
       </div>
       <div class="content other_tab" v-show="!isHomeTab && isHome">
@@ -50,7 +50,7 @@
           <List></List>
         </div>
         <div class="list" ref="videoList">
-          <Project :userId="userId" :EPGDomain='temp'></Project>
+          <Project :userId="userId" :EPGDomain="temp"></Project>
         </div>
       </div>
       <div class="route_content" v-show="!isHome" :class="{ fee: ispurchaseFee }">
@@ -74,15 +74,15 @@ export default {
       routerName: "",
       positionX: 0,
       positionY: 0,
-      userId:'',
-      temp:''
+      userId: "",
+      temp: ""
     };
   },
   created() {
-    let userId=Authentication.CTCGetConfig("UserID");//获取用户账号 
-    // let UserTokenRequest= http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=GDIPTV0038&UserID=075545452068&ReturnURL=http://14.18.195.212:10007/#/details?code=D0003&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest
-    this.userId = userId
-    console.log('userId',userId)
+    let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
+    // // let UserTokenRequest= http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=GDIPTV0038&UserID=075545452068&ReturnURL=http://14.18.195.212:10007/#/details?code=D0003&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest
+    this.userId = userId;
+    console.log("userId", userId);
     if (this.$route.query.code == "fail") {
       this.ispurchaseFee = false;
       this.isHome = false;
@@ -90,16 +90,33 @@ export default {
     } else {
       this.isHome = true;
     }
-    
-     this.temp=Authentication.CTCGetConfig("EPGDomain");//获取用户EPGDomain
-      // alert("domain2":DOMAIN2)
-      // alert("domain1":DOMAIN1)
-      // alert("domain3":DOMAIN)
+
+    this.temp = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
+    // alert("domain2":DOMAIN2)
+    // alert("domain1":DOMAIN1)
+    // alert("domain3":DOMAIN)
   },
-  mounted(){
+  mounted() {
     // this.temp = `${domain}`
     // this.temp1 = window.location
     // this.temp2 = window
+    let tabName =
+      this.$store.state.showTabName === ""
+        ? "M000"
+        : this.$store.state.showTabName;
+    let listName =
+      this.$store.state.subTabName !== "" ? this.$store.state.subTabName : "";
+
+    if (
+      tabName &&
+      this.$children[3] &&
+      this.$store.state.showOldTabName === ""
+    ) {
+      this.$children[3].handleClick({ name: tabName });
+      if (tabName !== "M000") {
+        this.$children[5].showProjects(JSON.parse(listName));
+      }
+    }
   },
   methods: {
     trigTo(path) {

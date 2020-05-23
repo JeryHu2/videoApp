@@ -38,10 +38,20 @@ export default {
       showNewVideo: false
     };
   },
-  props: ["userId","EPGDomain"],
+  props: ["userId", "EPGDomain"],
   watch: {
     tabName(newValue) {
       if (newValue) {
+        this.tabObj = newValue;
+        let params = {
+          menuId: newValue
+        };
+        this.showVideoData = [];
+        this.getMenuList(params);
+      }
+    },
+    oldTabName(newValue) {
+      if (newValue !== "" && newValue) {
         this.tabObj = newValue;
         let params = {
           menuId: newValue
@@ -59,6 +69,9 @@ export default {
   computed: {
     tabName() {
       return this.$store.state.showTabName;
+    },
+    oldTabName() {
+      return this.$store.state.showOldTabName;
     }
   },
   methods: {

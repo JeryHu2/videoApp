@@ -2,15 +2,15 @@
   <ul class="swip_list" ref="listObj">
     <li
       class="list_item"
-      v-for="item in listData"
+      v-for="(item,index) in listData"
       @left="left()"
       @right="right()"
       @up="up()"
       @down="down()"
-      :key="item.id"
+      :key="index"
       v-items
       :class="{ active: item.active }"
-      @click="showProjects(item)"
+      @click="showProjects(item,index)"
     >
       <el-button>{{ item.name }}</el-button>
     </li>
@@ -25,8 +25,16 @@ export default {
   },
   watch: {
     listData(newValue) {
+      let subNameObj =
+        this.$store.state.subTabName !== ""
+          ? JSON.parse(this.$store.state.subTabName)
+          : null;
       if (newValue) {
-        this.showProjects(newValue[0]);
+        if (subNameObj !== null) {
+          this.showProjects(newValue[subNameObj.index], subNameObj.index);
+        } else {
+          this.showProjects(newValue[0], 0);
+        }
       }
     }
   },
@@ -36,13 +44,15 @@ export default {
     }
   },
   methods: {
-    showProjects(obj) {
+    showProjects(obj, i) {
       this.listData.map(o => {
         o.active = false;
+        o.index = i;
       });
       if (obj) {
         obj.active = true;
         eventBus.$emit("changeList", obj.length);
+        this.$store.commit("changeListName", JSON.stringify(obj));
       }
     },
     ...epgMethods
