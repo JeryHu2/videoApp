@@ -104,10 +104,10 @@ export default {
       // let Action = UserTokenRequest;
       let temParams = {
         DramaId: this.project.dramaId,
-        UserID: tuserId
+        UserID: this.userId
       };
       this.$axios
-        .get(`${url.checkUser}?DramaId=${this.project.dramaId}&UserID=${UserID}`)
+        .get(`${url.checkUser}?DramaId=${this.project.dramaId}&UserID=${this.userId}`)
         .then(res => {
           console.log(res);
           this.res = res;
