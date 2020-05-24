@@ -2,6 +2,7 @@
   <div class="videoPro" @click="openDetails" v-items>
     12res:{{res}}
     err:{{err}}
+    UserToken:{{UserToken}}
     <el-card>
       <div :style="{ backgroundImage: 'url(' + project.img + ')' }" class="image"></div>
       <div class="card_bottom clearfix" v-show="project.showTitle != 'false'">
@@ -23,6 +24,8 @@ export default {
   },
   mounted() {
     this.EPGDomain = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
+    let UserToken = Authentication.CTCGetConfig("UserToken");//获取用户Token值
+    this.UserToken = UserToken
     // this.checkUser();
     // let SPID = 350000000040;
     // let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
@@ -97,6 +100,8 @@ export default {
     openDetails() {
       let SPID = 350000000040;
       let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
+      let UserToken = Authentication.CTCGetConfig("UserToken");//获取用户Token值
+      this.UserToken = UserToken
       let returnUrl = `${location.host}/#/details?code=D0003`;
       let ReturnInfo = null;
       let UserToken = null;
@@ -106,17 +111,7 @@ export default {
         DramaId: this.project.dramaId,
         UserID: this.userId
       };
-      this.$axios
-        .get(
-          `${url.checkUser}?DramaId=${
-            this.project.dramaId ? this.project.dramaId : this.project.id
-          }&UserID=${this.userId}`
-        )
-        .then(res => {
-          console.log(res);
-          this.res = res;
-          this.UserToken = res.UserToken;
-          this.$router.push({
+      this.$router.push({
             path: "/details",
             query: {
               code: this.project.dramaId
@@ -126,12 +121,6 @@ export default {
               userId: this.userId // '075545452068'
             }
           });
-        })
-        .catch(err => {
-          console.log(err);
-          this.err = err;
-          loadingInstance.close();
-        });
       this.$store.commit("changeOldTabs", "");
     }
   }
