@@ -101,7 +101,7 @@ export default {
       let ReturnInfo = null;
       let UserToken = null;
       let ExpiredTime = null;
-      let Action = UserTokenRequest;
+      // let Action = UserTokenRequest;
       let temParams = {
         DramaId: this.project.dramaId,
         UserID: tuserId
