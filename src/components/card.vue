@@ -77,7 +77,7 @@ export default {
       let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
       let returnUrl = `${location.host}/#/details?code=D0003`;
       let ReturnInfo = null;
-      let UserToken = null;
+      // let UserToken = null;
       let ExpiredTime = null;
       let Action = UserTokenRequest;
       let temParams = {
@@ -104,7 +104,7 @@ export default {
       this.UserToken = UserToken
       let returnUrl = `${location.host}/#/details?code=D0003`;
       let ReturnInfo = null;
-      let UserToken = null;
+      // let UserToken = null;
       let ExpiredTime = null;
       // let Action = UserTokenRequest;
       let temParams = {
