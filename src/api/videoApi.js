@@ -6,4 +6,6 @@ export default {
     getClick: baseUrl + '/api/v1/tvapph5/getClick',
     getCollect: baseUrl + '/api/v1/tvapph5/getCollect',
     addCollect: baseUrl + '/api/v1/tvapph5/addCollect',
+    checkUser: baseUrl + '/tvapph5/verifyuser',
+    updateToken:baseUrl + '/tvapph5/refreshusertoken'
 }

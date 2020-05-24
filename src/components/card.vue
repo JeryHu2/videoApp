@@ -11,13 +11,14 @@
   </div>
 </template>
 <script>
+import url from "@/api/videoApi.js";
 export default {
   props: ["project", "userId", "EPGDomain"],
   data() {
     return {
       res: "",
       err: "",
-      UserToken
+      UserToken:""
     };
   },
   mounted() {
@@ -76,10 +77,13 @@ export default {
       let UserToken = null;
       let ExpiredTime = null;
       let Action = UserTokenRequest;
+       let temParams = {
+        DramaId: this.project.dramaId,
+        UserID: tuserId,
+        OldUserToken:this.UserToken
+      };
       this.$axios
-        .get(
-          `http://125.88.42.126:33200/ACS/vas/refreshusertoken?SPID=350000000040&UserID=${userId}&OldUserToken=${this.OldUserToken}&ReturnURL=${returnUrl}&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenExpired`
-        )
+        .get(url.updateToken,temParams)
         .then(res => {
           console.log(res);
           this.res = res;
@@ -98,10 +102,12 @@ export default {
       let UserToken = null;
       let ExpiredTime = null;
       let Action = UserTokenRequest;
+      let temParams = {
+        DramaId: this.project.dramaId,
+        UserID: tuserId
+      };
       this.$axios
-        .get(
-          `http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=350000000040&UserID=${userId}&ReturnURL=${returnUrl}&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest`
-        )
+        .get(url.checkUser,temParams)
         .then(res => {
           console.log(res);
           this.res = res;
