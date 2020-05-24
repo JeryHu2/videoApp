@@ -7,5 +7,6 @@ export default {
     getCollect: baseUrl + '/api/v1/tvapph5/getCollect',
     addCollect: baseUrl + '/api/v1/tvapph5/addCollect',
     checkUser: baseUrl + '/api/v1/tvapph5/verifyuser',
-    updateToken:baseUrl + '/api/v1/tvapph5/refreshusertoken'
+    updateToken:baseUrl + '/api/v1/tvapph5/refreshusertoken',
+    serviceAuth:baseUrl+'/api/v1/tvapph5/serviceAuth'
 }

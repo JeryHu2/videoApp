@@ -1,8 +1,8 @@
 <template>
   <div class="videoPro" @click="openDetails" v-items>
-    12res:{{res}}
+    <!-- 12res:{{res}}
     err:{{err}}
-    UserToken:{{UserToken}}
+    UserToken:{{UserToken}} -->
     <el-card>
       <div :style="{ backgroundImage: 'url(' + project.img + ')' }" class="image"></div>
       <div class="card_bottom clearfix" v-show="project.showTitle != 'false'">
@@ -98,19 +98,6 @@ export default {
         });
     },
     openDetails() {
-      let SPID = 350000000040;
-      let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
-      let UserToken = Authentication.CTCGetConfig("UserToken");//获取用户Token值
-      this.UserToken = UserToken
-      let returnUrl = `${location.host}/#/details?code=D0003`;
-      let ReturnInfo = null;
-      // let UserToken = null;
-      let ExpiredTime = null;
-      // let Action = UserTokenRequest;
-      let temParams = {
-        DramaId: this.project.dramaId,
-        UserID: this.userId
-      };
       this.$router.push({
             path: "/details",
             query: {

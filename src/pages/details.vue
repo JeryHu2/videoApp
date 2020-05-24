@@ -10,6 +10,7 @@
         <button class="collect btn" @click="collectVideo" v-items :class="{ active: isCollect }"></button>
       </div>
     </div>
+    UserToken:{{UserToken}}
     <div class="dt_bottom">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane
@@ -59,6 +60,8 @@ export default {
     };
   },
   mounted() {
+    let UserToken = Authentication.CTCGetConfig("UserToken"); //获取用户Token值
+    this.UserToken = UserToken;
     if (this.$route.query.code) {
       this.dramaId = this.$route.query.code;
     } else {
@@ -155,8 +158,26 @@ export default {
       } else {
         contentId = this.listData[0].groupDetail[0].contentId;
       }
-      this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=${contentId}&authFlag=2&backUrl=${returnUrl}`;
-      window.location.href = this.ref;
+      let temParams = {
+        DramaId: this.project.dramaId,
+        UserID: tuserId,
+        OldUserToken: this.UserToken
+      };
+      this.$axios
+        .get(
+          `${url.serviceAuth}?UserToken=${this.UserToken}&UserID=${this.userId}`
+        )
+        .then(res => {
+          console.log(res);
+          this.res = res;
+          this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=${contentId}&authFlag=2&backUrl=${returnUrl}`;
+          window.location.href = this.ref;
+        })
+        .catch(err => {
+          console.log(err);
+          this.err = err;
+          loadingInstance.close();
+        });
     }
   }
 };
