@@ -1,10 +1,9 @@
 const baseUrl = 'http://14.18.195.212:10022'
 export default {
-    getMenu: baseUrl + '/api/v1/tvapp/getMenu',
-    getDramaAndVideo: baseUrl + '/api/v1/tvapp/getDramaAndVideo',
-    getEpisode: baseUrl + '/api/v1/tvapp/getEpisode',
-    getEpisode: baseUrl + '/api/v1/tvapp/getEpisode',
-    getClick: baseUrl + '/api/v1/tvapp/getClick',
-    getCollect: baseUrl + '/api/v1/tvapp/getCollect',
-    addCollect: baseUrl + '/api/v1/tvapp/addCollect',
+    getMenu: baseUrl + '/api/v1/tvapph5/getMenu',
+    getDramaAndVideo: baseUrl + '/api/v1/tvapph5/getDramaAndVideo',
+    getEpisode: baseUrl + '/api/v1/tvapph5/getEpisode',
+    getClick: baseUrl + '/api/v1/tvapph5/getClick',
+    getCollect: baseUrl + '/api/v1/tvapph5/getCollect',
+    addCollect: baseUrl + '/api/v1/tvapph5/addCollect',
 }
