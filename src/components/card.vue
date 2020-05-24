@@ -18,7 +18,7 @@ export default {
     return {
       res: "",
       err: "",
-      UserToken:""
+      UserToken: ""
     };
   },
   mounted() {
@@ -77,13 +77,13 @@ export default {
       let UserToken = null;
       let ExpiredTime = null;
       let Action = UserTokenRequest;
-       let temParams = {
+      let temParams = {
         DramaId: this.project.dramaId,
         UserID: tuserId,
-        OldUserToken:this.UserToken
+        OldUserToken: this.UserToken
       };
       this.$axios
-        .get(url.updateToken,temParams)
+        .get(url.updateToken, temParams)
         .then(res => {
           console.log(res);
           this.res = res;
@@ -107,7 +107,11 @@ export default {
         UserID: this.userId
       };
       this.$axios
-        .get(`${url.checkUser}?DramaId=${this.project.dramaId}&UserID=${this.userId}`)
+        .get(
+          `${url.checkUser}?DramaId=${
+            this.project.dramaId ? this.project.dramaId : this.project.id
+          }&UserID=${this.userId}`
+        )
         .then(res => {
           console.log(res);
           this.res = res;
