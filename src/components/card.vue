@@ -107,7 +107,7 @@ export default {
         UserID: tuserId
       };
       this.$axios
-        .get(url.checkUser,temParams)
+        .get(`${url.checkUser}?DramaId=${this.project.dramaId}&UserID=${UserID}`)
         .then(res => {
           console.log(res);
           this.res = res;
