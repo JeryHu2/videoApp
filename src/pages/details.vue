@@ -62,6 +62,8 @@ export default {
   mounted() {
     let UserToken = Authentication.CTCGetConfig("UserToken"); //获取用户Token值
     this.UserToken = UserToken;
+    let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
+    this.userId = userId;
     if (this.$route.query.code) {
       this.dramaId = this.$route.query.code;
     } else {
@@ -159,9 +161,8 @@ export default {
         contentId = this.listData[0].groupDetail[0].contentId;
       }
       let temParams = {
-        DramaId: this.project.dramaId,
-        UserID: tuserId,
-        OldUserToken: this.UserToken
+        UserToken: this.UserToken,
+        UserID: this.userId
       };
       this.$axios
         .get(
