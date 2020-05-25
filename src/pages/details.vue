@@ -187,6 +187,9 @@ export default {
               .then(result => {
                 this.result = result
                 console.log("result", result);
+                this.$alert(result);
+              }).catch(err=>{
+                this.$alert(err);
               });
           } else {
             this.result = "qita";
