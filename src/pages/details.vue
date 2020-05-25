@@ -10,9 +10,9 @@
         <button class="collect btn" @click="collectVideo" v-items :class="{ active: isCollect }"></button>
       </div>
     </div>
-    UserToken:{{UserToken}}
-    res:{{res}}
-    result:{{result}}
+    UserToken:{{UserToken}},
+    res:{{res}},
+    result:{{result}},
     <div class="dt_bottom">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane
@@ -174,11 +174,11 @@ export default {
         .then(res => {
           console.log(res);
           this.res = res;
-          if (res.result === 200) {
+          if (res.result === '200') {
             this.result = 200;
             this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=${contentId}&authFlag=2&backUrl=${returnUrl}`;
             window.location.href = this.ref;
-          } else if (res.result === 504) {
+          } else if (res.result === '504') {
             this.result = 504;
             this.$axio
               .get(
