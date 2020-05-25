@@ -185,6 +185,7 @@ export default {
                 `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?SPID=GDIPTV0038&UserID=${this.userId}&ServiceID=40230&ContentID=${contentId}&ProductID=1000662&UserToken=${this.UserToken}&Action=1&OrderMode=1&ReturnURL=http://14.18.195.212:10021/#/purchaseResult&ContinueType=0`
               )
               .then(result => {
+                this.result = result
                 console.log("result", result);
               });
           } else {
