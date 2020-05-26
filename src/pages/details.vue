@@ -158,7 +158,7 @@ export default {
     open(item) {
       let contentId = "";
       // let returnUrl = `${location.host}/#/home`;
-      let returnUrl = encodeURIComponent(`${location.host}/purchaseResult`);
+      let returnUrl = encodeURIComponent(`http://${location.host}/purchaseResult`);
       let notificationURL = encodeURIComponent(`http://14.18.195.212:10022/api/v1/tvapph5/platformCallBack`);
       if (item.contentId) {
         contentId = item.contentId;
@@ -191,9 +191,9 @@ export default {
                 this.result = result;
                 // console.log("result", result);
                 // this.$alert(result);
-                // this.res = result.data;
+                this.ref = result.data;
                 // this.$alert(this.ref);
-                // window.location.href = this.ref;
+                window.location.href = this.ref;
               })
               .catch(err => {
                 this.$alert(err);
