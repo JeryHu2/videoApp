@@ -157,8 +157,8 @@ export default {
     ...epgMethods,
     open(item) {
       let contentId = "";
-      let returnUrl = `${location.host}/#/home`;
-      let resultReturnUrl = encodeURIComponent(`${location.host}/purchaseResult`);
+      // let returnUrl = `${location.host}/#/home`;
+      let returnUrl = encodeURIComponent(`${location.host}/purchaseResult`);
       let notificationURL = encodeURIComponent(`http://14.18.195.212:10022/api/v1/tvapph5/platformCallBack`);
       if (item.contentId) {
         contentId = item.contentId;
@@ -184,7 +184,7 @@ export default {
             this.result = 504;
             this.$axios
               .get(
-                `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${resultReturnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`
+                `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`
                 // `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?SPID=GDIPTV0038&UserID=${this.userId}&ServiceID=40230&ContentID=${contentId}&ProductID=1000662&UserToken=${this.UserToken}&Action=1&OrderMode=1&ReturnURL=${resultReturnUrl}&ContinueType=0`
               )
               .then(result => {
