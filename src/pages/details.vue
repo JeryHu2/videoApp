@@ -10,8 +10,8 @@
         <button class="collect btn" @click="collectVideo" v-items :class="{ active: isCollect }"></button>
       </div>
     </div>
-    UserToken:{{UserToken}},
-    res:{{res}},
+    <!-- UserToken:{{UserToken}}, -->
+    <!-- res:{{res}}, -->
     result:{{result}},
     <div class="dt_bottom">
       <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -174,8 +174,8 @@ export default {
           `${url.serviceAuth}?UserToken=${this.UserToken}&UserID=${this.userId}`
         )
         .then(res => {
-          console.log(res);
-          this.res = res;
+          // console.log(res);
+          // this.res = res;
           if (res.data.result === "200") {
             this.result = 200;
             this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=${contentId}&authFlag=2&backUrl=${returnUrl}`;
@@ -191,7 +191,7 @@ export default {
                 this.result = result;
                 // console.log("result", result);
                 // this.$alert(result);
-                this.ref = result.data;
+                this.res = result.data;
                 // this.$alert(this.ref);
                 // window.location.href = this.ref;
               })
