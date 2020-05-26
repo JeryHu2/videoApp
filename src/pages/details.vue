@@ -191,9 +191,9 @@ export default {
                 this.result = result;
                 // console.log("result", result);
                 // this.$alert(result);
-                this.ref = result;
+                this.ref = result.data;
                 // this.$alert(this.ref);
-                window.location.href = this.ref;
+                // window.location.href = this.ref;
               })
               .catch(err => {
                 this.$alert(err);
