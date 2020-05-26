@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- UserToken:{{UserToken}}, -->
-    <!-- res:{{res}}, -->
+    res:{{res}},
     result:{{result}},
     <div class="dt_bottom">
       <el-tabs v-model="activeName" @tab-click="handleClick">
@@ -181,7 +181,7 @@ export default {
             this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=${contentId}&authFlag=2&backUrl=${returnUrl}`;
             window.location.href = this.ref;
           } else if (res.data.result === "504") {
-            this.result = 504;
+            this.res = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
             this.$axios
               .get(
                 `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`
