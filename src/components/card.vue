@@ -17,7 +17,7 @@ export default {
     };
   },
   mounted() {
-    // this.EPGDomain = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
+    this.EPGDomain = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
   },
   methods: {
     openDetails() {
