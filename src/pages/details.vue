@@ -182,7 +182,7 @@ export default {
       let notificationURL = encodeURIComponent(
         `http://14.18.195.212:10022/api/v1/tvapph5/platformCallBack`
       );
-      let ExternalTransactionId = `GDXDPP${this.getTime()}${this.randomn(5)}`; //GDXDPP + 年月日时分秒+ 5位随机数
+      let externalTransactionId = `GDXDPP${this.getTime()}${this.randomn(5)}`; //GDXDPP + 年月日时分秒+ 5位随机数
       if (item.contentId) {
         contentId = item.contentId;
       } else {
@@ -210,7 +210,7 @@ export default {
                 `${url.addOrder}?userId=${this.userId}&externalTransactionId=${externalTransactionId}`
               )
               .then(result => {
-                this.ref = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=${ExternalTransactionId}&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
+                this.ref = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=${externalTransactionId}&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
                 window.location.href = this.ref;
               })
               .catch(err => {
