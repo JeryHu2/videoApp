@@ -158,8 +158,12 @@ export default {
     open(item) {
       let contentId = "";
       // let returnUrl = `${location.host}/#/home`;
-      let returnUrl = encodeURIComponent(`http://${location.host}/purchaseResult`);
-      let notificationURL = encodeURIComponent(`http://14.18.195.212:10022/api/v1/tvapph5/platformCallBack`);
+      let returnUrl = encodeURIComponent(
+        `http://${location.host}/purchaseResult`
+      );
+      let notificationURL = encodeURIComponent(
+        `http://14.18.195.212:10022/api/v1/tvapph5/platformCallBack`
+      );
       if (item.contentId) {
         contentId = item.contentId;
       } else {
@@ -181,23 +185,22 @@ export default {
             this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=${contentId}&authFlag=2&backUrl=${returnUrl}`;
             window.location.href = this.ref;
           } else if (res.data.result === "504") {
-            this.res = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
-            this.$axios
-              .get(
-                `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`
-                // `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?SPID=GDIPTV0038&UserID=${this.userId}&ServiceID=40230&ContentID=${contentId}&ProductID=1000662&UserToken=${this.UserToken}&Action=1&OrderMode=1&ReturnURL=${resultReturnUrl}&ContinueType=0`
-              )
-              .then(result => {
-                this.result = result;
-                // console.log("result", result);
-                // this.$alert(result);
-                this.ref = result.data;
-                // this.$alert(this.ref);
-                // window.location.href = this.ref;
-              })
-              .catch(err => {
-                this.$alert(err);
-              });
+            // this.res = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
+            this.ref = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
+            window.location.href = this.ref;
+            // this.$axios
+            //   .get(
+            //     `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`
+            //     // `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?SPID=GDIPTV0038&UserID=${this.userId}&ServiceID=40230&ContentID=${contentId}&ProductID=1000662&UserToken=${this.UserToken}&Action=1&OrderMode=1&ReturnURL=${resultReturnUrl}&ContinueType=0`
+            //   )
+            //   .then(result => {
+            //     this.result = result;
+            //     this.ref = result.data;
+            //     window.location.href = this.ref;
+            //   })
+            //   .catch(err => {
+            //     this.$alert(err);
+            //   });
           } else {
             this.result = "qita";
             this.$alert(res.data.massage);
