@@ -9,5 +9,5 @@ export default {
     checkUser: baseUrl + '/api/v1/tvapph5/verifyuser',
     updateToken:baseUrl + '/api/v1/tvapph5/refreshusertoken',
     serviceAuth:baseUrl+'/api/v1/tvapph5/serviceAuth',
-    addOrder:baseUrl+'api/v1/tvapph5/addOrder'
+    addOrder:baseUrl+'/api/v1/tvapph5/addOrder'
 }
