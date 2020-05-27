@@ -177,7 +177,7 @@ export default {
       let contentId = "";
       // let returnUrl = `${location.host}/#/home`;
       let returnUrl = encodeURIComponent(
-        `http://${location.host}/purchaseResult`
+        `http://${location.host}/details?code=${this.dramaId}`
       );
       let notificationURL = encodeURIComponent(
         `http://14.18.195.212:10022/api/v1/tvapph5/platformCallBack`
