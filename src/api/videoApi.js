@@ -8,5 +8,6 @@ export default {
     addCollect: baseUrl + '/api/v1/tvapph5/addCollect',
     checkUser: baseUrl + '/api/v1/tvapph5/verifyuser',
     updateToken:baseUrl + '/api/v1/tvapph5/refreshusertoken',
-    serviceAuth:baseUrl+'/api/v1/tvapph5/serviceAuth'
+    serviceAuth:baseUrl+'/api/v1/tvapph5/serviceAuth',
+    addOrder:baseUrl+'api/v1/tvapph5/addOrder'
 }

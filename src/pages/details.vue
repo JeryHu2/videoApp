@@ -155,6 +155,24 @@ export default {
       });
     },
     ...epgMethods,
+    randomn(n) {
+      if (n > 21) return null;
+      return parseInt((Math.random() + 1) * Math.pow(10, n - 1));
+    },
+    getTime() {
+      let myDate = new Date();
+      let year = myDate.getFullYear(); // 获取完整的年份(4位,1970-????)
+      let month = myDate.getMonth() + 1; // 获取当前月份(0-11,0代表1月)
+      let date = myDate.getDate(); // 获取当前日(1-31)
+
+      let hour = myDate.getHours(); // 获取当前小时数(0-23)
+      let min = myDate.getMinutes(); // 获取当前分钟数(0-59)
+      let sec = myDate.getSeconds(); // 获取当前秒数(0-59)
+
+      let mytime = myDate.toLocaleTimeString(); // 获取当前时间
+      myDate.toLocaleString(); // 获取日期与时间
+      return `${year}${month}${date}${hour}${min}${sec}`;
+    },
     open(item) {
       let contentId = "";
       // let returnUrl = `${location.host}/#/home`;
@@ -164,6 +182,7 @@ export default {
       let notificationURL = encodeURIComponent(
         `http://14.18.195.212:10022/api/v1/tvapph5/platformCallBack`
       );
+      let ExternalTransactionId = `GDXDPP${this.getTime()}${this.randomn(5)}`; //GDXDPP + 年月日时分秒+ 5位随机数
       if (item.contentId) {
         contentId = item.contentId;
       } else {
@@ -186,21 +205,17 @@ export default {
             window.location.href = this.ref;
           } else if (res.data.result === "504") {
             // this.res = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
-            this.ref = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
-            window.location.href = this.ref;
-            // this.$axios
-            //   .get(
-            //     `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`
-            //     // `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?SPID=GDIPTV0038&UserID=${this.userId}&ServiceID=40230&ContentID=${contentId}&ProductID=1000662&UserToken=${this.UserToken}&Action=1&OrderMode=1&ReturnURL=${resultReturnUrl}&ContinueType=0`
-            //   )
-            //   .then(result => {
-            //     this.result = result;
-            //     this.ref = result.data;
-            //     window.location.href = this.ref;
-            //   })
-            //   .catch(err => {
-            //     this.$alert(err);
-            //   });
+            this.$$axios
+              .get(
+                `${url.addOrder}?userId=${this.userId}&externalTransactionId=${externalTransactionId}`
+              )
+              .then(result => {
+                this.ref = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=${ExternalTransactionId}&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
+                window.location.href = this.ref;
+              })
+              .catch(err => {
+                this.$alert(err);
+              });
           } else {
             this.result = "qita";
             this.$alert(res.data.massage);
@@ -233,7 +248,7 @@ export default {
         })
         .catch(err => {
           console.log(err);
-          this.err = err;
+          this.$alert(err);
           loadingInstance.close();
         });
     }
