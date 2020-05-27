@@ -1,8 +1,5 @@
 <template>
   <div class="videoPro" @click="openDetails" v-items>
-    <!-- 12res:{{res}}
-    err:{{err}}
-    UserToken:{{UserToken}} -->
     <el-card>
       <div :style="{ backgroundImage: 'url(' + project.img + ')' }" class="image"></div>
       <div class="card_bottom clearfix" v-show="project.showTitle != 'false'">
@@ -17,86 +14,12 @@ export default {
   props: ["project", "userId", "EPGDomain"],
   data() {
     return {
-      res: "",
-      err: "",
-      UserToken: ""
     };
   },
   mounted() {
-    this.EPGDomain = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
-    let UserToken = Authentication.CTCGetConfig("UserToken");//获取用户Token值
-    this.UserToken = UserToken
-    // this.checkUser();
-    // let SPID = 350000000040;
-    // let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
-    // let returnUrl = `${location.host}/#/details?code=D0003`;
-    // let ReturnInfo = null;
-    // let UserToken = null;
-    // let ExpiredTime = null;
-    // let Action = UserTokenRequest;
-    // this.$axios
-    //   .get(
-    //     `http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=350000000040&UserID=${userId}&ReturnURL=${returnUrl}&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest`
-    //   )
-    //   .then(res => {
-    //     console.log(res);
-    //     this.res = res;
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     this.err = err;
-    //     loadingInstance.close();
-    //   });
+    // this.EPGDomain = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
   },
   methods: {
-    checkUser() {
-      let SPID = 350000000040;
-      let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
-      let returnUrl = `${location.host}/#/details?code=D0003`;
-      let ReturnInfo = null;
-      let UserToken = null;
-      let ExpiredTime = null;
-      let Action = UserTokenRequest;
-      this.$axios
-        .get(
-          `http://125.88.42.126:33200/ACS/vas/verifyuser?SPID=350000000040&UserID=${userId}&ReturnURL=${returnUrl}&ReturnInfo=null&UserToken=null&ExpiredTime=null&Action=UserTokenRequest`
-        )
-        .then(res => {
-          console.log(res);
-          this.res = res;
-          this.UserToken = res.UserToken;
-        })
-        .catch(err => {
-          console.log(err);
-          this.err = err;
-          loadingInstance.close();
-        });
-    },
-    updateUserToken() {
-      let SPID = 350000000040;
-      let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
-      let returnUrl = `${location.host}/#/details?code=D0003`;
-      let ReturnInfo = null;
-      // let UserToken = null;
-      let ExpiredTime = null;
-      let Action = UserTokenRequest;
-      let temParams = {
-        DramaId: this.project.dramaId,
-        UserID: tuserId,
-        OldUserToken: this.UserToken
-      };
-      this.$axios
-        .get(url.updateToken, temParams)
-        .then(res => {
-          console.log(res);
-          this.res = res;
-        })
-        .catch(err => {
-          console.log(err);
-          this.err = err;
-          loadingInstance.close();
-        });
-    },
     openDetails() {
       this.$router.push({
             path: "/details",
@@ -105,7 +28,7 @@ export default {
                 ? this.project.dramaId
                 : this.project.id,
               EPGDomain: this.EPGDomain,
-              userId: this.userId // '075545452068'
+              userId: this.userId 
             }
           });
       this.$store.commit("changeOldTabs", "");

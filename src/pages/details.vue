@@ -10,9 +10,6 @@
         <button class="collect btn" @click="collectVideo" v-items :class="{ active: isCollect }"></button>
       </div>
     </div>
-    <!-- UserToken:{{UserToken}}, -->
-    res:{{res}},
-    result:{{result}},
     <div class="dt_bottom">
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane
@@ -83,6 +80,7 @@ export default {
     this.$service.move(el);
   },
   methods: {
+    ...epgMethods,
     getMenuList(params) {
       let loadingInstance = Loading.service({
         text: "请稍等",
@@ -154,7 +152,6 @@ export default {
         }
       });
     },
-    ...epgMethods,
     randomn(n) {
       if (n > 21) return null;
       return parseInt((Math.random() + 1) * Math.pow(10, n - 1));
@@ -164,18 +161,14 @@ export default {
       let year = myDate.getFullYear(); // 获取完整的年份(4位,1970-????)
       let month = myDate.getMonth() + 1; // 获取当前月份(0-11,0代表1月)
       let date = myDate.getDate(); // 获取当前日(1-31)
-
       let hour = myDate.getHours(); // 获取当前小时数(0-23)
       let min = myDate.getMinutes(); // 获取当前分钟数(0-59)
       let sec = myDate.getSeconds(); // 获取当前秒数(0-59)
 
-      let mytime = myDate.toLocaleTimeString(); // 获取当前时间
-      myDate.toLocaleString(); // 获取日期与时间
       return `${year}${month}${date}${hour}${min}${sec}`;
     },
     open(item) {
       let contentId = "";
-      // let returnUrl = `${location.host}/#/home`;
       let returnUrl = encodeURIComponent(
         `http://${location.host}/details?code=${this.dramaId}`
       );
@@ -197,15 +190,11 @@ export default {
           `${url.serviceAuth}?UserToken=${this.UserToken}&UserID=${this.userId}`
         )
         .then(res => {
-          // console.log(res);
-          // this.res = res;
           if (res.data.result === "200") {
             this.result = 200;
             this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=${contentId}&authFlag=2&backUrl=${returnUrl}`;
             window.location.href = this.ref;
           } else if (res.data.result === "504") {
-            this.result = 504;
-            // this.res = `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?UserID=${this.userId}&ProductID=1000662&SPID=GDIPTV0038&ContentID=${contentId}&Action=1&ServiceID=&ReturnURL=${returnUrl}&NotificationURL=${notificationURL}&ExternalTransactionId=&UserToken=${this.UserToken}&ContinueType=1&programId=&FixPayModeList=0|3|6|7|8&resolution=HD&aci=1`;
             this.$axios
               .get(
                 `${url.addOrder}?userId=${this.userId}&externalTransactionId=${externalTransactionId}`
@@ -218,34 +207,8 @@ export default {
                 this.$alert(err);
               });
           } else {
-            this.result = "qita";
             this.$alert(res.data.massage);
           }
-          // switch (res.result) {
-          //   case 0:
-          //     this.result = 0
-          //     this.ref = `http://${this.temp}/en/play/vod_play.jsp?foreignId=${contentId}&authFlag=2&backUrl=${returnUrl}`;
-          //     window.location.href = this.ref;
-          //     break;
-          //   case 504:
-          //     // this.$router.push({
-          //     //   path: "/purchaseResult"
-          //     // });
-          //     this.result = 504
-          //     this.$axio
-          //       .get(
-          //         `http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?SPID=GDIPTV0038&UserID=${this.userId}&ServiceID=40230&ContentID=${contentId}&ProductID=1000662&UserToken=${this.UserToken}&Action=1&OrderMode=1&ReturnURL=http://14.18.195.212:10021/#/purchaseResult&ContinueType=0`
-          //       )
-          //       .then(result => {
-          //         console.log("result", result);
-          //       });
-          //     // http://payment.iptv.gd.cn:38081/ACS/vas/serviceorder?SPID=GDIPTV0038&UserID=2009121603&ServiceID=40230&ContentID=113&ProductID=1000662&UserToken=0CC531019D68301713436FC65C617C35&Action=1&OrderMode=1&ReturnURL=http://14.18.195.212:10021/#/home&ContinueType=0
-          //     break;
-          //   default:
-          //     this.result = 'qita'
-          //     this.$alert(res.message);
-          //     break;
-          // }
         })
         .catch(err => {
           console.log(err);
