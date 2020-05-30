@@ -6,6 +6,8 @@
       :key="item.tabCode"
       :label="item.name"
       :name="item.tabCode"
+      @focus="activeName=item.name"
+      :ref="item.name+'Tab'"
     >{{ item.name }}}</el-tab-pane>
   </el-tabs>
 </template>
@@ -40,6 +42,15 @@ export default {
       }
 
       this.$parent.changeHomeContent(tab.name);
+    },
+    moveLeft() {
+      this.$service.move(this.$refs[this.activeName + "Tab"][0]);
+    },
+    moveRight() {
+      this.$service.move("right");
+    },
+    moveUp() {
+      this.$service.move(this.$refs["logoIcon"]);
     }
   }
 };

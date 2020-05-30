@@ -1,8 +1,8 @@
 <template>
-  <div style="overflow:hidden">
+  <div style="overflow:hidden;width:100%;height:100%;">
     <div class="home">
       <div class="header" :class="{ user: ispurchaseFee }">
-        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee" v-items></div>
+        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee" v-items :ref="logoIcon"></div>
         <div class="tablist">
           <div class="rightbtns">
             <ul>
@@ -35,7 +35,6 @@
         </div>
       </div>
       <div class="content home_tab" v-show="isHomeTab && isHome">
-        <div style="float:left;width:90%;word-wrap: break-word;">当前浏览器地址：{{curHref}}</div>
         <div class="list">
           <Project :userId="userId" :EPGDomain="temp"></Project>
         </div>
@@ -59,7 +58,7 @@
 import List from "./home/list";
 import Tabs from "./home/tabs";
 import Project from "./home/project";
-
+import { getUrlKey } from "../utils/utils";
 export default {
   data() {
     return {
@@ -87,7 +86,8 @@ export default {
 
     let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
     this.temp = EPGDomain.split("://")[1].split("/en/")[0];
-    this.curHref = location.href + " 系统参数地址=" + EPGDomain;
+    let backUrl = location.href;
+    this.curHref = getUrlKey("backurl", backUrl);
   },
   mounted() {
     let tabName =
@@ -167,6 +167,9 @@ export default {
       } else {
         this.isHomeTab = false;
       }
+    },
+    serviceBack() {
+      location.href = this.curHref;
     }
   },
   components: {
@@ -179,7 +182,7 @@ export default {
 <style scoped>
 .home {
   width: calc(100% - 100px);
-  height: 100vh;
+  height: calc(100% - 60px);
   background: url(../static/image/home/home_back.jpg) no-repeat 0 0;
   background-size: 100% 100%;
   padding: 30px 50px;
