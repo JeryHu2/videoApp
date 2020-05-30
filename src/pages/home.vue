@@ -108,7 +108,10 @@ export default {
     }
     let backUrl = location.href;
     this.curHref = getUrlKey("backurl", backUrl);
-    this.serviceBack();
+    let that = this;
+    document.onkeydown = function(e) {
+      that.serviceBack(e);
+    };
   },
   methods: {
     trigTo(path) {
@@ -170,11 +173,11 @@ export default {
         this.isHomeTab = false;
       }
     },
-    serviceBack() {
+    serviceBack(event) {
       let e = event || window.event || arguments.callee.caller.arguments[0];
       let keyValue = e.keyCode ? e.keyCode : e.which;
-      if (3 < keyValue < 28 || keyValue === "Epgkey.back") {
-        this.$alert(this.curHref);
+      if (keyValue == 8 || keyValue === "Epgkey.back") {
+        this.$alert("进入后的事件是++++++", this.curHref);
         location.href = this.curHref;
       }
     }
