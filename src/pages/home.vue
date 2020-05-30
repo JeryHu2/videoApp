@@ -108,6 +108,7 @@ export default {
     }
     let backUrl = location.href;
     this.curHref = getUrlKey("backurl", backUrl);
+    this.serviceBack();
   },
   methods: {
     trigTo(path) {
@@ -170,8 +171,13 @@ export default {
       }
     },
     serviceBack() {
-      this.$alert("即将要跳转的地址是：", this.curHref);
-      location.href = this.curHref;
+      let e = event || window.event || arguments.callee.caller.arguments[0];
+      let keyValue = e.which ? e.which : e.keyCode;
+      switch (keyValue) {
+        case "Epgkey.back":
+          location.href = this.curHref;
+          break;
+      }
     }
   },
   components: {
