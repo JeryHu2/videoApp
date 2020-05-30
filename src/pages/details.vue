@@ -224,12 +224,12 @@ export default {
   overflow: hidden;
   width: 100%;
   height: 100%;
-  padding: 100px;
   background: url(../static/image/home/home_back.jpg) no-repeat 0 0;
   background-size: 100% 100%;
 }
 .dt_top {
   height: 360px;
+  padding: 100px;
 }
 .dt_top .img {
   width: 600px;
@@ -295,6 +295,9 @@ export default {
   background: url(../static/image/details/collect_hover.png) no-repeat 0 0;
   background-size: 100% 100%;
 }
+.dt_bottom {
+  padding: 100px;
+}
 .dt_bottom >>> .cards {
   width: 350px;
   height: 60px;
@@ -324,5 +327,31 @@ export default {
 }
 .dt_bottom >>> .el-tabs__item {
   padding: 0 20px !important;
+}
+@media (max-width: 1280px) {
+  .dt_top {
+    padding: 30px;
+    height: 250px;
+  }
+  .dt_top .img {
+    width: 420px;
+    height: 250px;
+  }
+  .dt_top .des .btn {
+    height: 60px;
+    margin-right: 30px;
+  }
+  .dt_top .des .btn.open {
+    width: 100px;
+  }
+  .dt_top .des .btn.purchase {
+    width: 164px;
+  }
+  .dt_top .des .btn.collect {
+    width: 112px;
+  }
+  .dt_bottom {
+    padding: 30px;
+  }
 }
 </style>

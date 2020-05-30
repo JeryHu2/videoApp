@@ -128,4 +128,13 @@ export default {
   margin: 50px auto;
   width: 100%;
 }
+@media (max-width: 1280px) {
+  .overrow .videoPro {
+    cursor: pointer;
+    width: 160px;
+    float: left;
+    margin: 30px 0 0 40px;
+    height: 180px;
+  }
+}
 </style>

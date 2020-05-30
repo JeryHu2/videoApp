@@ -35,7 +35,6 @@
         </div>
       </div>
       <div class="content home_tab" v-show="isHomeTab && isHome">
-        <div style="word-wrap: break-word;">{{curHref}}</div>
         <div class="list">
           <Project :userId="userId" :EPGDomain="temp"></Project>
         </div>
@@ -177,8 +176,13 @@ export default {
       let e = event || window.event || arguments.callee.caller.arguments[0];
       let keyValue = e.keyCode ? e.keyCode : e.which;
       if (keyValue == 8 || keyValue === "Epgkey.back") {
-        this.$alert("进入后的事件是++++++", this.curHref);
-        location.href = this.curHref;
+        this.$confirm("确定要退出小豆派派吗?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
+        }).then(() => {
+          location.href = this.curHref;
+        });
       }
     }
   },
@@ -324,6 +328,26 @@ export default {
 @media (max-width: 1280px) {
   .content.home_tab >>> .videoPro {
     height: 250px !important;
+  }
+  .content {
+    margin-top: -40px;
+  }
+  .header .tablist .title {
+    font-size: 35px;
+    margin-left: -180px;
+    margin-top: -50px;
+    float: left;
+  }
+  .route_content {
+    width: 1100px;
+    height: 500px;
+    float: left;
+    margin: 0 50px;
+    overflow: hidden;
+    margin-top: -40px;
+  }
+  .tabCalss >>> .el-tabs__nav-wrap.is-scrollable {
+    width: 820px;
   }
 }
 </style>

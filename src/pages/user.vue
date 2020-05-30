@@ -227,4 +227,44 @@ export default {
   width: 100%;
   margin-left: 100px;
 }
+@media (max-width: 1280px) {
+  .pur_top {
+    width: 100%;
+    float: left;
+    height: 180px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 0;
+  }
+  .pur_top .left_sec {
+    float: left;
+    width: 54%;
+    margin: 34px auto;
+    font-size: 25px;
+  }
+  .pur_top .left_sec img {
+    height: 100px;
+    vertical-align: middle;
+    margin-right: 50px;
+  }
+  .pur_top .right_sec .pur_button {
+    cursor: pointer;
+    width: 200px;
+    height: 75px;
+    margin: 25px auto;
+  }
+  .pur_bottom {
+    float: left;
+    width: 100%;
+    margin-top: 30px;
+    height: 250px;
+  }
+  .pur_bottom .half {
+    width: 42.5%;
+    float: left;
+    padding: 26px;
+    background: #fff;
+    border-radius: 16px;
+  }
+}
 </style>
