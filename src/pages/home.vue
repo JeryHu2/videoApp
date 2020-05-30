@@ -71,7 +71,7 @@ export default {
       positionY: 0,
       userId: "",
       temp: "",
-      curHref
+      curHref: ""
     };
   },
   created() {
