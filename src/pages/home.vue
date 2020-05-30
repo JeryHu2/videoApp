@@ -173,10 +173,9 @@ export default {
     serviceBack() {
       let e = event || window.event || arguments.callee.caller.arguments[0];
       let keyValue = e.keyCode ? e.keyCode : e.which;
-      switch (keyValue) {
-        case "Epgkey.back" || "8":
-          location.href = this.curHref;
-          break;
+      if (3 < keyValue < 28 || keyValue === "Epgkey.back") {
+        this.$alert(this.curHref);
+        location.href = this.curHref;
       }
     }
   },
