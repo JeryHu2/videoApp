@@ -172,9 +172,9 @@ export default {
     },
     serviceBack() {
       let e = event || window.event || arguments.callee.caller.arguments[0];
-      let keyValue = e.which ? e.which : e.keyCode;
+      let keyValue = e.keyCode ? e.keyCode : e.which;
       switch (keyValue) {
-        case "Epgkey.back":
+        case "Epgkey.back" || "8":
           location.href = this.curHref;
           break;
       }
