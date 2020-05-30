@@ -23,7 +23,7 @@
                 <label>收藏记录</label>
               </router-link>
             </ul>
-            当前浏览器地址：{{curHref}}
+            <h2>当前浏览器地址：{{curHref}}</h2>
           </div>
           <div class="tabs" v-show="isHome">
             <Tabs></Tabs>
