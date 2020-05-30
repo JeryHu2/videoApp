@@ -17,17 +17,17 @@ exports.cssLoaders = function(options) {
     options = options || {}
 
     const cssLoader = {
-        loader: 'css-loader',
-        options: {
-            sourceMap: options.sourceMap
+            loader: 'css-loader',
+            options: {
+                sourceMap: options.sourceMap
+            }
         }
-    }
-    const px2remLoader = {
-        loader: 'px2rem-loader',
-        options: {
-            remUnit: 192
-        }
-    }
+        // const px2remLoader = {
+        //     loader: 'px2rem-loader',
+        //     options: {
+        //         remUnit: 192
+        //     }
+        // }
     const postcssLoader = {
         loader: 'postcss-loader',
         options: {
@@ -39,8 +39,8 @@ exports.cssLoaders = function(options) {
     function generateLoaders(loader, loaderOptions) {
         // build文件下的utils.js文件
         const loaders = options.usePostCSS ?
-            [cssLoader, postcssLoader, px2remLoader] :
-            [cssLoader, px2remLoader]
+            [cssLoader, postcssLoader] :
+            [cssLoader]
 
         if (loader) {
             loaders.push({

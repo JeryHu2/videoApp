@@ -47,6 +47,7 @@ export default {
   width: 25%;
   float: left;
   margin: 0 4%;
+  height: 240px;
 }
 .header {
   font-size: 30px;

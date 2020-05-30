@@ -7,7 +7,7 @@
       </div>
       <div class="deline"></div>
       <div class="right_sec">
-        <div @click="goToPurchase()" class="pur_button" v-items>立即订购</div>
+        <div @click="goToPurchase()" class="pur_button" v-items></div>
         <p>快速订购通道已开启，去订购吧!</p>
       </div>
     </div>
@@ -178,7 +178,7 @@ export default {
   height: calc(100% - 260px);
 }
 .pur_bottom .half {
-  width: 47.5%;
+  width: 42.5%;
   float: left;
   padding: 40px;
   background: #fff;
@@ -194,16 +194,16 @@ export default {
   padding: 20px;
 }
 .fee_header {
-  height: 1.302083rem;
+  height: 90px;
   width: 50%;
-  padding: 0.104167rem;
+  padding: 20px;
   margin: 0 auto;
   margin-top: -60px;
   margin-bottom: 70px;
 }
 .fee_header .logo {
   width: 200px;
-  height: 100%;
+  height: 200px;
   margin: 20px 0 0 50px;
   float: left;
   background: url(../static/image/home/logo.png) no-repeat 0 0;
@@ -211,8 +211,8 @@ export default {
 }
 .fee_header .tips {
   float: right;
-  width: 2.5rem;
-  margin-top: 75px;
+  width: 500px;
+  margin: 0;
   text-align: left;
 }
 .fee_header .tips h3 {
@@ -225,6 +225,6 @@ export default {
 .fee_bottom {
   height: calc(100% - 200px);
   width: 100%;
-  margin-left: 250px;
+  margin-left: 100px;
 }
 </style>

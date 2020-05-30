@@ -29,7 +29,7 @@ export default {
 <style>
 .card_body {
   width: 350px;
-  height: 450px;
+  height: 360px;
   float: left;
   background: #fff;
   border-radius: 16px;

@@ -23,6 +23,7 @@
                 <label>收藏记录</label>
               </router-link>
             </ul>
+            当前浏览器地址：{{curHref}}
           </div>
           <div class="tabs" v-show="isHome">
             <Tabs></Tabs>
@@ -69,7 +70,8 @@ export default {
       positionX: 0,
       positionY: 0,
       userId: "",
-      temp: ""
+      temp: "",
+      curHref
     };
   },
   created() {
@@ -85,6 +87,7 @@ export default {
 
     let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
     this.temp = EPGDomain.split("://")[1].split("/en/")[0];
+    this.curHref = location.href + " 系统参数地址=" + EPGDomain;
   },
   mounted() {
     let tabName =
@@ -175,7 +178,7 @@ export default {
 </script>
 <style scoped>
 .home {
-  width: 100%;
+  width: calc(100% - 100px);
   height: 100vh;
   background: url(../static/image/home/home_back.jpg) no-repeat 0 0;
   background-size: 100% 100%;
@@ -250,7 +253,7 @@ export default {
   font-weight: 500;
   font-family: "微软雅黑";
   color: darkblue;
-  margin-left: -190px;
+  margin-left: 190px;
 }
 .header .tablist .title .line {
   font-size: 25px;
