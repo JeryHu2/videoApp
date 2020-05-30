@@ -35,6 +35,7 @@
         </div>
       </div>
       <div class="content home_tab" v-show="isHomeTab && isHome">
+        <div style="word-wrap: break-word;">{{curHref}}</div>
         <div class="list">
           <Project :userId="userId" :EPGDomain="temp"></Project>
         </div>
@@ -86,8 +87,6 @@ export default {
 
     let EPGDomain = Authentication.CTCGetConfig("EPGDomain");
     this.temp = EPGDomain.split("://")[1].split("/en/")[0];
-    let backUrl = location.href;
-    this.curHref = getUrlKey("backurl", backUrl);
   },
   mounted() {
     let tabName =
@@ -107,6 +106,8 @@ export default {
         this.$children[5].showProjects(JSON.parse(listName));
       }
     }
+    let backUrl = location.href;
+    this.curHref = getUrlKey("backurl", backUrl);
   },
   methods: {
     trigTo(path) {
@@ -169,6 +170,7 @@ export default {
       }
     },
     serviceBack() {
+      this.$alert("即将要跳转的地址是：", this.curHref);
       location.href = this.curHref;
     }
   },
@@ -181,11 +183,11 @@ export default {
 </script>
 <style scoped>
 .home {
-  width: calc(100% - 100px);
-  height: calc(100% - 60px);
+  width: 95%;
+  height: 98%;
   background: url(../static/image/home/home_back.jpg) no-repeat 0 0;
   background-size: 100% 100%;
-  padding: 30px 50px;
+  padding: 1% 2.5%;
   font-family: "微软雅黑";
   position: relative;
 }
