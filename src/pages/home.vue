@@ -23,7 +23,6 @@
                 <label>收藏记录</label>
               </router-link>
             </ul>
-            <h2>当前浏览器地址：{{curHref}}</h2>
           </div>
           <div class="tabs" v-show="isHome">
             <Tabs></Tabs>
@@ -36,6 +35,7 @@
         </div>
       </div>
       <div class="content home_tab" v-show="isHomeTab && isHome">
+        <div style="float:left;width:90%;word-wrap: break-word;">当前浏览器地址：{{curHref}}</div>
         <div class="list">
           <Project :userId="userId" :EPGDomain="temp"></Project>
         </div>
@@ -307,5 +307,10 @@ export default {
   right: 0 !important;
   z-index: 99;
   cursor: grab;
+}
+@media (max-width: 1280px) {
+  .content.home_tab >>> .videoPro {
+    height: 250px !important;
+  }
 }
 </style>

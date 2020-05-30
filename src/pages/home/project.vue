@@ -11,7 +11,7 @@
       @down="down()"
       :userId="userId"
       :EPGDomain="EPGDomain"
-      v-items
+      v-items="item.epgConfig"
       class="pro_item"
       :class="{
         twoPercent: item.length < 3,
@@ -63,8 +63,7 @@ export default {
   },
   mounted() {
     this.showListProj();
-    let el = document.getElementsByClassName("pro_item")[0];
-    this.$service.move(el);
+    this.$service.move(this.$service.pointer);
   },
   computed: {
     tabName() {
@@ -89,6 +88,7 @@ export default {
             data[0],
             data[1]
           );
+          that.showVideoData[0].epgConfig = { default: true };
         }
       });
     },
@@ -162,6 +162,7 @@ export default {
             });
             this.$store.commit("changeListData", this.listData);
             this.showVideoData = this.videoData[this.tabName];
+            this.showVideoData[0].epgConfig = { default: true };
           }
         })
         .catch(err => {
@@ -191,5 +192,16 @@ export default {
 }
 .cards .twoPercent.videoPro {
   width: 17.5%;
+}
+@media (max-width: 1280px) {
+  .cards .videoPro {
+    width: 29%;
+  }
+  .cards .videoPro.ishome {
+    height: 250px;
+  }
+  .cards .onePercent.videoPro {
+    width: 33%;
+  }
 }
 </style>

@@ -77,4 +77,20 @@ export default {
   font-size: 90px;
   top: 30px;
 }
+@media (max-width: 1280px) {
+  .tabCalss >>> .el-tabs__item {
+    font-family: "微软雅黑";
+    font-size: 20px;
+    color: blue;
+    font-weight: bold;
+    width: 150px;
+    height: 100px;
+    line-height: 110px;
+  }
+  .tabCalss >>> .el-tabs__nav-next,
+  .tabCalss >>> .el-tabs__nav-prev {
+    font-size: 40px;
+    top: 30px;
+  }
+}
 </style>

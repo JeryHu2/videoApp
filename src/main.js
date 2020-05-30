@@ -20,7 +20,7 @@ Vue.config.productionTip = false // 引入qs
 Vue.prototype.$axios = axios
 
 const epg = new VueEpg({
-        focus_class: 'focus',
+        focus_class: 'focusEpg',
         group_name: '.group',
         actions: ['number'], // 自定义的方法，在 组件中需指定，名称对应大写的 KeyActions 的Key 如 number 对应  NUMBER
         setKeyBoardEventListener: service => {

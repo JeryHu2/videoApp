@@ -13,8 +13,7 @@ import url from "@/api/videoApi.js";
 export default {
   props: ["project", "userId", "EPGDomain"],
   data() {
-    return {
-    };
+    return {};
   },
   mounted() {
     this.EPGDomain = Authentication.CTCGetConfig("EPGDomain"); //获取用户EPGDomain
@@ -22,15 +21,13 @@ export default {
   methods: {
     openDetails() {
       this.$router.push({
-            path: "/details",
-            query: {
-              code: this.project.dramaId
-                ? this.project.dramaId
-                : this.project.id,
-              EPGDomain: this.EPGDomain,
-              userId: this.userId 
-            }
-          });
+        path: "/details",
+        query: {
+          code: this.project.dramaId ? this.project.dramaId : this.project.id,
+          EPGDomain: this.EPGDomain,
+          userId: this.userId
+        }
+      });
       this.$store.commit("changeOldTabs", "");
     }
   }
@@ -88,5 +85,10 @@ export default {
 .videoPro .el-card:hover {
   border: 5px solid yellow !important;
   box-shadow: 0px 2px 30px yellow !important;
+}
+@media (max-width: 1280px) {
+  .videoPro .el-card {
+    border-radius: 18px !important;
+  }
 }
 </style>
