@@ -347,7 +347,7 @@ export default {
     margin-top: -40px;
   }
   .tabCalss >>> .el-tabs__nav-wrap.is-scrollable {
-    width: 820px;
+    width: 520px;
   }
 }
 </style>

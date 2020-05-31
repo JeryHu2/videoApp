@@ -102,6 +102,10 @@ export default {
   .tabCalss >>> .el-tabs__nav-prev {
     font-size: 40px;
     top: 30px;
+    display: none;
+  }
+  .tabCalss >>> .el-tabs__nav-scroll {
+    margin: 0;
   }
 }
 </style>

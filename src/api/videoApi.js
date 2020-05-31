@@ -1,4 +1,5 @@
-const baseUrl = 'http://14.18.195.212:10022'
+// const baseUrl = 'http://14.18.195.212:10022'
+const baseUrl = 'http://124.115.206.190:8099'
 export default {
     getMenu: baseUrl + '/api/v1/tvapph5/getMenu',
     getDramaAndVideo: baseUrl + '/api/v1/tvapph5/getDramaAndVideo',
@@ -7,7 +8,7 @@ export default {
     getCollect: baseUrl + '/api/v1/tvapph5/getCollect',
     addCollect: baseUrl + '/api/v1/tvapph5/addCollect',
     checkUser: baseUrl + '/api/v1/tvapph5/verifyuser',
-    updateToken:baseUrl + '/api/v1/tvapph5/refreshusertoken',
-    serviceAuth:baseUrl+'/api/v1/tvapph5/serviceAuth',
-    addOrder:baseUrl+'/api/v1/tvapph5/addOrder'
+    updateToken: baseUrl + '/api/v1/tvapph5/refreshusertoken',
+    serviceAuth: baseUrl + '/api/v1/tvapph5/serviceAuth',
+    addOrder: baseUrl + '/api/v1/tvapph5/addOrder'
 }
