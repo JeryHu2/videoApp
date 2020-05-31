@@ -127,7 +127,7 @@ export default {
   margin: 50px auto;
   width: 100%;
 }
-@media (max-width: 1280px) {
+/* @media (max-width: 1280px) {
   .overrow .videoPro {
     cursor: pointer;
     width: 160px;
@@ -135,5 +135,5 @@ export default {
     margin: 30px 0 0 40px;
     height: 180px;
   }
-}
+} */
 </style>

@@ -178,7 +178,7 @@ export default {
   height: calc(100% - 260px);
 }
 .pur_bottom .half {
-  width: 42.5%;
+  width: 47.5%;
   float: left;
   padding: 40px;
   background: #fff;
@@ -187,23 +187,22 @@ export default {
 .pur_bottom .collection {
   margin-left: 5%;
 }
-
 .purchase_detail {
   overflow: hidden;
   height: 100%;
   padding: 20px;
 }
 .fee_header {
-  height: 90px;
+  height: 1.302083rem;
   width: 50%;
-  padding: 20px;
+  padding: 0.104167rem;
   margin: 0 auto;
   margin-top: -60px;
   margin-bottom: 70px;
 }
 .fee_header .logo {
   width: 200px;
-  height: 200px;
+  height: 100%;
   margin: 20px 0 0 50px;
   float: left;
   background: url(../static/image/home/logo.png) no-repeat 0 0;
@@ -211,8 +210,8 @@ export default {
 }
 .fee_header .tips {
   float: right;
-  width: 500px;
-  margin: 0;
+  width: 2.5rem;
+  margin-top: 75px;
   text-align: left;
 }
 .fee_header .tips h3 {
@@ -225,9 +224,9 @@ export default {
 .fee_bottom {
   height: calc(100% - 200px);
   width: 100%;
-  margin-left: 100px;
+  margin-left: 250px;
 }
-@media (max-width: 1280px) {
+/* @media (max-width: 1280px) {
   .pur_top {
     width: 100%;
     float: left;
@@ -266,5 +265,5 @@ export default {
     background: #fff;
     border-radius: 16px;
   }
-}
+} */
 </style>

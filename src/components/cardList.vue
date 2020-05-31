@@ -47,7 +47,7 @@ export default {
   width: 25%;
   float: left;
   margin: 0 4%;
-  height: 240px;
+  height: 200px;
 }
 .header {
   font-size: 30px;
@@ -99,7 +99,7 @@ export default {
   border: 2px solid yellow !important;
   box-shadow: 0px 2px 30px yellow !important;
 }
-@media (max-width: 1280px) {
+/* @media (max-width: 1280px) {
   .videoPro {
     cursor: pointer;
     width: 25%;
@@ -107,5 +107,5 @@ export default {
     margin: 0 4%;
     height: 130px;
   }
-}
+} */
 </style>

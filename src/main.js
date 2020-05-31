@@ -6,7 +6,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import store from './store'
-// import './utils/flexible'
+import './utils/flexible'
 import VideoPlayer from 'vue-video-player'
 import 'element-ui/lib/theme-chalk/index.css'
 

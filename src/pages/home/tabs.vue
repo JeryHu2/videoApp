@@ -88,7 +88,7 @@ export default {
   font-size: 90px;
   top: 30px;
 }
-@media (max-width: 1280px) {
+/* @media (max-width: 1280px) {
   .tabCalss >>> .el-tabs__item {
     font-family: "微软雅黑";
     font-size: 20px;
@@ -107,5 +107,5 @@ export default {
   .tabCalss >>> .el-tabs__nav-scroll {
     margin: 0;
   }
-}
+} */
 </style>

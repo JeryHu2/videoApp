@@ -193,7 +193,7 @@ export default {
 .cards .twoPercent.videoPro {
   width: 17.5%;
 }
-@media (max-width: 1280px) {
+/* @media (max-width: 1280px) {
   .cards .videoPro {
     width: 29%;
   }
@@ -203,5 +203,5 @@ export default {
   .cards .onePercent.videoPro {
     width: 33%;
   }
-}
+} */
 </style>

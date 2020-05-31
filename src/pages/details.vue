@@ -328,7 +328,7 @@ export default {
 .dt_bottom >>> .el-tabs__item {
   padding: 0 20px !important;
 }
-@media (max-width: 1280px) {
+/* @media (max-width: 1280px) {
   .dt_top {
     padding: 30px;
     height: 250px;
@@ -353,5 +353,5 @@ export default {
   .dt_bottom {
     padding: 30px;
   }
-}
+} */
 </style>

@@ -270,7 +270,7 @@ export default {
   font-weight: 500;
   font-family: "微软雅黑";
   color: darkblue;
-  margin-left: 190px;
+  margin-left: -190px;
 }
 .header .tablist .title .line {
   font-size: 25px;
@@ -325,7 +325,7 @@ export default {
   z-index: 99;
   cursor: grab;
 }
-@media (max-width: 1280px) {
+/* @media (max-width: 1280px) {
   .content.home_tab >>> .videoPro {
     height: 250px !important;
   }
@@ -349,5 +349,5 @@ export default {
   .tabCalss >>> .el-tabs__nav-wrap.is-scrollable {
     width: 520px;
   }
-}
+} */
 </style>
