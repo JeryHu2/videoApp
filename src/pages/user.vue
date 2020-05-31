@@ -109,6 +109,14 @@ export default {
       }
     ];
   },
+  mounted() {
+    let that = this;
+    document.onkeydown = function(e) {
+      if (e.keyCode == 8) {
+        that.$router.go(-1);
+      }
+    };
+  },
   methods: {
     openDetails() {},
     goToPurchase() {

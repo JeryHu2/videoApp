@@ -161,8 +161,8 @@ export default {
               }
             });
             this.$store.commit("changeListData", this.listData);
+            this.videoData[this.tabName][0].epgConfig = { default: true };
             this.showVideoData = this.videoData[this.tabName];
-            this.showVideoData[0].epgConfig = { default: true };
           }
         })
         .catch(err => {
@@ -183,6 +183,7 @@ export default {
   width: 30%;
   margin: 40px 0 0 40px;
   height: 300px;
+  border: none !important;
 }
 .cards .videoPro.ishome {
   height: 400px;

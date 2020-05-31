@@ -13,7 +13,6 @@
       v-items
     ></Card>
     <el-pagination
-      v-items
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page.sync="paginationData.currentPage"
@@ -47,6 +46,12 @@ export default {
     this.showList();
     let el = document.getElementsByClassName("card_item")[0];
     this.$service.move(el);
+    let that = this;
+    document.onkeydown = function(e) {
+      if (e.keyCode == 8) {
+        that.$router.go(-1);
+      }
+    };
   },
   methods: {
     openDetails() {},

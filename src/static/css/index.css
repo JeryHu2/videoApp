@@ -26,8 +26,6 @@ body .el-message p {
     font-size: 30px !important;
 }
 
-body .focusEpg .el-card {
-    border: 0.026042rem solid yellow !important;
-    -webkit-box-shadow: 0 0.010417rem 0.15625rem yellow !important;
-    box-shadow: 0 0.010417rem 0.15625rem yellow !important;
+.focusEpg {
+    border: 2px solid yellow !important;
 }

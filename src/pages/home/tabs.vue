@@ -1,15 +1,15 @@
 <template>
-  <el-tabs v-model="activeName" type="card" @tab-click="handleClick" class="tabCalss">
-    <el-tab-pane
-      v-items
+  <ul class="tabCalss">
+    <li
       v-for="item in tabList"
       :key="item.tabCode"
-      :label="item.name"
+      :class="{'is-active':activeName === item.tabCode}"
       :name="item.tabCode"
-      @focus="activeName=item.name"
-      :ref="item.name+'Tab'"
-    >{{ item.name }}}</el-tab-pane>
-  </el-tabs>
+      v-items="item.epgConfig"
+      :ref="item.tabCode+'Tab'"
+      @click="handleClick(item,$event)"
+    >{{ item.name }}</li>
+  </ul>
 </template>
 <script>
 import url from "@/api/videoApi.js";
@@ -25,23 +25,25 @@ export default {
       .post(url.getMenu)
       .then(res => {
         if (res.data.code == "200" && res.data.data.length > 0) {
+          res.data.data[0].epgConfig = { default: true };
           this.tabList = res.data.data;
         }
       })
       .catch(err => {
         console.log(err);
       });
+    this.$service.move(this.$service.pointer);
   },
   methods: {
     handleClick(tab, event) {
-      this.activeName = tab.name;
-      this.$store.commit("changeTabs", tab.name);
-      this.$store.commit("changeOldTabs", tab.name);
-      if (tab.name === "M000") {
+      this.activeName = tab.tabCode;
+      this.$store.commit("changeTabs", tab.tabCode);
+      this.$store.commit("changeOldTabs", tab.tabCode);
+      if (tab.tabCode === "M000") {
         this.$store.commit("changeListName", "");
       }
 
-      this.$parent.changeHomeContent(tab.name);
+      this.$parent.changeHomeContent(tab.tabCode);
     },
     moveLeft() {
       this.$service.move(this.$refs[this.activeName + "Tab"][0]);
@@ -56,12 +58,7 @@ export default {
 };
 </script>
 <style scoped>
-.tabCalss >>> .el-tabs__header,
-.tabCalss >>> .el-tabs__nav,
-.tabCalss >>> .el-tabs__item {
-  border: 0 !important;
-}
-.tabCalss >>> .el-tabs__item {
+.tabCalss li {
   font-family: "微软雅黑";
   font-size: 35px;
   color: blue;
@@ -69,24 +66,12 @@ export default {
   width: 250px;
   height: 140px;
   line-height: 160px;
+  float: left;
+  cursor: pointer;
 }
-.tabCalss >>> .el-tabs__content {
-  display: none;
-}
-.tabCalss >>> .el-tabs__nav-scroll {
-  margin: 0 60px;
-}
-.tabCalss >>> .el-tabs__item {
-  padding: 0px !important;
-}
-.tabCalss >>> .el-tabs__item.is-active {
+.tabCalss li.is-active {
   background: url(../../static/image/home/nav.png) no-repeat 0 0;
   background-size: cover;
-}
-.tabCalss >>> .el-tabs__nav-next,
-.tabCalss >>> .el-tabs__nav-prev {
-  font-size: 90px;
-  top: 30px;
 }
 /* @media (max-width: 1280px) {
   .tabCalss >>> .el-tabs__item {

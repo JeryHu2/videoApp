@@ -82,7 +82,8 @@ export default {
   height: 100%;
   position: relative;
 }
-.videoPro .el-card:hover {
+.videoPro .el-card:hover,
+.focusEpg .el-card {
   border: 5px solid yellow !important;
   box-shadow: 0px 2px 30px yellow !important;
 }

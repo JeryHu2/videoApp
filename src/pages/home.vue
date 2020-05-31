@@ -2,26 +2,28 @@
   <div style="overflow:hidden;width:100%;height:100%;">
     <div class="home">
       <div class="header" :class="{ user: ispurchaseFee }">
-        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee" v-items :ref="logoIcon"></div>
+        <div class="logo" @click="trigTo('home')" v-show="!ispurchaseFee"></div>
         <div class="tablist">
           <div class="rightbtns">
             <ul>
-              <router-link :to="{ name: 'user' }" tag="li" @click.native="trigTo('user')">
+              <li
+                @click="trigTo('user')"
+                v-items="{default:true}"
+                ref="userIcon"
+                @right="right"
+                @down="down"
+              >
                 <i class="user_logo"></i>
                 <label>个人中心</label>
-              </router-link>
-              <router-link :to="{ name: 'review' }" tag="li" @click.native="trigTo('review')">
+              </li>
+              <li @click="trigTo('review')" v-items @left="left" @right="right" @down="down()">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
-              </router-link>
-              <router-link
-                :to="{ name: 'collection' }"
-                tag="li"
-                @click.native="trigTo('collection')"
-              >
+              </li>
+              <li @click="trigTo('collection')" v-items @left="left" @down="down">
                 <i class="star_logo"></i>
                 <label>收藏记录</label>
-              </router-link>
+              </li>
             </ul>
           </div>
           <div class="tabs" v-show="isHome">
@@ -59,6 +61,8 @@ import List from "./home/list";
 import Tabs from "./home/tabs";
 import Project from "./home/project";
 import { getUrlKey } from "../utils/utils";
+import { epgMethods } from "../utils/epg";
+
 export default {
   data() {
     return {
@@ -94,33 +98,39 @@ export default {
         : this.$store.state.showTabName;
     let listName =
       this.$store.state.subTabName !== "" ? this.$store.state.subTabName : "";
-
+    this.$service.move(this.$service.pointer);
     if (
       tabName &&
-      this.$children[3] &&
+      this.$children[0] &&
       this.$store.state.showOldTabName === ""
     ) {
-      this.$children[3].handleClick({ name: tabName });
+      this.$children[0].handleClick({ tabCode: tabName });
       if (tabName !== "M000") {
         this.$children[5].showProjects(JSON.parse(listName));
       }
     }
+    let that = this;
     let backUrl = location.href;
     this.curHref = getUrlKey("backurl", backUrl);
-    let that = this;
     document.onkeydown = function(e) {
-      that.serviceBack(e);
+      if (that.isHome) {
+        that.serviceBack(e);
+      } else if (e.keyCode == 8) {
+        this.$router.push({
+          path: "/home"
+        });
+      }
     };
   },
   methods: {
     trigTo(path) {
       if (path == "home") {
         this.isHome = true;
-        this.$children[3].handleClick({ name: "M000" });
+        this.$children[0].handleClick({ tabCode: "M000" });
         this.$router.push({ path: "/home" });
       } else {
         this.isHome = false;
-        this.$children[3].handleClick({ name: "" });
+        this.$children[0].handleClick({ tabCode: "" });
       }
       if (path == "fee") {
         this.ispurchaseFee = true;
@@ -129,14 +139,16 @@ export default {
       }
       switch (path) {
         case "user":
-          this.$children[6].purchaseFee = false;
           this.routerName = "个人中心";
+          this.$router.push({ path: "/user" });
           break;
         case "review":
           this.routerName = "浏览历史";
+          this.$router.push({ path: "/review" });
           break;
         case "collection":
           this.routerName = "收藏记录";
+          this.$router.push({ path: "/collection" });
           break;
       }
     },
@@ -184,7 +196,8 @@ export default {
           location.href = this.curHref;
         });
       }
-    }
+    },
+    ...epgMethods
   },
   components: {
     List,
