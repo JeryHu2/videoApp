@@ -1,26 +1,60 @@
 <template>
-  <div class="overrow">
-    <Card
-      class="card_item"
-      @openDetails="openDetails"
-      v-for="item in showVideoData"
-      :key="item.id"
-      :project="item"
-      @left="left()"
-      @right="right()"
-      @up="up()"
-      @down="down()"
-      v-items
-    ></Card>
-    <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page.sync="paginationData.currentPage"
-      :page-size="paginationData.pageSize"
-      background
-      layout="total,prev, pager, next"
-      :total="paginationData.total"
-    ></el-pagination>
+  <div class="review">
+    <div class="header">
+      <div class="logo" @click="trigTo('home')"></div>
+      <div class="tablist">
+        <div class="rightbtns">
+          <ul>
+            <li
+              @click="trigTo('user')"
+              v-items="{default:true}"
+              ref="userIcon"
+              @right="right"
+              @down="down"
+            >
+              <i class="user_logo"></i>
+              <label>个人中心</label>
+            </li>
+            <li @click="trigTo('review')" v-items @left="left" @right="right" @down="down()">
+              <i class="eye_logo"></i>
+              <label>浏览历史</label>
+            </li>
+            <li @click="trigTo('collection')" v-items @left="left" @down="down">
+              <i class="star_logo"></i>
+              <label>收藏记录</label>
+            </li>
+          </ul>
+        </div>
+        <div class="title">
+          <span class="line">——</span>
+          收藏记录
+          <span class="line">——</span>
+        </div>
+      </div>
+    </div>
+    <div class="overrow">
+      <Card
+        class="card_item"
+        @openDetails="openDetails"
+        v-for="item in showVideoData"
+        :key="item.id"
+        :project="item"
+        @left="left()"
+        @right="right()"
+        @up="up()"
+        @down="down()"
+        v-items
+      ></Card>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page.sync="paginationData.currentPage"
+        :page-size="paginationData.pageSize"
+        background
+        layout="total,prev, pager, next"
+        :total="paginationData.total"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 <script>
@@ -54,6 +88,22 @@ export default {
     };
   },
   methods: {
+    trigTo(path) {
+      switch (path) {
+        case "user":
+          this.routerName = "个人中心";
+          this.$router.push({ path: "/user" });
+          break;
+        case "review":
+          this.routerName = "浏览历史";
+          this.$router.push({ path: "/review" });
+          break;
+        case "collection":
+          this.routerName = "收藏记录";
+          this.$router.push({ path: "/collection" });
+          break;
+      }
+    },
     openDetails() {},
     handleSizeChange(val) {
       this.paginationData.pageSize = val;
@@ -112,13 +162,80 @@ export default {
 };
 </script>
 <style scoped>
+.review {
+  width: 95%;
+  height: 98%;
+  background: url(../static/image/home/home_back.jpg) no-repeat 0 0;
+  background-size: 100% 100%;
+  padding: 1% 2.5%;
+  font-family: "微软雅黑";
+  position: relative;
+}
+.header {
+  height: 220px;
+}
+.header .logo {
+  width: 200px;
+  height: 200px;
+  margin: 20px 0 0 50px;
+  float: left;
+  cursor: pointer;
+  background: url(../static/image/home/logo.png) no-repeat 0 0;
+  background-size: contain;
+}
+.header .tablist {
+  width: calc(100% - 400px);
+  float: right;
+}
+.header .tablist .rightbtns {
+  width: 100%;
+  height: 60px;
+}
+.header .tablist .rightbtns ul {
+  height: 60px;
+  line-height: 60px;
+  font-size: 28px;
+  font-family: "微软雅黑";
+  float: right;
+}
+.header .tablist .rightbtns ul li {
+  float: left;
+  margin: 0 10px;
+}
+.header .tablist .rightbtns ul li label {
+  cursor: pointer;
+}
+.header .tablist .rightbtns ul li i {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.header .tablist .rightbtns ul li i.user_logo {
+  background: url(../static/image/home/logo_man.png) no-repeat center;
+  background-size: 100% 100%;
+}
+.header .tablist .rightbtns ul li i.eye_logo {
+  background: url(../static/image/home/logo_view.png) no-repeat center;
+  background-size: 100% 100%;
+}
+.header .tablist .rightbtns ul li i.star_logo {
+  background: url(../static/image/home/logo_star.png) no-repeat center;
+  background-size: 100% 100%;
+}
+.header .title {
+  margin-left: -220px;
+  font-size: 30px;
+  font-weight: 600;
+}
 .overrow {
   overflow: hidden;
-  margin: 0 40px;
-  height: 100%;
+  margin: 0 auto;
+  height: calc(100% - 240px);
   background: #f5f7fa;
   border-radius: 20px;
   padding-top: 30px;
+  width: 90%;
 }
 .overrow .videoPro {
   cursor: pointer;

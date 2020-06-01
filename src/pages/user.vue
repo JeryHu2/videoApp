@@ -1,5 +1,37 @@
 <template>
   <div style="overflow:hidden" class="user_container">
+    <div class="header">
+      <div class="logo" @click="trigTo('home')" v-show="!purchaseFee"></div>
+      <div class="tablist">
+        <div class="rightbtns">
+          <ul>
+            <li
+              @click="trigTo('user')"
+              v-items="{default:true}"
+              ref="userIcon"
+              @right="right"
+              @down="down"
+            >
+              <i class="user_logo"></i>
+              <label>个人中心</label>
+            </li>
+            <li @click="trigTo('review')" v-items @left="left" @right="right" @down="down()">
+              <i class="eye_logo"></i>
+              <label>浏览历史</label>
+            </li>
+            <li @click="trigTo('collection')" v-items @left="left" @down="down">
+              <i class="star_logo"></i>
+              <label>收藏记录</label>
+            </li>
+          </ul>
+        </div>
+        <div class="title" v-show="!purchaseFee">
+          <span class="line">——</span>
+          个人中心
+          <span class="line">——</span>
+        </div>
+      </div>
+    </div>
     <div class="pur_top" v-show="!purchaseFee">
       <div class="left_sec">
         <img src="../static/image/user/logo_header.png" alt="user.jpg" />
@@ -21,7 +53,7 @@
     </div>
     <div class="purchase_detail" v-show="purchaseFee">
       <div class="fee_header">
-        <div class="logo" v-items></div>
+        <div class="logo"></div>
         <div class="tips">
           <h3>亲子园会员 订购服务</h3>
           <p>购买完成后可直接播放</p>
@@ -36,6 +68,7 @@
 <script>
 import CardList from "../components/cardList";
 import CardFee from "../components/cardFee";
+import { epgMethods } from "../utils/epg";
 
 export default {
   data() {
@@ -118,11 +151,26 @@ export default {
     };
   },
   methods: {
-    openDetails() {},
+    trigTo(path) {
+      switch (path) {
+        case "user":
+          this.routerName = "个人中心";
+          this.$router.push({ path: "/user" });
+          break;
+        case "review":
+          this.routerName = "浏览历史";
+          this.$router.push({ path: "/review" });
+          break;
+        case "collection":
+          this.routerName = "收藏记录";
+          this.$router.push({ path: "/collection" });
+          break;
+      }
+    },
     goToPurchase() {
-      this.$parent.ispurchaseFee = true;
       this.purchaseFee = true;
-    }
+    },
+    ...epgMethods
   },
   components: {
     CardList,
@@ -132,8 +180,68 @@ export default {
 </script>
 <style scoped>
 .user_container {
-  height: 100%;
+  width: 95%;
+  height: 98%;
+  background: url(../static/image/home/home_back.jpg) no-repeat 0 0;
+  background-size: 100% 100%;
+  padding: 1% 2.5%;
+  font-family: "微软雅黑";
+  position: relative;
+}
+.header {
+  height: 45px;
+}
+.header .logo {
+  width: 200px;
+  height: 200px;
+  margin: 20px 0 0 50px;
+  float: left;
+  cursor: pointer;
+  background: url(../static/image/home/logo.png) no-repeat 0 0;
+  background-size: contain;
+}
+.header .tablist {
+  width: calc(100% - 400px);
+  float: right;
+}
+.header .tablist .rightbtns {
   width: 100%;
+  height: 60px;
+}
+.header .tablist .rightbtns ul {
+  height: 60px;
+  line-height: 60px;
+  font-size: 28px;
+  font-family: "微软雅黑";
+  float: right;
+}
+.header .tablist .rightbtns ul li {
+  float: left;
+  margin: 0 10px;
+}
+.header .tablist .rightbtns ul li label {
+  cursor: pointer;
+}
+.header .tablist .rightbtns ul li i {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.header .tablist .rightbtns ul li i.user_logo {
+  background: url(../static/image/home/logo_man.png) no-repeat center;
+  background-size: 100% 100%;
+}
+.header .tablist .rightbtns ul li i.eye_logo {
+  background: url(../static/image/home/logo_view.png) no-repeat center;
+  background-size: 100% 100%;
+}
+.header .tablist .rightbtns ul li i.star_logo {
+  background: url(../static/image/home/logo_star.png) no-repeat center;
+  background-size: 100% 100%;
+}
+.header .title {
+  margin-left: -220px;
 }
 .pur_top {
   width: 100%;

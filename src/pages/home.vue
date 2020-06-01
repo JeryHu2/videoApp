@@ -49,9 +49,6 @@
           <Project :userId="userId" :EPGDomain="temp"></Project>
         </div>
       </div>
-      <div class="route_content" v-show="!isHome" :class="{ fee: ispurchaseFee }">
-        <router-view></router-view>
-      </div>
       <div class="pig_icon" @mousedown="move" v-show="isHome"></div>
     </div>
   </div>
@@ -113,7 +110,7 @@ export default {
     let backUrl = location.href;
     this.curHref = getUrlKey("backurl", backUrl);
     document.onkeydown = function(e) {
-      if (that.isHome) {
+      if (that.$router.currentRoute.name === "home") {
         that.serviceBack(e);
       } else if (e.keyCode == 8) {
         this.$router.push({

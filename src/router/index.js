@@ -12,27 +12,25 @@ import purchaseConfirm from '@/pages/purchase/purchaseConfirm'
 Vue.use(Router)
 
 export default new Router({
-    mode: 'history',
     routes: [{
             path: '/home',
             name: 'home',
-            component: home,
-            children: [{
-                    path: '/user',
-                    name: 'user',
-                    component: user
-                },
-                {
-                    path: '/review',
-                    name: 'review',
-                    component: review
-                },
-                {
-                    path: '/collection',
-                    name: 'collection',
-                    component: collection
-                }
-            ]
+            component: home
+        },
+        {
+            path: '/user',
+            name: 'user',
+            component: user
+        },
+        {
+            path: '/review',
+            name: 'review',
+            component: review
+        },
+        {
+            path: '/collection',
+            name: 'collection',
+            component: collection
         },
         {
             path: '/details',

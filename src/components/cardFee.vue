@@ -1,5 +1,5 @@
 <template>
-  <div class="card_body" @click="takeOrder(card.key)">
+  <div class="card_body" @click="takeOrder(card.key)" v-items>
     <div class="money">
       <span>¥</span>
       <span class="num">{{card.money}}</span>

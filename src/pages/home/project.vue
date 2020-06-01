@@ -88,7 +88,6 @@ export default {
             data[0],
             data[1]
           );
-          that.showVideoData[0].epgConfig = { default: true };
         }
       });
     },
