@@ -69,58 +69,28 @@
 import CardList from "../components/cardList";
 import CardFee from "../components/cardFee";
 import { epgMethods } from "../utils/epg";
+import Qs from "qs";
+import { Loading } from "element-ui";
+import url from "@/api/videoApi.js";
 
 export default {
   data() {
     return {
-      videoData: [],
+      videoData: {
+        review: {
+          name: "浏览历史",
+          list: []
+        },
+        collection: {
+          name: "收藏记录",
+          list: []
+        }
+      },
       purchaseFee: false,
       feeList: []
     };
   },
   created() {
-    this.videoData = {
-      review: {
-        name: "浏览历史",
-        list: [
-          {
-            id: "ran_1",
-            label: "熊猫笔记 全集",
-            img: "./static/image/user/333.jpg"
-          },
-          {
-            id: "ran_2",
-            label: "",
-            img: "./static/image/user/333.jpg"
-          },
-          {
-            id: "ran_3",
-            label: "",
-            img: "./static/image/user/333.jpg"
-          }
-        ]
-      },
-      collection: {
-        name: "收藏记录",
-        list: [
-          {
-            id: "ran_12",
-            label: "小猪佩奇 全集",
-            img: "./static/image/user/333.jpg"
-          },
-          {
-            id: "ran_13",
-            label: "小猪佩奇",
-            img: "./static/image/user/333.jpg"
-          },
-          {
-            id: "ran_14",
-            label: "熊猫笔记 全集",
-            img: "./static/image/user/333.jpg"
-          }
-        ]
-      }
-    };
     this.feeList = [
       {
         key: "month",
@@ -149,6 +119,9 @@ export default {
         that.$router.go(-1);
       }
     };
+    let userId = Authentication.CTCGetConfig("UserID");
+    this.getReviewList(userId);
+    this.getCollectList(userId);
   },
   methods: {
     trigTo(path) {
@@ -169,6 +142,80 @@ export default {
     },
     goToPurchase() {
       this.purchaseFee = true;
+    },
+    getReviewList(params) {
+      let loadingInstance = Loading.service({
+        text: "请稍等",
+        background: "rgba(0, 0, 0, 0.7)",
+        target: document.querySelector(".loadingtext")
+      });
+      let num = 0;
+      let userId = "yagnxiuyuan";
+
+      if (params) {
+        userId = Qs.stringify(params);
+      } else {
+        userId = Qs.stringify({ userId: userId });
+      }
+      let that = this;
+      that.$axios
+        .post(url.getClick, userId)
+        .then(res => {
+          let showVideoData = [];
+          if (res.data.code == "200" && res.data.data.length > 0) {
+            res.data.data.map(o => {
+              showVideoData.push({
+                name: o.name,
+                id: o.id,
+                img: o.pathPic2,
+                showTitle: o.showTitle
+              });
+            });
+            that.videoData.review.list = showVideoData.splice(0, 3);
+            loadingInstance.close();
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          loadingInstance.close();
+        });
+    },
+    getCollectList(params) {
+      let loadingInstance = Loading.service({
+        text: "请稍等",
+        background: "rgba(0, 0, 0, 0.7)",
+        target: document.querySelector(".loadingtext")
+      });
+      let num = 0;
+      let userId = "yagnxiuyuan";
+      let that = this;
+
+      if (params) {
+        userId = Qs.stringify(params);
+      } else {
+        userId = Qs.stringify({ userId: userId });
+      }
+      that.$axios
+        .post(url.getCollect, userId)
+        .then(res => {
+          let showVideoData = [];
+          if (res.data.code == "200" && res.data.data.length > 0) {
+            res.data.data.map(o => {
+              showVideoData.push({
+                name: o.name,
+                id: o.id,
+                img: o.pathPic2,
+                showTitle: o.showTitle
+              });
+            });
+            that.videoData.collection.list = showVideoData.splice(0, 3);
+            loadingInstance.close();
+          }
+        })
+        .catch(err => {
+          console.log(err);
+          loadingInstance.close();
+        });
     },
     ...epgMethods
   },

@@ -17,6 +17,7 @@
           :name="item.name"
           v-for="(item, index) in listData"
           :key="index"
+          v-items
         >
           <div
             class="cards"
@@ -64,6 +65,12 @@ export default {
     this.UserToken = UserToken;
     let userId = Authentication.CTCGetConfig("UserID"); //获取用户账号
     this.userId = userId;
+    let that = this;
+    document.onkeydown = function(e) {
+      if (e.keyCode == 8) {
+        that.$router.go(-1);
+      }
+    };
     if (this.$route.query.code) {
       this.dramaId = this.$route.query.code;
     } else {

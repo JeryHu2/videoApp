@@ -113,7 +113,7 @@ export default {
       if (that.$router.currentRoute.name === "home") {
         that.serviceBack(e);
       } else if (e.keyCode == 8) {
-        this.$router.push({
+        that.$router.push({
           path: "/home"
         });
       }
