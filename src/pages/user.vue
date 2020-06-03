@@ -119,7 +119,8 @@ export default {
         that.$router.go(-1);
       }
     };
-    let userId = Authentication.CTCGetConfig("UserID");
+    // let userId = Authentication.CTCGetConfig("UserID");
+    let userId = { userId: "yagnxiuyuan" };
     this.getReviewList(userId);
     this.getCollectList(userId);
   },
@@ -239,8 +240,8 @@ export default {
   height: 45px;
 }
 .header .logo {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   margin: 20px 0 0 50px;
   float: left;
   cursor: pointer;
@@ -253,12 +254,12 @@ export default {
 }
 .header .tablist .rightbtns {
   width: 100%;
-  height: 60px;
+  height: 100px;
 }
 .header .tablist .rightbtns ul {
   height: 60px;
   line-height: 60px;
-  font-size: 28px;
+  font-size: 25px;
   font-family: "微软雅黑";
   float: right;
 }
@@ -288,24 +289,25 @@ export default {
   background-size: 100% 100%;
 }
 .header .title {
-  margin-left: -220px;
+  margin-left: 100px;
+  text-align: left;
+  float: left;
 }
 .pur_top {
   width: 100%;
   float: left;
-  height: 220px;
+  height: 180px;
   background: #fff;
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 12px;
 }
 .pur_top .left_sec {
   float: left;
   width: 54%;
   margin: 34px auto;
-  font-size: 35px;
+  font-size: 25px;
 }
 .pur_top .left_sec img {
-  height: 115px;
+  height: 95px;
   vertical-align: middle;
   margin-right: 50px;
 }
@@ -324,8 +326,8 @@ export default {
 }
 .pur_top .right_sec .pur_button {
   cursor: pointer;
-  width: 250px;
-  height: 80px;
+  width: 200px;
+  height: 68px;
   margin: 25px auto;
   background: url(../static/image/user/purch_now.png) no-repeat 0 0;
   background-size: 100% 100%;
@@ -338,17 +340,16 @@ export default {
   float: left;
   width: 100%;
   margin-top: 40px;
-  height: calc(100% - 260px);
 }
 .pur_bottom .half {
-  width: 47.5%;
+  width: 43.5%;
   float: left;
-  padding: 40px;
+  padding: 30px;
   background: #fff;
   border-radius: 16px;
 }
 .pur_bottom .collection {
-  margin-left: 5%;
+  margin-left: 3%;
 }
 .purchase_detail {
   overflow: hidden;

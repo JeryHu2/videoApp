@@ -61,20 +61,20 @@ export default {
 </script>
 <style scoped>
 ul.swip_list {
-  margin: 40px 50px;
+  margin: 15px 30px;
 }
 ul.swip_list li {
   margin: 20px 0;
 }
 .el-button {
-  width: 280px;
-  height: 100px;
-  font-size: 35px;
+  width: 166px;
+  height: 72px;
+  font-size: 22px;
   font-weight: 600;
   color: #014bc0;
   font-family: 微软雅黑;
   background: rgba(255, 255, 255, 0.6);
-  border-radius: 35px;
+  border-radius: 24px;
 }
 .el-button:hover,
 ul.swip_list li.active button {

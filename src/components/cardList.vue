@@ -47,10 +47,10 @@ export default {
   width: 25%;
   float: left;
   margin: 0 4%;
-  height: 200px;
+  height: 155px;
 }
 .header {
-  font-size: 30px;
+  font-size: 24px;
   margin-bottom: 30px;
 }
 .header .title {

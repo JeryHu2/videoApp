@@ -172,11 +172,11 @@ export default {
   position: relative;
 }
 .header {
-  height: 220px;
+  height: 150px;
 }
 .header .logo {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   margin: 20px 0 0 50px;
   float: left;
   cursor: pointer;
@@ -194,7 +194,7 @@ export default {
 .header .tablist .rightbtns ul {
   height: 60px;
   line-height: 60px;
-  font-size: 28px;
+  font-size: 25px;
   font-family: "微软雅黑";
   float: right;
 }

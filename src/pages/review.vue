@@ -173,11 +173,11 @@ export default {
   position: relative;
 }
 .header {
-  height: 220px;
+  height: 150px;
 }
 .header .logo {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   margin: 20px 0 0 50px;
   float: left;
   cursor: pointer;
@@ -190,12 +190,12 @@ export default {
 }
 .header .tablist .rightbtns {
   width: 100%;
-  height: 60px;
+  height: 100px;
 }
 .header .tablist .rightbtns ul {
   height: 60px;
   line-height: 60px;
-  font-size: 28px;
+  font-size: 25px;
   font-family: "微软雅黑";
   float: right;
 }
@@ -225,17 +225,16 @@ export default {
   background-size: 100% 100%;
 }
 .header .title {
-  margin-left: -220px;
-  font-size: 30px;
+  margin-left: 50px;
+  font-size: 24px;
   font-weight: 600;
 }
 .overrow {
   overflow: hidden;
   margin: 0 auto;
-  height: calc(100% - 240px);
+  height: 500px;
   background: #f5f7fa;
   border-radius: 20px;
-  padding-top: 30px;
   width: 90%;
 }
 .overrow .videoPro {

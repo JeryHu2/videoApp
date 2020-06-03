@@ -180,18 +180,18 @@ export default {
 .cards .videoPro {
   float: left;
   width: 30%;
-  margin: 40px 0 0 40px;
-  height: 300px;
+  margin: 30px 0 0 30px;
+  height: 200px;
   border: none !important;
 }
 .cards .videoPro.ishome {
   height: 400px;
 }
 .cards .onePercent.videoPro {
-  width: 36%;
+  width: 31%;
 }
 .cards .twoPercent.videoPro {
-  width: 17.5%;
+  width: 18.5%;
 }
 /* @media (max-width: 1280px) {
   .cards .videoPro {

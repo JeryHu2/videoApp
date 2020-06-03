@@ -38,9 +38,7 @@ exports.cssLoaders = function(options) {
     // generate loader string to be used with extract text plugin
     function generateLoaders(loader, loaderOptions) {
         // build文件下的utils.js文件
-        const loaders = options.usePostCSS ?
-            [cssLoader, postcssLoader, px2remLoader] :
-            [cssLoader, px2remLoader]
+        const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
         if (loader) {
             loaders.push({

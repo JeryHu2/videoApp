@@ -59,13 +59,13 @@ export default {
 </script>
 <style scoped>
 .tabCalss li {
-  font-family: "微软雅黑";
-  font-size: 35px;
+  font-family: "\5FAE\8F6F\96C5\9ED1";
+  font-size: 25px;
   color: blue;
   font-weight: bold;
-  width: 250px;
-  height: 140px;
-  line-height: 160px;
+  width: 180px;
+  height: 90px;
+  line-height: 110px;
   float: left;
   cursor: pointer;
 }

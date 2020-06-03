@@ -221,7 +221,7 @@ export default {
   height: 45px;
 }
 .header .logo {
-  width: 200px;
+  width: 160px;
   height: 100%;
   margin: 20px 0 0 50px;
   float: left;
@@ -230,17 +230,18 @@ export default {
   background-size: contain;
 }
 .header .tablist {
-  width: calc(100% - 400px);
+  width: 800px;
   float: right;
 }
 .header .tablist .rightbtns {
   width: 100%;
-  height: 60px;
+  height: 100px;
+  float: left;
 }
 .header .tablist .rightbtns ul {
   height: 60px;
   line-height: 60px;
-  font-size: 28px;
+  font-size: 25px;
   font-family: "微软雅黑";
   float: right;
 }
@@ -291,7 +292,9 @@ export default {
 .content {
   width: 100%;
   float: left;
-  height: calc(100% - 240px);
+  margin-top: -30px;
+  height: 500px;
+  overflow: auto;
 }
 .route_content {
   width: calc(100% - 100px);
@@ -304,13 +307,13 @@ export default {
   height: calc(100% - 100px);
 }
 .content .swiper {
-  width: 400px;
+  width: 250px;
   height: 100%;
   float: left;
   overflow: auto;
 }
 .content .list {
-  width: calc(100% - 400px);
+  width: 960px;
   height: 100%;
   float: right;
   overflow: auto;
@@ -319,10 +322,10 @@ export default {
   width: 100%;
 }
 .content.home_tab >>> .videoPro {
-  height: 400px !important;
+  height: 270px !important;
 }
 .content.other_tab .list {
-  width: calc(100% - 400px);
+  width: 960px;
 }
 .pig_icon {
   width: 140px;
