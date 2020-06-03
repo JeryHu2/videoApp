@@ -27,7 +27,7 @@
         </div>
         <div class="title">
           <span class="line">——</span>
-          浏览记录
+          浏览历史
           <span class="line">——</span>
         </div>
       </div>
@@ -226,7 +226,7 @@ export default {
   background-size: 100% 100%;
 }
 .header .title {
-  margin-left: -160px;
+  margin-left: -180px;
   font-size: 24px;
   font-weight: 600;
 }

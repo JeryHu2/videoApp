@@ -225,7 +225,7 @@ export default {
   background-size: 100% 100%;
 }
 .header .title {
-  margin-left: -165px;
+  margin-left: -180px;
   font-size: 24px;
   font-weight: 600;
 }

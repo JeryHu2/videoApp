@@ -100,6 +100,8 @@ export default {
       let temParams = {
         dramaId: this.dramaId,
         userId: this.$route.query.userId
+        // userId: "yagnxiuyuan",
+        // dramaId: "D0001"
       };
 
       if (params) {
@@ -250,7 +252,7 @@ export default {
 }
 .dt_top .des {
   float: left;
-  width: calc(100% - 650px);
+  width: 600px;
   margin-left: 50px;
   height: 100%;
 }

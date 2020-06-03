@@ -120,8 +120,11 @@ export default {
     };
     let userId = Authentication.CTCGetConfig("UserID");
     // let userId = { userId: "yagnxiuyuan" };
-    this.getReviewList(userId);
-    this.getCollectList(userId);
+    let params = {
+      userId: userId
+    };
+    this.getReviewList(params);
+    this.getCollectList(params);
   },
   methods: {
     trigTo(path) {
@@ -248,7 +251,7 @@ export default {
   background-size: contain;
 }
 .header .tablist {
-  width: calc(100% - 400px);
+  width: 800px;
   float: right;
 }
 .header .tablist .rightbtns {
@@ -301,7 +304,7 @@ export default {
 }
 .pur_top .left_sec {
   float: left;
-  width: 54%;
+  width: 50%;
   margin: 34px auto;
   font-size: 25px;
 }

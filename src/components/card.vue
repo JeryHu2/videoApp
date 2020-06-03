@@ -50,7 +50,7 @@ export default {
 .videoPro .button {
   padding: 0;
   color: #fff;
-  font-size: 35px;
+  font-size: 25px;
   line-height: 50px;
 }
 .videoPro .el-card__body {
