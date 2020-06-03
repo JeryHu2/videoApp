@@ -36,11 +36,7 @@
           type="number"
           :max="99999999"
         ></el-input>
-        <img
-          src="../../static/image/purchase/pur_jy.png"
-          alt="验证码"
-          style="width:160px;"
-        />
+        <img src="../../static/image/purchase/pur_jy.png" alt="验证码" style="width:160px;" />
       </div>
       <div>
         <div class="confirm btns" @click="submit" v-items></div>
@@ -125,7 +121,7 @@ export default {
 .confirm_container .comfirming,
 .confirm_container .comfirmed {
   width: 700px;
-  margin: 120px auto;
+  margin: 60px auto;
 }
 .confirm_container .comfirming .title {
   width: 100%;

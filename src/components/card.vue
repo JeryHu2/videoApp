@@ -78,9 +78,10 @@ export default {
 }
 .videoPro .el-card {
   border: 5px solid #000 !important;
-  border-radius: 40px !important;
+  border-radius: 15px !important;
   height: 100%;
   position: relative;
+  background: transparent;
 }
 .videoPro .el-card:hover,
 .focusEpg .el-card {

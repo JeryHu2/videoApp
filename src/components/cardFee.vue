@@ -28,20 +28,20 @@ export default {
 </script>
 <style>
 .card_body {
-  width: 350px;
-  height: 360px;
+  width: 200px;
+  height: 190px;
   float: left;
   background: #fff;
   border-radius: 16px;
   margin: 0 50px;
-  padding: 70px 30px;
+  padding: 60px 30px;
   cursor: pointer;
 }
 .card_body .money {
-  font-size: 50px;
+  font-size: 20px;
 }
 .money .num {
-  font-size: 80px;
+  font-size: 60px;
 }
 .card_body p {
   font-size: 20px;
@@ -51,6 +51,6 @@ export default {
   margin: 20px 0 40px 0;
 }
 .card_body .label {
-  font-size: 50px;
+  font-size: 32px;
 }
 </style>

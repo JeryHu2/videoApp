@@ -215,7 +215,7 @@ export default {
 }
 .header {
   width: 100%;
-  height: 200px;
+  height: 160px;
 }
 .header.user {
   height: 45px;
@@ -230,20 +230,20 @@ export default {
   background-size: contain;
 }
 .header .tablist {
-  width: 800px;
+  width: 1000px;
   float: right;
 }
 .header .tablist .rightbtns {
   width: 100%;
-  height: 100px;
+  height: 40px;
   float: left;
 }
 .header .tablist .rightbtns ul {
   height: 60px;
-  line-height: 60px;
   font-size: 25px;
-  font-family: "微软雅黑";
+  font-family: "\5FAE\8F6F\96C5\9ED1";
   float: right;
+  margin: 10px 0;
 }
 .header .tablist .rightbtns ul li {
   float: left;
@@ -254,8 +254,8 @@ export default {
 }
 .header .tablist .rightbtns ul li i {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 24px;
   vertical-align: middle;
 }
 .header .tablist .rightbtns ul li i.user_logo {
@@ -275,6 +275,7 @@ export default {
   width: 100%;
   height: 140px;
   line-height: 140px;
+  float: left;
 }
 .header .tablist .title {
   font-size: 45px;
@@ -293,7 +294,7 @@ export default {
   width: 100%;
   float: left;
   margin-top: -30px;
-  height: 500px;
+  height: 540px;
   overflow: auto;
 }
 .route_content {
@@ -322,7 +323,7 @@ export default {
   width: 100%;
 }
 .content.home_tab >>> .videoPro {
-  height: 270px !important;
+  height: 230px !important;
 }
 .content.other_tab .list {
   width: 960px;

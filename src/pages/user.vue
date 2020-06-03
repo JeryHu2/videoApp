@@ -1,7 +1,7 @@
 <template>
   <div style="overflow:hidden" class="user_container">
     <div class="header">
-      <div class="logo" @click="trigTo('home')" v-show="!purchaseFee"></div>
+      <div class="logo" @click="trigTo('home')"></div>
       <div class="tablist">
         <div class="rightbtns">
           <ul>
@@ -53,7 +53,6 @@
     </div>
     <div class="purchase_detail" v-show="purchaseFee">
       <div class="fee_header">
-        <div class="logo"></div>
         <div class="tips">
           <h3>亲子园会员 订购服务</h3>
           <p>购买完成后可直接播放</p>
@@ -119,8 +118,8 @@ export default {
         that.$router.go(-1);
       }
     };
-    // let userId = Authentication.CTCGetConfig("UserID");
-    let userId = { userId: "yagnxiuyuan" };
+    let userId = Authentication.CTCGetConfig("UserID");
+    // let userId = { userId: "yagnxiuyuan" };
     this.getReviewList(userId);
     this.getCollectList(userId);
   },
@@ -237,7 +236,7 @@ export default {
   position: relative;
 }
 .header {
-  height: 45px;
+  height: 160px;
 }
 .header .logo {
   width: 160px;
@@ -258,10 +257,10 @@ export default {
 }
 .header .tablist .rightbtns ul {
   height: 60px;
-  line-height: 60px;
   font-size: 25px;
   font-family: "微软雅黑";
   float: right;
+  margin: 10px 0;
 }
 .header .tablist .rightbtns ul li {
   float: left;
@@ -272,8 +271,8 @@ export default {
 }
 .header .tablist .rightbtns ul li i {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 24px;
   vertical-align: middle;
 }
 .header .tablist .rightbtns ul li i.user_logo {
@@ -353,16 +352,17 @@ export default {
 }
 .purchase_detail {
   overflow: hidden;
-  height: 100%;
+  height: 460px;
   padding: 20px;
+  width: 90%;
+  margin: 0 auto;
 }
 .fee_header {
-  height: 1.302083rem;
+  height: 100px;
   width: 50%;
-  padding: 0.104167rem;
   margin: 0 auto;
-  margin-top: -60px;
-  margin-bottom: 70px;
+  margin-top: -20px;
+  margin-bottom: 40px;
 }
 .fee_header .logo {
   width: 200px;
@@ -373,22 +373,19 @@ export default {
   background-size: contain;
 }
 .fee_header .tips {
-  float: right;
-  width: 2.5rem;
-  margin-top: 75px;
-  text-align: left;
+  text-align: center;
 }
 .fee_header .tips h3 {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 600;
+  margin: 0;
 }
 .fee_header .tips p {
-  font-size: 25px;
+  font-size: 24px;
 }
 .fee_bottom {
-  height: calc(100% - 200px);
+  height: 400px;
   width: 100%;
-  margin-left: 250px;
 }
 /* @media (max-width: 1280px) {
   .pur_top {

@@ -114,8 +114,9 @@ export default {
       this.showList();
     },
     showList() {
+      let userId = Authentication.CTCGetConfig("UserID");
       this.showVideoData = [];
-      this.getMenuList();
+      this.getMenuList({ userId: userId });
     },
     getMenuList(params) {
       let loadingInstance = Loading.service({
@@ -184,19 +185,19 @@ export default {
   background-size: contain;
 }
 .header .tablist {
-  width: calc(100% - 400px);
+  width: 1000px;
   float: right;
 }
 .header .tablist .rightbtns {
   width: 100%;
-  height: 60px;
+  height: 100px;
 }
 .header .tablist .rightbtns ul {
   height: 60px;
-  line-height: 60px;
   font-size: 25px;
   font-family: "微软雅黑";
   float: right;
+  margin: 10px 0;
 }
 .header .tablist .rightbtns ul li {
   float: left;
@@ -207,8 +208,8 @@ export default {
 }
 .header .tablist .rightbtns ul li i {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 24px;
   vertical-align: middle;
 }
 .header .tablist .rightbtns ul li i.user_logo {
@@ -224,25 +225,24 @@ export default {
   background-size: 100% 100%;
 }
 .header .title {
-  margin-left: -220px;
-  font-size: 30px;
+  margin-left: -165px;
+  font-size: 24px;
   font-weight: 600;
 }
 .overrow {
   overflow: hidden;
   margin: 0 auto;
-  height: calc(100% - 240px);
+  height: 500px;
   background: #f5f7fa;
   border-radius: 20px;
-  padding-top: 30px;
   width: 90%;
 }
 .overrow .videoPro {
   cursor: pointer;
-  width: 220px;
+  width: 160px;
   float: left;
   margin: 30px 0 0 45px;
-  height: 270px;
+  height: 180px;
 }
 .el-pagination {
   float: left;

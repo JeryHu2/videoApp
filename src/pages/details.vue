@@ -235,12 +235,12 @@ export default {
   background-size: 100% 100%;
 }
 .dt_top {
-  height: 360px;
-  padding: 100px;
+  height: 280px;
+  padding: 30px;
 }
 .dt_top .img {
-  width: 600px;
-  height: 330px;
+  width: 390px;
+  height: 250px;
   border-radius: 20px;
   border: 4px solid #333;
   cursor: pointer;
@@ -255,27 +255,26 @@ export default {
   height: 100%;
 }
 .dt_top .des h1 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 600;
   text-align: left;
-  margin-bottom: 10px;
+  margin: 0;
 }
 .dt_top .des p {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 600;
   text-align: left;
-  margin-bottom: 80px;
 }
 .dt_top .des .btn {
-  height: 70px;
-  margin-right: 50px;
+  height: 55px;
+  margin-right: 36px;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
 }
 .dt_top .des .btn.open {
-  width: 140px;
+  width: 110px;
   background: url(../static/image/details/open.png) no-repeat 0 0;
   background-size: 100% 100%;
 }
@@ -284,7 +283,7 @@ export default {
   background-size: 100% 100%;
 }
 .dt_top .des .btn.purchase {
-  width: 180px;
+  width: 140px;
   background: url(../static/image/details/purchase.png) no-repeat 0 0;
   background-size: 100% 100%;
 }
@@ -293,7 +292,7 @@ export default {
   background-size: 100% 100%;
 }
 .dt_top .des .btn.collect {
-  width: 140px;
+  width: 110px;
   background: url(../static/image/details/collect.png) no-repeat 0 0;
   background-size: 100% 100%;
 }
@@ -303,13 +302,13 @@ export default {
   background-size: 100% 100%;
 }
 .dt_bottom {
-  padding: 100px;
+  padding: 30px;
 }
 .dt_bottom >>> .cards {
-  width: 350px;
-  height: 60px;
-  line-height: 60px;
-  font-size: 30px;
+  width: 212px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
   text-align: center;
   background: rgba(255, 255, 255, 0.6);
   color: #409eff;
@@ -323,7 +322,7 @@ export default {
   background: #409eff;
 }
 .dt_bottom >>> .el-tabs__item {
-  font-size: 30px !important;
+  font-size: 24px !important;
 }
 .dt_bottom >>> .el-tabs__item.is-active {
   color: #fff;
