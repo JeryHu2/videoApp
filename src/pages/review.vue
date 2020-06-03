@@ -11,15 +11,23 @@
               ref="userIcon"
               @right="right"
               @down="down"
+              class="hd_item"
             >
               <i class="user_logo"></i>
               <label>个人中心</label>
             </li>
-            <li @click="trigTo('review')" v-items @left="left" @right="right" @down="down()">
+            <li
+              @click="trigTo('review')"
+              v-items="{default:true}"
+              @left="left"
+              @right="right"
+              @down="down()"
+              class="hd_item"
+            >
               <i class="eye_logo"></i>
               <label>浏览历史</label>
             </li>
-            <li @click="trigTo('collection')" v-items @left="left" @down="down">
+            <li @click="trigTo('collection')" v-items @left="left" @down="down" class="hd_item">
               <i class="star_logo"></i>
               <label>收藏记录</label>
             </li>
@@ -79,7 +87,7 @@ export default {
   mounted() {
     this.showList();
     let el = document.getElementsByClassName("review_item")[0];
-    this.$service.move(el);
+    this.$service.move(this.$service.pointer);
     let that = this;
     document.onkeydown = function(e) {
       if (e.keyCode == 8) {
@@ -203,6 +211,9 @@ export default {
 .header .tablist .rightbtns ul li {
   float: left;
   margin: 0 10px;
+}
+li.hd_item.focusEpg {
+  color: yellow;
 }
 .header .tablist .rightbtns ul li label {
   cursor: pointer;

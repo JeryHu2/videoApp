@@ -5,7 +5,7 @@
       <div class="des">
         <h1>{{ actTitle }}</h1>
         <p>{{ description }}</p>
-        <button class="open btn" v-items @click="open"></button>
+        <button class="open btn" v-items="{default:true}" @click="open"></button>
         <button class="purchase btn" @click="trigTo" v-items></button>
         <button class="collect btn" @click="collectVideo" v-items :class="{ active: isCollect }"></button>
       </div>
@@ -84,7 +84,7 @@ export default {
     }
     this.getMenuList();
     let el = document.getElementsByClassName("cards")[0];
-    this.$service.move(el);
+    this.$service.move(this.$service.pointer);
   },
   methods: {
     ...epgMethods,
@@ -335,6 +335,9 @@ export default {
 }
 .dt_bottom >>> .el-tabs__item {
   padding: 0 20px !important;
+}
+.details_body .focusEpg {
+  border: 2px solid yellow !important;
 }
 /* @media (max-width: 1280px) {
   .dt_top {

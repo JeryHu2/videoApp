@@ -7,12 +7,14 @@
       :name="item.tabCode"
       v-items="item.epgConfig"
       :ref="item.tabCode+'Tab'"
+      class="tab_item"
       @click="handleClick(item,$event)"
     >{{ item.name }}</li>
   </ul>
 </template>
 <script>
 import url from "@/api/videoApi.js";
+
 export default {
   data() {
     return {
@@ -44,15 +46,6 @@ export default {
       }
 
       this.$parent.changeHomeContent(tab.tabCode);
-    },
-    moveLeft() {
-      this.$service.move(this.$refs[this.activeName + "Tab"][0]);
-    },
-    moveRight() {
-      this.$service.move("right");
-    },
-    moveUp() {
-      this.$service.move(this.$refs["logoIcon"]);
     }
   }
 };
@@ -68,6 +61,9 @@ export default {
   line-height: 110px;
   float: left;
   cursor: pointer;
+}
+li.tab_item.focusEpg {
+  color: yellow;
 }
 .tabCalss li.is-active {
   background: url(../../static/image/home/nav.png) no-repeat 0 0;

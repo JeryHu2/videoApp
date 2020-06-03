@@ -8,19 +8,20 @@
             <ul>
               <li
                 @click="trigTo('user')"
-                v-items="{default:true}"
+                v-items
                 ref="userIcon"
                 @right="right"
                 @down="down"
+                class="hd_item"
               >
                 <i class="user_logo"></i>
                 <label>个人中心</label>
               </li>
-              <li @click="trigTo('review')" v-items @left="left" @right="right" @down="down()">
+              <li @click="trigTo('review')" v-items class="hd_item">
                 <i class="eye_logo"></i>
                 <label>浏览历史</label>
               </li>
-              <li @click="trigTo('collection')" v-items @left="left" @down="down">
+              <li @click="trigTo('collection')" v-items @left="left" @down="down" class="hd_item">
                 <i class="star_logo"></i>
                 <label>收藏记录</label>
               </li>
@@ -41,14 +42,14 @@
           <Project :userId="userId" :EPGDomain="temp"></Project>
         </div>
       </div>
-      <div class="content other_tab" v-show="!isHomeTab && isHome">
+      <!-- <div class="content other_tab" v-show="!isHomeTab && isHome">
         <div class="swiper">
           <List></List>
         </div>
         <div class="list" ref="videoList">
           <Project :userId="userId" :EPGDomain="temp"></Project>
         </div>
-      </div>
+      </div>-->
       <div class="pig_icon" @mousedown="move" v-show="isHome"></div>
     </div>
   </div>
@@ -248,6 +249,9 @@ export default {
 .header .tablist .rightbtns ul li {
   float: left;
   margin: 0 10px;
+}
+li.hd_item.focusEpg {
+  color: yellow;
 }
 .header .tablist .rightbtns ul li label {
   cursor: pointer;
